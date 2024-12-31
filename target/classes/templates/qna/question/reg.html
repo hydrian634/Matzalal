@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QnA</title>
+    <link href="/css/components/qna/question/reg.css" rel="stylesheet" type="text/css">
+<!--	<script src="/js/qna/question.js"></script>-->
+</head>
+
+<!-- form, div - box
+label, input, textarea - inline -->
+
+<body>
+    <main layout:fragment="main" class="qna-reg-main">
+        <section class="qna-reg-section">
+            <h1 class="d:none">문의하기 글 등록 폼</h1>
+
+            <form class="qna-reg-form" action="reg" method="post">
+                <div class="title-box">
+                    <input class="qna-title" type="text" name="title" rows="1"
+                            placeholder="제목을 입력해주세요." required>
+                </div>
+                <div class="contents-box">
+                    <div class="content-box">
+                        <textarea class="qna-content" name="content" rows="13"
+                                placeholder="본문 내용을 입력해주세요." required></textarea>
+<!--                        <div class="open-close-box">
+                            <span class="icon"><i class="icon icon-open icon-color:black"></i></span>
+                            <input type="radio" name="open" value="true"> 공개
+                            <span class="icon"><i class="icon icon-close icon-size:4 icon-color:black"></i></span>
+                            <input type="radio" name="open" value="false"> 비공개
+						</div>-->
+						 <fieldset>
+						  <div class="open-close-box">
+				                <label><input type="radio" name="open" value="0" checked>공개</label>
+				                <label><input type="radio" name="open" value="1">비공개</label>
+				          </div>
+	                     </fieldset>
+<!--						<div class="open-close-box">
+     							<input class="input-query" type="text" placeholder="공개 여부">
+								<button class="icon icon-open">공개 여부</button>
+							</div>-->
+						</div>
+                    </div>
+
+                <!-- type submit 으로 해야 하나..? -->
+                <div class="cancle-save-box">
+                    <input onclick="location.href='/qna/question/list'" class="btn-cancel" type="button" value="취소">
+                    <input onclick="location.href='/qna/question/list'" class="btn-save" type="submit" name="cmd" value="등록">
+                </div>
+
+                <!-- <div class="qna-reg-btn-box d:flex mt:4-2">
+                <a class="btn btn-register mv:auto md:btn-bigger">등록</a>
+            </div> -->
+
+            </form>
+
+        </section>
+
+    </main>
+</body>
+
+</html>

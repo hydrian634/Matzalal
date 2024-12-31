@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A 답변 등록</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="answer.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <main class="main">
+        <section class="reg-qna">
+            <h1 class="reg-qna-title">Q&A 답변 등록</h1>
+            <div class="question-block">
+                <div class="question-title-block">
+                    <div class="question-title">
+                        <span>이것은 질문글의 제목입니다.</span>
+                    </div>
+                    <div class="question-user-date">
+                        <span>등급</span>
+                        <span>닉네임</span>
+                        <span class="question-date">2023.10.07</span>
+                    </div>
+                </div>
+                <p class="question-content">
+                    여기는 질문자가 작성한 본문이 들어가는 곳입니다.
+                </p>
+                <div>
+                    <span class="icon icon-color-black icon-private">공개여부 설정</span>
+                </div>
+            </div>
+            
+            <form action="" class="reg-answer-form">
+                <div class="answer-title-block">
+                    <div class="answer-title">
+                        <span>Re : <span>이것은 질문글의 제목입니다.</span></span>
+                    </div>
+                    <div>
+                        <div class="answer-admin-date">
+                            <span>관리자</span>
+                            <span>2023.10.07</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answer-content-block">
+                    <textarea class="answer-content" name="textarea"
+                    placeholder="답변 본문을 작성 바랍니다."></textarea>
+
+                    <div class="add-answer-pic" >
+                        <label onchange="readURL(this);"></label>
+                        <input type="file" class="icon icon-color-black icon-gallery">
+                        <img id="preview" />
+                    </div>
+                </div>
+            </form>
+
+            <div class="create-mg-btn">
+                <button type="submit" name="cmd" value="수정" class="btn-main btn-main-create btn-main-create-edit">수정</button>
+                <button type="submit" name="cmd" value="등록" class="btn-main btn-main-create">등록</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

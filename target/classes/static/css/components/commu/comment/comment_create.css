@@ -1,0 +1,58 @@
+.commentbox{
+    bottom: 0;
+    padding: 0;
+    min-width: 360px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--color-base-1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.textarea-wrap{
+
+}
+
+.textarea-wrap
+    textarea{
+    }
+
+.comment-content{
+    
+    background: var(--color-base-1);
+    border: none;
+    resize: none;
+    color: var(--color-base-6);
+
+    overflow: hidden;
+    overflow-wrap: break-word;
+    word-break: break-all;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.comment-textarea::placeholder {
+    font-weight: bold;
+    opacity: 0.5;
+    color: var(--color-base-5);
+    text-justify:center;
+        width: 100%;
+
+    
+  }
+
+/*------------------ 반응형 --------------------*/
+
+  @media (min-width: 700px) {
+    
+       .md\:commentbox{ 
+            width: 660px;
+
+        }
+
+  }

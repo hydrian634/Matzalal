@@ -1,0 +1,123 @@
+.reg-qna{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;   
+    overflow: hidden;
+    gap: var(--gap-5);
+    margin-top: 40px;
+}
+
+.reg-qna
+    .reg-qna-title{
+        font-size: 25px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+.reg-qna
+    .question-block{
+        height: 30%;
+        border-bottom: 1px solid var(--color-base-3);
+        margin: 0 30px;
+    }
+
+.reg-qna
+    .question-block
+        .question-title-block{
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--color-base-3);
+        }
+
+.reg-qna
+    .question-block
+        .question-title{
+            margin-bottom: 10px;
+            font-size: var(--font-size-8);
+            font-weight: 500;
+        }
+
+.reg-qna
+    .question-block
+        .question-user-date{
+            display: grid;
+            grid: 1fr / 30px 1fr 160px;
+            margin-bottom: 10px;
+        }
+
+.reg-qna
+    .question-block
+        .question-content{
+            width: 100%;
+            height: 200px;
+        }
+
+.reg-qna
+    .reg-answer-form{
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap-5);
+        border-top: 1px solid var(--color-base-3);
+        margin: 0 30px;
+        margin-bottom: 5px;
+    }
+
+
+    
+.reg-qna
+    .reg-answer-form
+        .answer-title-block{
+            border-bottom: 1px solid var(--color-base-3);
+            line-height: 30px;
+            padding-bottom: 10px;
+
+        }
+
+.reg-qna
+    .reg-answer-form
+        .answer-title{
+            font-size: var(--font-size-8);
+            font-family: "Pretendard Variable";
+            font-weight: 500;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+.reg-qna
+    .reg-answer-form
+        .answer-admin-date{
+            display: grid;
+            grid: 1fr / 1fr 160px;
+        }
+
+.reg-qna
+    .reg-answer-form
+        .answer-content{
+            width: 100%;
+            height: 200px;
+            outline: none;
+            border: none;
+            resize: none;
+            font-family: "Pretendard Variable";
+            font-size: var(--font-size-5);
+        }
+
+
+.manage-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--gap-3);
+}
+
+
+@media (min-width : 700px) {
+    .reg-faq{
+        max-width: 660px;
+
+    }
+
+}

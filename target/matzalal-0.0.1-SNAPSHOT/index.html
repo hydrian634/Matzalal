@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!--<meta charset="EUC-KR">은 기본설정인데, 한글 지원 안함-->
+<title>Insert title here</title>
+</head>
+<body>
+	여기는 맛잘알 web inf 뷰 페이지 입니다
+	Welcome! 안녕?
+	<hr>
+		<h2>인사말을 몇 번 듣고 싶으세요?</h2>
+			<a href="/index?s=1">1번</a><br>
+			<a href="/index?s=5">5번</a><br>
+			<a href="/index?s=10">10번</a><br>
+			<a href="/index?s=100">100번</a>
+	<hr>
+		<h2>인사말을 몇 번 듣고 싶으세요?</h2>
+			<form action="index">
+				<label>갯수입력</label><input type="text" name="s">
+				<input type="submit" value="요청">
+			</form>
+	<hr>
+</body>
+</html>

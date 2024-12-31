@@ -1,0 +1,85 @@
+.community{
+    max-width: 340px;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    max-width: 380px;
+    height: 100%;
+    gap: var(--gap-5);
+}
+
+.community
+h1{
+    font-family: 'SBAggro';
+}
+.location{
+    padding: 10px 10px;
+}
+
+/* ---------------- 전체 레이아웃 ---------------- */
+.mainlayout{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ranking-area{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.community{
+    display: flex;
+    flex-direction: column;
+}
+
+.fixed-button{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    cursor: pointer;
+    position: fixed;
+    top: 90%;
+    left: 88%;
+    z-index: 1;
+}
+
+
+
+/* ---------------- 반응형 ---------------- */
+
+@media (min-width: 700px) {
+
+
+    .md\:mainlayout{
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: center;
+
+        gap: var(--gap-6);
+
+        margin-top: var(--gap-5);
+    }
+
+    .md\:community{
+        flex-wrap: wrap;
+        align-items: center;
+        min-width: 590px;
+        padding: 10px 10px;
+        margin: var(--gap-4);
+    }
+
+    .md\:fixed-button{
+        top: 80%;
+        right: 30%;
+
+
+    }
+
+}

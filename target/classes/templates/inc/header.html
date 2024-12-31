@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+
+		<link href="/css/reset.css" rel="stylesheet" type="text/css">
+		<link href="/css/root.css" rel="stylesheet" type="text/css">
+		<link href="/css/style.css" rel="stylesheet" type="text/css">
+		<link href="/css/util.css" rel="stylesheet" type="text/css">
+		<link href="/css/icon.css" rel="stylesheet" type="text/css">
+		<link href="/css/button.css" rel="stylesheet" type="text/css">
+
+		<link href="/css/components/header.css" rel="stylesheet" type="text/css">
+		<link href="/css/components/bottom.css" rel="stylesheet" type="text/css">
+		<link href="/css/components/layout.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+	<header class="header md:header">
+	  <nav class="main-menu content-box">
+					<!-- 모바일 -->
+	    <div class="md:d:none content-box">
+	      <a href="" class="icon icon-size:4 icon-color:base-5 icon-back">뒤로가기</a>
+	      <h1><img src="/css/image/icon/logo.svg" style="height:20%" alt="맛잘알"></h1>
+	      <a></a>
+	    </div>
+	    			<!-- 웹 -->
+	    <a class="mxd:d:none" href="/index"><img src="/css/image/icon/logo.svg" style="height:20%" alt="맛잘알"></a>
+	    <ul class="mxd:d:none web">
+		  <li class="mxd:d:none"><a href="/commu/main">커뮤니티</a></li>
+		  <li class="mxd:d:none"><a href="/celeb/list" >유명인</a></li>
+		  <li class="mxd:d:none"><a href="/user/mypage">마이페이지</a></li>
+		  <li class="mxd:d:none"><a href="/notice/list">고객센터</a></li>
+			<li class="log" sec:authorize="isAnonymous()"><a class="d:flex" href="/stranger/login"><img src="/css/image/icon/person.svg">
+													</a></li>
+			<li class="log" sec:authorize="isAuthenticated()"><a class="d:flex" href="/user/logout"><img src="/css/image/admin-icon/logout.svg"></a></li>
+	    </ul>
+	  </nav>
+	</header>
+</body>
+
+</html>

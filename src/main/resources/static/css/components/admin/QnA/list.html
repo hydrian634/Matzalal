@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A 관리</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/search.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/QnA/list.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <main class="main">
+        <section class="main-section md:main-section">
+            <h1 class="main-section-title">Q&A 관리</h1>
+            <header class="main-section-header">
+                <div class="main-section-count">
+                    <p>총 <span>00</span>개</p>
+                </div>
+    
+                <!-- 등록, 수정, 삭제 버튼 -->
+                <div class="manage-button">
+                    <form action="" class="store-create-button">
+                        <input type="button" value="답변" class="btn-main btn-main-create btn-main-small">
+                    </form>
+                    <form action="" class="store-delete-button">
+                        <input type="button" value="삭제" class="btn-main btn-main-create btn-main-create-delete btn-main-small">
+                    </form>
+                </div>
+            
+                <div class="dropdown-select md:dropdown-select">
+                    <form action="" class="response-status-select md:response-status-select">
+                        <legend for="response" class="d:none">답변 상태 선택창</legend>
+                            <select id="" name="">
+                                <option value="처리완료">처리완료</option>
+                                <option value="미처리">미처리</option>
+                            </select>
+                    </form>
+
+                    <form class="search-form">
+                        <fieldset class="search md:search">
+                            <legend class="d:none">제목 검색</legend>
+                            <input type="search" placeholder="제목" size="5">
+                            <button type="submit" class="icon icon-color-black icon-search"></button>
+                        </fieldset>
+                    </form>
+                </div>
+            </header>
+        
+            <!-- 본문!! -->
+            <!-- Q&A 목록 -->
+            <section class="qna-block md:qna-block">
+                <h1 class="qna-title">문의글 제목</h1>
+                <form action="" class="checkbox-block">
+                    <input type="checkbox">
+                </form>
+
+                <div class="qna-number-block">
+                    <a class="">11.</a>
+                </div>
+
+                <div class="qna-alias-block">
+                    <a class="">닉네임</a>
+                </div>
+
+                <div class="qna-date-block">
+                    <a class="">2023.09.20. 15:30</a>
+                </div>
+
+                <div class="qna-status-block">
+                    <a class="qna-completed qna-completed-no">미처리</a>
+                </div>
+            </section> 
+
+
+
+            <section class="qna-block md:qna-block">
+                <h1 class="qna-title">문의글 제목</h1>
+                <form action="" class="checkbox-block">
+                    <input type="checkbox">
+                </form>
+
+                <div class="qna-number-block">
+                    <a class="">11.</a>
+                </div>
+
+                <div class="qna-alias-block">
+                    <a class="">닉네임</a>
+                </div>
+
+                <div class="qna-date-block">
+                    <a class="">2023.09.20. 15:30</a>
+                </div>
+
+                <div class="qna-status-block">
+                    <a class="qna-completed">처리완료</a>
+                </div>
+            </section> 
+
+            <!-- 페이지 이동 -->
+            <div class="pagination">
+                <a class="" href="">&laquo;</a>
+                <a class="page-active" href="">1</a>
+                <a class="" href="">2</a>
+                <a class="" href="">3</a>
+                <a class="" href="">4</a>
+                <a class="" href="">5</a>
+                <a class="" href="">&raquo;</a>
+            </div>
+
+        </section>
+    </main>
+</body>
+</html>

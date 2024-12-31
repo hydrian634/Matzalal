@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.FaqRepository">
+
+	<select id="findAll" resultType="Faq">
+		select * from faq order by faq_id desc
+	</select>
+	
+	<select id="count" resultType="Integer">
+		select count(faq_id) count from faq
+	</select>
+	
+	<select id="last" resultType="Faq">
+		SELECT * from faq order by faq_id desc limit 1
+	</select>
+	
+   	<select id="getListByPage" resultType="Faq">
+ 	select * from faq
+	<where>
+	    <if test="query != null">and title like '%${query}%'</if>
+	</where>
+	order by faq_id desc 
+	limit #{offset}, #{size}
+ 	</select>
+ 	
+ 	<!--리스트별 목록조회-->
+   	<select id="getListByPages" resultType="Faq">
+	 	select * from faq
+		<where>
+			<if test="faqId != null">faq_id=#{faqId}</if>
+		    <if test="query != null">or title like '%${query}%'</if>
+		    <if test="query != null">or content like '%${query}%'</if>
+		</where>
+		order by faq_id desc 
+		limit #{offset}, #{size}
+ 	</select>
+ 	
+ 	<!--faq 등록-->
+  	<insert id="save" parameterType="Faq">
+		INSERT INTO faq(
+			  title
+			, content
+		) VALUES (
+			  #{title}
+			, #{content}
+		) 
+    </insert>
+    
+    <!--faq 아이디별 조회(수정할 데이터 바인딩용)-->
+ 	<select id="findById" resultType="Faq">
+  		select * from faq where faq_id=#{faqId}
+  	</select>
+  	
+  	<!--faq 수정-->
+   <update id="modify">
+        UPDATE `faq`
+        <set>
+            <if test="title != null">`title` = #{title},</if>
+            <if test="content != null">`content` = #{content}</if>
+        </set>
+        WHERE `faq_id` = #{faqId}
+    </update>
+    
+    <!--faq 1개 삭제-->
+      <delete id="delete">
+		  delete 
+		  from faq
+		  where faq_id = #{faqId}
+	  </delete>
+    
+    <!-- faq 여러개 삭제 -->
+    <delete id="deleteFaqs">  
+  	 	delete from faq
+  		where faq_id in 
+  		<foreach collection="faqList" item="faqId" open="(" separator="," close=")">
+  		 	#{faqId}
+  		</foreach>
+  	</delete>
+    
+</mapper>

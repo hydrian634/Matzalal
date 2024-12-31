@@ -1,0 +1,100 @@
+.comment-area{
+    padding: var(--gap-5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+
+.comment-area{
+    content: '';
+    border-bottom: 1px solid var(--color-base-0);
+    }   
+
+.comment-area
+    h1{
+    margin-left: var(--gap-3);
+    }
+
+.comment-area
+    h1
+    span{
+        margin-left: var(--gap-3);
+    }
+
+.comment-list-box{
+    margin-top: var(--gap-3);
+    width: 360px;
+
+    color: var(--color-base-4);
+
+    display: grid;
+    grid-template-columns: 1fr 90px;
+    grid-template-rows: 30px 1fr 30px;
+    grid-template-areas: 
+    "top top"
+    "middle middle"
+    "bottom bottom";
+
+    grid-gap: var(--gap-3);
+    background-color: var(--color-base-1);
+    border-radius: var(--gap-1);
+    padding: var(--gap-4);
+}
+
+
+
+.comment-list-box
+    .top{
+        grid-area: top;
+        display: flex;
+        justify-content : space-between;
+    }
+
+.comment-list-box
+    .top
+    .member_info{   
+        display: flex;
+        gap: var(--gap-2);
+}
+
+.comment-list-box
+    .top
+    .date_info{
+        display: flex;
+        gap: var(--gap-2);
+} 
+
+.comment-list-box
+    .middle{
+        grid-area: middle;
+    }
+
+.comment-list-box
+    .bottom
+        {
+        grid-area: bottom;
+        display: flex;
+        gap: var(--gap-4);
+        align-items: center;
+    }
+
+.comment-list-box
+    .bottom
+        .likes-numbers
+        {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-2);
+    }
+
+/*------------------ 반응형 --------------------*/
+
+@media (min-width: 700px) {
+    .comment-area
+       .md\:comment-list-box{ 
+            width: 660px;
+            /* padding: 40px 40px;
+            padding-right: 20px; */
+        }
+
+    }

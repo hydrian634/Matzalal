@@ -1,0 +1,96 @@
+.title {
+  font-size: 30px;
+}
+
+.agreement {
+  color: var(--color-base-4);
+  font-size: 12px;
+}
+
+.text-line {
+    font-size: var(--color-base-4);
+    gap:var(--gap-3)
+}
+
+.text-line 
+    p{
+    width : 300px;
+    margin-left: 10px;
+}
+
+.text-line 
+    a {
+    color : var(--color-base-4);
+}
+
+.text-line
+     label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.text-line
+    input {
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+}
+
+/*.text-line*/
+/*    span::before {*/
+/*    content: "";*/
+/*    display: inline-block;*/
+
+/*    width: 20px;*/
+/*    height: 20px;*/
+/*    background-image: url("/css/image/icon/checkmark.png");*/
+/*}*/
+
+
+/* -----------layout---------------- */
+
+.agree-box {
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+  width: inherit;
+  height: 100%;
+  align-items: center;
+  margin-top: 35px;
+  /* align-items: center; */
+}
+
+.title-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 400px;
+  /* align-items: center; */
+}
+
+.check-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 400px;
+}
+
+.agree-box div {
+  width: 300px;
+  height: 50px;
+}
+
+.agree-box div button {
+  width: inherit;
+  height: inherit;
+  margin-top: 150px;
+}
+
+.text-line {
+  display: flex;
+  align-items: center;
+  width: 400px;
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원정보수정</title>
+
+    <script src="/js/user/edit.js"></script>
+    <link href="/css/components/user/edit_user.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <main layout:fragment="main">
+        <section class="user-info-edit">
+            <h1 class="d:none">회원정보변경</h1>
+            <fieldset>
+                <form action="editAlias" class="form-box">
+                    <label class="text">닉네임 변경</label>
+                    <div class="input-box">
+                        <input type="text" class="text-box" name="alias" placeholder="변경하실 닉네임을 입력하세요.(2자~6자)"
+                               pattern="[A-Za-z0-9가-힣]" minlength="2" maxlength="6" required>
+                        <input type="submit" th:data-id="${#authentication.principal.id}" class="alias-check btn btn-check" value="변경">
+                    </div>
+                    <p id="dupli-alias" class="d:none">이미 사용중인 닉네임입니다.</p>
+                    <p id="invalid-alias" class="d:none">공백 또는 특수문제를 제외후 입력해주세요.</p>
+                </form>
+                <div class="form-box">
+                    <label class="text">비밀번호 변경</label>
+                    <input class="text-box" type="password" name="pwd" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+                           placeholder="영문, 숫자, 특수문자 중 2개 이상을 입력해주세요." required>
+                    <p class="d:none" id="invalid-pwd">영문, 숫자, 특수문자 중 2개 이상을 입력해주세요.</p>
+                </div>
+                <form class="form-box">
+                    <label class="text">비밀번호 재입력</label>
+                    <div class="input-box">
+                        <input class="text-box" type="password" name="checkpwd" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+                               placeholder="비밀번호를 다시 한번 입력해주세요." required>
+                        <input type="submit" class="pwd-check btn btn-check" value="변경">
+                    </div>
+                    <p class="d:none" id="invalid-checkpwd">비밀번호가 일치하지 않습니다.</p>
+                </form>
+                <form class="form-box">
+                    <label class="text margin-bottom:3">지역 변경</label>
+                    <div class="input-box">
+                        <select class="loc-select" name="location-id">
+                            <option name="location-id" value="0">선택해주세요.</option>
+                            <option name="location-id" value="1">은평/서대문구/마포</option>
+                            <option name="location-id" value="2">종로/중구/용산</option>
+                            <option name="location-id" value="3">영등포/구로/금천</option>
+                            <option name="location-id" value="4">동작/관악</option>
+                            <option name="location-id" value="5">강서/양천</option>
+                            <option name="location-id" value="6">도봉/노원/강북/성북</option>
+                            <option name="location-id" value="7">중랑/동대문/성동/광진</option>
+                            <option name="location-id" value="8">강남/서초</option>
+                            <option name="location-id" value="9">강동/송파</option>
+                        </select>
+                        <input type="submit" class="loc-btn btn btn-check" value="변경">
+                    </div>
+                </form>
+            </fieldset>
+            <div class="deluser">
+                <a href="/user/delete">회원탈퇴</a>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

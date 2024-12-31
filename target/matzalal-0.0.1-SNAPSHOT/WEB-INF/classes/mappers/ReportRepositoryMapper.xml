@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.ReportRepository">
+	
+	<select id="getListByPage" parameterType="Report">
+		SELECT ABC.REPORT_GBN
+		     , ABC.REPORT_SEQ
+		     , ABC.CREATED_DATE
+		     , ABC.CONTENT
+		     , ABC.PROCESS_YN
+		     , ABC.PROCESS_DATE
+		     , ABC.ADMIN_NAME
+		     , ABC.REPORT_USER_NAME
+		     , ABC.TBL
+		     , ABC.REPORT_REASON
+		FROM (
+		select 'USER' AS REPORT_GBN				<!--/* 신고구분*/-->
+		     , A.user_report_id AS REPORT_SEQ 	<!--/* 신고순번 */-->
+		     , A.created_date AS CREATED_DATE 	<!--/* 신고 일자*/-->
+		     , A.content AS CONTENT    			<!--/* 신고내용 */-->
+		     , A.process_yn AS PROCESS_YN 		<!--/* 진행여부*/-->
+		     , A.process_date AS PROCESS_DATE 	<!--/* 진행일자*/--> 
+		     , USR.alias AS ADMIN_NAME  		<!--/*처리자 */-->
+		     , USR2.alias AS REPORT_USER_NAME 	 <!--/* 신고한 회원 */-->
+             , USR3.alias AS TBL   				<!--/* 신고대상 닉네임 */-->
+		     , RR.category AS REPORT_REASON 	<!--/* 신고사유 */-->
+		  FROM user_report A 					<!--/* 회원신고 */-->
+		  LEFT JOIN user USR
+		  on A.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on A.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on A.report_reason_id = RR.report_reason_id
+		  LEFT JOIN user USR3
+          on A.user_id = USR3.user_id
+		 where 1=1
+		 UNION ALL
+		  select 'POST' AS REPORT_GBN 			<!--/* 신고구분*/-->
+		     , B.post_report_id AS REPORT_SEQ 	<!--/* 신고순번 */-->
+		     , B.created_date AS CREATED_DATE 	<!--/* 신고 일자*/-->
+		     , B.content AS CONTENT    			<!--/* 신고내용 */-->
+		     , B.process_yn AS PROCESS_YN 		<!--/* 진행여부*/-->
+		     , B.process_date AS PROCESS_DATE 	<!--/* 진행일자*/--> 
+		     , USR.alias AS ADMIN_NAME  		<!--/*처리자 */-->
+		     , USR2.alias AS REPORT_USER_NAME  	<!--/* 신고한 회원 */-->
+		     , P.title AS TBL 					<!--/* 신고대상 제목 */-->
+		     , RR.category AS REPORT_REASON 	<!--/* 신고사유 */-->
+		  FROM post_report B 					<!--/* 회원신고 */-->
+		  LEFT JOIN user USR
+		  on B.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on B.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on B.report_reason_id = RR.report_reason_id
+		  LEFT JOIN post P
+          on B.post_id = P.post_id
+		   where 1=1
+		 UNION ALL
+		  select 'COMMENT' AS REPORT_GBN 		<!--/* 신고구분*/-->
+		     , C.comment_report_id AS REPORT_SEQ <!--/* 신고순번 */-->
+		     , C.created_date AS CREATED_DATE 	<!--/* 신고 일자*/-->
+		     , C.content AS CONTENT    			<!--/* 신고내용 */-->
+		     , C.process_yn AS PROCESS_YN 		<!--/* 진행여부*/-->
+		     , C.process_date AS PROCESS_DATE 	<!--/* 진행일자*/--> 
+		     , USR.alias AS ADMIN_NAME  		<!--/*처리자 */-->
+		     , USR2.alias AS REPORT_USER_NAME   <!--/* 신고한 회원 */-->
+		     , CMT.content AS TBL 				<!--/* 신고 댓글 */-->
+		     , RR.category AS REPORT_REASON 	<!--/* 신고사유 */-->
+		  FROM comment_report C 				<!--/* 악플신고 */-->
+		    LEFT JOIN user USR
+		  on C.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on C.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on C.report_reason_id = RR.report_reason_id
+		  LEFT JOIN comment CMT
+          on C.comment_id = CMT.comment_id
+		   where 1=1  
+		ORDER BY  CREATED_DATE desc
+		limit #{offset}, #{size}
+		) ABC
+		WHERE 1=1
+
+  	</select>
+	
+	  <!--신고 개수 조회-->
+	 <select id="count" resultType="int">
+		SELECT COUNT(*) AS total_count
+		FROM (
+		SELECT ABC.REPORT_GBN
+		     , ABC.REPORT_SEQ
+		     , ABC.CREATED_DATE
+		     , ABC.CONTENT
+		     , ABC.PROCESS_YN
+		     , ABC.PROCESS_DATE
+		     , ABC.ADMIN_NAME
+		     , ABC.REPORT_USER_NAME
+		     , ABC.TBL_ID
+		     , ABC.REPORT_REASON
+		FROM (
+		select 'USER' AS REPORT_GBN   			<!--/* 신고구분*/-->
+		     , A.user_report_id AS REPORT_SEQ 	<!--/* 신고순번 */-->
+		     , A.created_date AS CREATED_DATE 	<!--/* 신고 일자*/-->
+		     , A.content AS CONTENT    			<!--/* 신고내용 */-->
+		     , A.process_yn AS PROCESS_YN 		<!--/* 진행여부*/-->
+		     , A.process_date AS PROCESS_DATE 	<!--/* 진행일자*/--> 
+		     , USR.alias AS ADMIN_NAME  		<!--/*처리자 */-->
+		     , USR2.alias AS REPORT_USER_NAME  	<!--/* 신고한 회원 */-->
+		     , A.user_id AS TBL_ID  			<!--/* 신고대상 */-->
+		     , RR.category AS REPORT_REASON 	<!--/* 신고사유 */-->
+		  FROM user_report A 					<!--/* 회원신고 */-->
+		  LEFT JOIN user USR
+		  on A.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on A.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on A.report_reason_id = RR.report_reason_id
+		 where 1=1
+		 UNION ALL
+		  select 'POST' AS REPORT_GBN 			<!--/* 신고구분*/-->
+		     , B.post_report_id AS REPORT_SEQ 	<!--/* 신고순번 */-->
+		     , B.created_date AS CREATED_DATE 	<!--/* 신고 일자*/-->
+		     , B.content AS CONTENT    			<!--/* 신고내용 */-->
+		     , B.process_yn AS PROCESS_YN 		<!--/* 진행여부*/-->
+		     , B.process_date AS PROCESS_DATE 	<!--/* 진행일자*/--> 
+		     , USR.alias AS ADMIN_NAME  		<!--/*처리자 */-->
+		     , USR2.alias AS REPORT_USER_NAME 	 <!--/* 신고한 회원 */-->
+		     , B.post_id AS TBL_ID  			<!--/* 신고대상 */-->
+		     , RR.category AS REPORT_REASON 	<!--/* 신고사유 */-->
+		  FROM post_report B 					<!--/* 회원신고 */-->
+		  LEFT JOIN user USR
+		  on B.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on B.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on B.report_reason_id = RR.report_reason_id
+		   where 1=1
+		 UNION ALL
+		  select 'COMMENT' AS REPORT_GBN <!--/* 신고구분*/-->
+		     , C.comment_report_id AS REPORT_SEQ <!--/* 신고순번 */-->
+		     , C.created_date AS CREATED_DATE <!--/* 신고 일자*/-->
+		     , C.content AS CONTENT    <!--/* 신고내용 */-->
+		     , C.process_yn AS PROCESS_YN <!--/* 진행여부*/-->
+		     , C.process_date AS PROCESS_DATE <!--/* 진행일자*/--> 
+		     , USR.alias AS ADMIN_NAME  <!--/*처리자 */-->
+		     , USR2.alias AS REPORT_USER_NAME <!-- /* 신고한 회원 */-->
+		     , C.comment_id AS TBL_ID  <!--/* 신고대상 */-->
+		     , RR.category AS REPORT_REASON <!--/* 신고사유 */-->
+		  FROM comment_report C <!--/* 악플신고 */-->
+		    LEFT JOIN user USR
+		  on C.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on C.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on C.report_reason_id = RR.report_reason_id
+		   where 1=1  
+		ORDER BY  CREATED_DATE desc
+		) ABC
+		WHERE 1=1
+		) as TotalCount
+	  </select>
+	  
+	  <!-- 회원신고 내역 조회-->
+	  <select id="findUserReport" resultType="Report">
+		  SELECT
+		      'USER' as reportGbn
+		 	 , up.user_report_id as reportSeq
+		     , up.created_date as created_date
+		     , up.content as content
+		     , up.process_yn as process_yn
+		     , up.process_date as process_date
+		     , up.admin_id as admin_id
+		     , up.report_user_id as report_user_id
+		     , up.user_id as user_id
+		     , u.email as email
+		     , u.alias as alias
+		     , up.report_reason_id as report_reason_id
+		FROM user_report up
+		left join user u 
+		on up.user_id = u.user_id
+		where user_report_id = #{reportId}
+	  </select>
+	  
+  	  <!-- 게시글 신고 내역 조회-->
+	  <select id="findPostReport" resultType="Report">
+		  SELECT 
+			'POST' as reportGbn
+		    , pr.post_report_id as reportSeq
+		    , pr.created_date as created_date
+		    , pr.content as content
+		    , pr.process_yn as process_yn
+		    , pr.process_date as process_date
+		    , pr.report_user_id as report_user_id
+		    , pr.post_id as post_id
+		    , p.title as title
+		    , p.user_id as user_id
+		    , u.alias as alias
+		    , u.email as email
+		    , pr.report_reason_id as report_reason_id
+		    , pr.admin_id as admin_id
+		FROM post_report pr
+		left join post p
+		on pr.post_id = p.post_id
+		left join user u
+		on p.user_id = u.user_id
+		where post_report_id = #{reportId}
+	  </select>
+	
+  	  <!-- 댓글 신고 내역 조회-->
+	  <select id="findCommentReport" resultType="Report">
+		  SELECT 
+				'COMMENT' as reportGbn
+			    , cr.comment_report_id as reportSeq
+			    , cr.created_date as created_date
+			    , cr.content as content
+			    , cr.process_yn as process_yn
+			    , cr.process_date as process_date
+			    , cr.admin_id as admin_id
+			    , cr.report_user_id as report_user_id
+			    , cr.comment_id as comment_id
+			    , c.content as cmt_content
+			    , u.user_id as user_id
+			    , u.alias as alias
+			    , u.email as email
+			    , cr.report_reason_id as report_reason_id
+			FROM comment_report cr
+			left join comment c
+			on cr.comment_id = c.comment_id
+			left join user u
+			on c.user_id = u.user_id
+		where comment_report_id = #{reportId}
+	  </select>
+	
+	<!-- 신고 내역 조회-->
+	<select id="findReport" resultType="Report">		
+		SELECT ABC.REPORT_GBN
+		     , ABC.REPORT_SEQ
+		     , ABC.CREATED_DATE
+		     , ABC.CONTENT
+		     , ABC.PROCESS_YN
+		     , ABC.PROCESS_DATE
+		     , ABC.ADMIN_NAME
+		     , ABC.REPORT_USER_NAME
+		     , ABC.TBL_ID
+		     , ABC.REPORT_REASON
+		FROM (
+		select 'USER' AS REPORT_GBN /* 신고구분*/
+		     , A.user_report_id AS REPORT_SEQ /* 신고순번 */
+		     , A.created_date AS CREATED_DATE /* 신고 일자*/
+		     , A.content AS CONTENT    /* 신고내용 */
+		     , A.process_yn AS PROCESS_YN /* 진행여부*/
+		     , A.process_date AS PROCESS_DATE /* 진행일자*/ 
+		     , USR.alias AS ADMIN_NAME  /*처리자 */
+		     , USR2.alias AS REPORT_USER_NAME  /* 신고한 회원 */
+		     , A.user_id AS TBL_ID  /* 신고대상 */
+		     , RR.category AS REPORT_REASON /* 신고사유 */
+		  FROM user_report A /* 회원신고 */
+		  LEFT JOIN user USR
+		  on A.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on A.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on A.report_reason_id = RR.report_reason_id
+		 where user_report_id = #{reportId}
+		 UNION ALL
+		  select 'POST' AS REPORT_GBN /* 신고구분*/
+		     , B.post_report_id AS REPORT_SEQ /* 신고순번 */
+		     , B.created_date AS CREATED_DATE /* 신고 일자*/
+		     , B.content AS CONTENT    /* 신고내용 */
+		     , B.process_yn AS PROCESS_YN /* 진행여부*/
+		     , B.process_date AS PROCESS_DATE /* 진행일자*/ 
+		     , USR.alias AS ADMIN_NAME  /*처리자 */
+		     , USR2.alias AS REPORT_USER_NAME  /* 신고한 회원 */
+		     , B.post_id AS TBL_ID  /* 신고대상 */
+		     , RR.category AS REPORT_REASON /* 신고사유 */
+		  FROM post_report B /* 회원신고 */
+		  LEFT JOIN user USR
+		  on B.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on B.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on B.report_reason_id = RR.report_reason_id
+		   where post_report_id = #{reportId}
+		 UNION ALL
+		  select 'COMMENT' AS REPORT_GBN /* 신고구분*/
+		     , C.comment_report_id AS REPORT_SEQ /* 신고순번 */
+		     , C.created_date AS CREATED_DATE /* 신고 일자*/
+		     , C.content AS CONTENT    /* 신고내용 */
+		     , C.process_yn AS PROCESS_YN /* 진행여부*/
+		     , C.process_date AS PROCESS_DATE /* 진행일자*/ 
+		     , USR.alias AS ADMIN_NAME  /*처리자 */
+		     , USR2.alias AS REPORT_USER_NAME  /* 신고한 회원 */
+		     , C.comment_id AS TBL_ID  /* 신고대상 */
+		     , RR.category AS REPORT_REASON /* 신고사유 */
+		  FROM comment_report C /* 악플신고 */
+		    LEFT JOIN user USR
+		  on C.admin_id = USR.user_id
+		  LEFT JOIN user USR2
+		  on C.report_user_id = USR2.user_id
+		  LEFT JOIN report_reason RR
+		  on C.report_reason_id = RR.report_reason_id 
+		   where comment_report_id = #{reportId}
+		ORDER BY  CREATED_DATE desc
+		limit 0, 10
+		) ABC
+		WHERE 1=1		
+	</select>	
+	
+	<!-- 신고 처분 : 회원활동정지 기간 설정-->
+  	<update id="reportProcessMain">
+    	update user
+        set grade_id = 5
+          , sanction_time = DATE_ADD(NOW(), INTERVAL #{sanctionTime} DAY)
+        where user_id = #{userId}
+	</update>
+
+	<!-- 신고 처분 : 회원 신고글 업데이트 -->
+  	<update id="reportProcessUser">
+		UPDATE user_report
+		<set>
+			<if test="content != null">content = #{content},</if>
+			                           process_yn = 1, 
+									   process_date = now(),
+			<if test="adminId != null">admin_id = #{adminId},</if>
+			<if test="reportReasonId != null">report_reason_id = #{reportReasonId}</if>
+		</set>
+		WHERE user_id = #{userId}
+	</update>
+	
+	<!-- 신고 처분 : 게시글 신고글 업데이트 -->
+  	<update id="reportProcessPost">
+		UPDATE post_report
+		<set>
+			<if test="content != null">content = #{content},</if>
+			                           process_yn = 1, 
+									   process_date = now(),
+			<if test="adminId != null">admin_id = #{adminId},</if>
+			<if test="reportReasonId != null">report_reason_id = #{reportReasonId}</if>
+		</set>
+		WHERE post_id = #{postId}
+	</update>
+	
+		<!-- 신고 처분 : 댓글 신고글 업데이트 -->
+	<update id="reportProcessComment">
+		UPDATE comment_report
+		<set>
+			<if test="content != null">content = #{content},</if>
+			                           process_yn = 1, 
+									   process_date = now(),
+			<if test="adminId != null">admin_id = #{adminId},</if>
+			<if test="reportReasonId != null">report_reason_id = #{reportReasonId}</if>
+		</set>
+		WHERE comment_id = #{commentId}
+	</update>
+</mapper>

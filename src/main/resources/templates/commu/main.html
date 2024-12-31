@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{inc/layout.html}">
+
+<head>
+	<link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/location.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/ranking.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/commu_search.css" rel="stylesheet" type="text/css">
+	<link href="/css/components/commu/post/main.css" rel="stylesheet" type="text/css">
+	<script src="/js/commu/main-dom.js"> </script>
+	<title>커뮤니티</title>
+
+</head>
+
+<body>
+<main layout:fragment="main" class="mainlayout md:mainlayout" id="main">
+	<!-- -----------------랭킹--------------- -->
+
+	<section class="rankings-area" >
+		<h1 class=" d:none"> 랭킹영역</h1>
+		<section class="ranking">
+			<h1>👑  이번주 조회수 인기글  👑</h1>
+
+			<section class="list"
+					 th:each="rt:${hitBestList}">
+				<h1 class="d:none"> 조회수기준 인기글 리스트 </h1>
+
+				<ul >
+					<li>
+						<a class="post" href=""
+						   th:href="@{post/detail(post-id=${rt.postId})}" >
+							<div
+									class="number color-purple"
+									th:text="${rt.rownum}"
+
+							> 1. </div>
+							<p th:text="${rt.title}" >
+								상큼하고 부드러움이 완벽한 타르트
+							</p>
+							<div class="img">
+								<img th:src="@{/css/image/commu/post/{img} (img=${rt.getImg()})}">
+							</div>
+						</a>
+					</li>
+				</ul>
+
+			</section>
+
+		</section> <!-- 조회수 인기글 끝 -->
+
+		<section class="ranking mxd:d:none">
+			<h1> ❤️ 이번주 좋아요 인기글 ❤️ </h1>
+
+			<section class="list"
+					 th:each="rl:${likesBestList}">
+				<h1 class="d:none"> 좋아요기준 인기글 리스트 </h1>
+
+				<ul >
+
+					<li>
+						<a class="post"
+						   th:href="@{post/detail(post-id=${rl.postId})}" >
+							<div class="number color-purple"
+								 th:text="${rl.rownum}"> 1. </div>
+							<p th:text="${rl.title}">
+								상큼하고 부드러움이 완벽한 타르트
+							</p>
+							<div class="img">
+								<img th:src="@{/css/image/commu/post/{img} (img=${rl.getImg()})}">
+							</div>
+						</a>
+					</li>
+
+				</ul>
+
+			</section>
+
+		</section> <!-- 좋아요 인기글 끝 -->
+
+	</section><!-- 랭킹 끝 -->
+
+	<!-- ----------------- 커뮤니티 공간 --------------- -->
+	<div class="community md:community">
+		<h1> 🍚 맛집에 진심인 사람들의 이야기 공간 🍚 </h1>
+
+		<!-- ------------------ 지역분류 ----------------- -->
+		<section class="location">
+			<h1 class="d:none"> 지역분류 카테고리 목록  </h1>
+
+			<div class="d:none"
+				 th:text="${#authentication.principal.id}">
+			</div>
+
+			<nav class="commu-location btn-commu">
+				<ul>
+					<li> <a class="location selected cursor-pointer:pointer"> 서울(전체) </a> </li>
+
+					<li th:each ="loc:${locCateList}">
+						<a
+								th:data-currentUserId="${#authentication.principal.id}"
+								class="location"
+								th:data-id="${loc.locationPostId}"
+
+								href="?loc=1"
+								th:href="@{'?loc='+${loc.locationPostId}}"
+								th:text="${loc.area}"
+						> 은평/서대문구/마포 </a>
+					</li>
+				</ul>
+			</nav>
+
+		</section><!-- 지역분류 끝 -->
+
+		<!-- ------------------ 검색 영역  ----------------- -->
+
+		<div class="search">
+			<section class="query-filter">
+				<form>
+					<fieldset>
+						<legend class="d:none"> 커뮤니티 포스팅 검색</legend>
+						<input class=" search-input input-query"
+							   type="text"
+							   placeholder="검색어를 입력하세요.">
+						<button class="btn-search icon icon-search icon-size:5 icon-color:base-5 cursor-pointer:pointer">검색</button>
+					</fieldset>
+				</form>
+			</section> <!--  query-filter  -->
+		</div>
+
+
+		<!-- ------------------- 피드영역 ----------------- -->
+		<section class = "commu-area md:commu-area">
+			<!--	            <h1 class = "d:none"> 🌝 커뮤 공간 🌝 </h1>-->
+
+			<!-- ------------------- 피드 1열 ----------------- -->
+
+			<section class="post-layout md:post-layout">
+				<h2 class = "d:none"> 피드 1 </h2>
+
+				<div class = "post-card container md:container"
+					 th:each="p:${postList}" >
+
+					<section class ="top" >
+						<h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+
+						<section class="member_info">
+							<h1 class="d:none"> 작성자 등급 & 닉네임</h1>
+
+							<div class="badge">
+								<img
+										th:src="@{'/css/image/icon/badge' + ${p.gradeId} + '.svg'}"
+										src="/image/icon/grade2.svg"
+										style="height:20px;" alt="등급2" />
+
+							</div>
+							<div class="nickname" >
+	                                <span th:text="${p.alias}">
+	                                    팅클이졸귀임
+	                                </span>
+							</div>
+						</section> 	<!-- member_info-->
+
+						<section class="date_info md:date_info">
+							<h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+
+							<div>
+                                <span th:text="${p.createdDate}">
+	                                    12분전
+	                                </span>
+							</div>
+
+							<!--  <div>
+                              <a class="icon icon-commu-more icon-size-commu:2 " href=""> 세로 확장</a>
+                          </div>-->
+
+							<div >
+								<a class="cursor-pointer:pointer"
+								   th:classappend="${#authentication.principal.id == p.userId} ? 'd:none' : 'icon icon-size:0 icon-color:base-4 icon-commu-report'"
+								   href="/report/post/reg"
+								   type="submit" value="" >
+								</a>
+							</div>
+
+							<div>
+								<a class="cursor-pointer:pointer"
+								   th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
+								   th:data-post="${p.postId}"
+								   th:href="@{post/edit(postId=${p.postId})}"
+								   type="submit" value="">
+									R </a>
+							</div>
+
+							<div>
+								<button class="cursor-pointer:pointer commu-delete"
+										th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
+										th:data-post="${p.postId}"
+										type="submit" value="" > D </button>
+							</div>
+						</section><!-- date_info -->
+					</section><!-- top -->
+
+					<a
+							id="link"
+							href="post/detail?id=20"
+							th:data-post="${p.postId}"
+							th:href="@{post/detail(post-id=${p.postId})}"> <!-- detail 조회 링크 -->
+
+						<section class ="middle"
+								 th:data-post="${p.postId}"
+						>
+
+							<h1 class="d:none"> 게시글-제목, 내용, 사진  </h1>
+
+							<section class="title">
+								<h1 class="d:none" > 제목</h1>
+								<p th:text="${p.title}"> 111 첫번째 피드 .</p>
+							</section><!-- title -->
+
+							<section class="content">
+								<h1 class="d:none"> 내용</h1>
+								<p th:text="${p.content}"> 내용입니다. 내용을 많이많이많이 적으면 어떻게 되려나아아아아아아아아아아아아아</p>
+							</section> <!-- content -->
+
+							<section class="picture md:picture">
+								<h1 class="d:none"> 사진</h1>
+								<picture th:if="${p.img1 != null}">
+									<img
+										src="/image/ranking1.JPG"
+										th:src="@{/css/image/commu/post/{img} (img=${p.img1})}"
+										alt="Responsive Image1">
+								</picture>
+							</section><!-- picture -->
+						</section><!-- middle -->
+
+					</a> <!-- detail 조회 링크 -->
+
+					<section class ="bottom" >
+						<h1 class="d:none"> 조회수 좋아요 댓글 </h1>
+
+						<section class="view">
+							<h1 class="d:none"> 조회수 </h1>
+
+							<div>
+								<span class="deco-commu icon-commu-view icon-size:1 icon-color:main" href=""></span>
+							</div>
+
+							<div>
+								<span th:text="${p.hit}"> 367</span>
+							</div>
+						</section><!-- view -->
+
+						<section class="like">
+							<h1 class="d:none"> 좋아요 </h1>
+
+							<div id="currentUserId"
+								 class = "d:none"
+							>
+							</div>
+
+							<div>
+								<button class="icon commu-likes icon-size:1 icon-hover icon-pointer icon-color:main"
+										th:classappend ="${p.isLiked}? 'icon-commu-likes-fill': 'icon-commu-likes' "
+										th:data-currentid="${#authentication.principal.id}"
+										th:data-post="${p.postId}"
+										type="button"> 좋아요</button>
+
+							</div>
+
+							<div>
+								<span th:text="${p.postLikeCount}"> 98</span>
+							</div>
+						</section><!-- like -->
+
+						<section class="comment">
+							<h1 class="d:none"> 댓글 </h1>
+
+							<div>
+								<span class="deco-commu icon-comment icon-size:1 icon-color:main" href=""></span>
+							</div>
+
+							<div>
+								<span th:text="${p.commentCount}"> 57</span>
+							</div>
+						</section><!-- comment -->
+
+					</section><!-- bottom -->
+
+				</div><!-- post-card -->
+			</section> <!-- post-layout  끝 -->
+
+		</section> <!-- 피드 공간 끝 -->
+
+		</section> <!-- 커뮤니티 공간 끝 -->
+
+
+		<!-- -----------------  고정버튼:검색,글쓰기 --------------- -->
+		<section class="fixed-button md:fixed-button">
+			<h1 class="d:none"> 고정버튼: 글쓰기</h1>
+
+
+			<div>
+				<a href="/commu/post/create ">
+					<img src="/css/image/commu/icon/add-post.svg">
+				</a>
+			</div>
+
+		</section>
+	</div>
+</main>
+
+</body>
+</html>

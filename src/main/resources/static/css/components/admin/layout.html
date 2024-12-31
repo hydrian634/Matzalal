@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/util.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/sidebar.css" rel="stylesheet" type="text/css">
+    <link href="layout.css" rel="stylesheet" type="text/css">
+
+
+    <!-- <link href="layout.css" rel="stylesheet" type="text/css"> -->
+
+</head>
+<body class="md:body body">
+    <header class="header md:header">
+        <h1 class="d:none">관리자 페이지</h1>
+        <nav class="content-box">
+
+            <!-- 메뉴바(모바일페이지에서만 나타남) -->
+            <ul class="md:d:none mobile">
+                <li><a class="menubar icon icon-menu md:icon-size:3 icon-color-black" href="">menu</a></li>
+                <li><span class="page-title md:d:none">관리자 페이지</span></li>
+            </ul>
+            
+            <!-- 데스크탑 헤더 : 모바일페이지 이동 -->
+            <ul class="web mxd:d:none">
+                <li><a class="logo md:logo"><img src="/css/image/manage-icon/logo.svg" style="height:50%" alt="맛잘알"></a></li>
+                <li><a href="" >커뮤니티</a></li>
+                <li><a href="" >유명인</a></li>
+                <li><a href="" >마이페이지</a></li>
+                <li><a href="" >고객센터</a></li>
+            </ul>
+        </div>
+    </header>
+      
+    <!-- 사이드 바 -->
+    
+    <div class="sidebar md:sidebar">
+        <h1 class="d:none">관리자 메뉴</h1>
+        <nav class="content-box md:content-box">
+        
+            <ul class="dreams">
+                <li class="sidebar-hover">
+                    <a href="#">
+                        <i class="icon icon-dashboard icon-size:3 icon-color-black" href="">DashBoard</i>
+                        <span class="sidebar-title md:sidebar-title">DashBoard</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-hover">
+                    <i class="icon icon-store icon-color-black" href="">Store</i>
+                    <span class="sidebar-title md:sidebar-title">Store</span>
+                    <p class="mxd:d:none md:drop-down icon icon-down_arrow icon-color-black">화살표</p>
+                        <ul class="dropdown-container">
+                            <a href="">맛집 관리</a>
+                            <a href="">후기 관리</a>
+                        </ul>
+                </li>
+            
+                <li class="sidebar-hover">
+                    <i class="icon icon-community icon-color-black" href="">community</i>    
+                    <span class="sidebar-title md:sidebar-title">Community</span>
+                    <p class="mxd:d:none md:drop-down icon icon-down_arrow icon-color-black">화살표</p>
+                        <ul class="dropdown-container">
+                            <a href="">게시글 관리</a>
+                            <a href="">댓글 관리</a>
+                        </ul>
+                </li>    
+
+                <li class="sidebar-hover">
+                    <a href="">
+                        <i class="icon icon-member icon-color-black" href="">Member</i>
+                        <span class="sidebar-title md:sidebar-title">Member</span>
+                    </a>
+                </li>   
+
+                <li class="sidebar-hover">
+                    <i class="icon icon-question icon-color-black" href="">Q&A</i>
+                    <span class="sidebar-title md:sidebar-title">Q&A</span>
+                    <p class="mxd:d:none md:drop-down icon icon-down_arrow icon-color-black">화살표</p>
+                        <ul class="dropdown-container">
+                            <a href="">FAQ 관리</a>
+                            <a href="">Q&A 관리</a>
+                        </ul>
+                </li>
+
+                <li class="sidebar-hover">
+                    <a href="">
+                        <i class="icon icon-report icon-color-black" href="">Report</i>
+                        <span class="sidebar-title md:sidebar-title">Report</span>
+                    </a>
+                </li>            
+            </ul>
+            
+            <div class="sidebar bottom-content md:bottom-content sidebar-hover">
+                <li class="">
+                    <a href="">
+                        <i class="icon icon-logout icon-color-black" href="">Logout</i>
+                        <span class="sidebar-title md:sidebar-title">Logout</span>
+                    </a>
+                </li>
+            </div>    
+        </nav>
+    </div>
+
+</body>
+</html>

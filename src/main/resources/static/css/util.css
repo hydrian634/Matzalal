@@ -1,0 +1,76 @@
+/* display */
+.d\:none{ display: none !important;}
+.d\:flex{ display: flex !important;}
+.d\:block{ display: block !important;}
+.d\:inline{ display : inline !important;}
+.d\:inline-block{ display : inline-block !important;}
+
+/* calspan, rowspan */
+.colspan\:2{grid-column: span 2 !important;}
+
+/* justify-self */
+.justify-self\:left{ justify-self: left;}
+.justify-self\:right{ justify-self: right;}
+.justify-self\:center{ justify-self: center;}
+
+/* justify-content */
+.justify-content\:center{justify-content:center !important;}
+
+
+/* border */
+.border\:bottom\:off{ border-bottom: none; }
+
+/* -------------------boxing -----------------*/
+
+.bg-color\:logo-2{ background-color: var(--color-logo-2) !important;}
+
+
+/* margin */
+.margin-left\:1, .ml\:1{margin-left:var(--gap-1);} /* 5px*/
+.margin-left\:2, .ml\:2{margin-left:var(--gap-2);} /* 8px*/
+.margin-left\:3, .ml\:3{margin-left:var(--gap-3);} /* 10px*/
+
+.margin-bottom\:1, .mb\:1{margin-bottom: var(--gap-1);}  /* 5px*/
+.margin-bottom\:2, .mb\:2{margin-bottom: var(--gap-2);}  /* 8px*/
+.margin-bottom\:3, .mb\:3{margin-bottom: var(--gap-3);} /* 10px*/
+
+/* padding */
+
+/* border */
+
+/* size */
+
+/* -------------------font -----------------*/
+
+/* font - color */
+.fcolor\:logo1{ color:var(--color-logo-1)}
+.fcolor\:red{ color: red !important;}
+
+
+/* -------------------font -----------------*/
+.gap-1 {gap:var(--gap-1)} /* 5px */
+
+.gap-7 {gap:var(--gap-7) !important;} /* 45px */
+
+/* width : 0~700 까지 안보인다.*/
+@media (max-width: 700px) {
+    .mxd\:d\:none{ display: none !important;}
+    .mxd\:d\:flex{ display: flex !important;}
+    .mxd\:d\:block{ display: block !important;}
+    .mxd\:d\:inline{ display : inline !important;}
+    .mxd\:d\:inline-block{ display : inline-block !important;}
+
+    .mxd\:colspan\:2{grid-column: span 2 !important;}
+}
+
+/* width : 최소 700부터 안보인다 */
+@media (min-width: 700px) {
+    .md\:d\:none{ display: none !important;}
+    .md\:d\:flex{ display: flex !important;}
+    .md\:d\:block{ display: block !important;}
+    .md\:d\:inline{ display : inline !important;}
+    .md\:d\:inline-block{ display : inline-block !important;}
+
+    .md\:colspan\:2{grid-column: span 2 !important;}
+
+}

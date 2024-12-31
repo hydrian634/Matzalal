@@ -1,0 +1,160 @@
+.report {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  /* margin: 0 30px; */
+   margin-top: 30px;
+}
+
+.report
+	.report-form{
+		width: 100%;
+	}
+
+.report
+    .report-title{
+        font-size: 25px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+.report 
+	.report-form fieldset {
+	    border: none;
+}
+/*.report 
+	.report-form legend {
+	    margin-left: -10px;
+	    margin-bottom: 10px;
+	    font-size: 17px;
+}*/
+
+.report
+	.report-form
+		.reported-user-block{
+			display: flex;
+			flex-direction: column;
+			gap: var(--gap-2);
+			margin-bottom: 20px;
+		}
+
+.report 
+	.report-box {
+	    height: 290px;
+	}
+.report 
+	.report-box li {
+	    display: flex;
+	    border-top: 1px solid var(--color-base-3);
+	    padding: 10px;
+}
+.report 
+	.report-box li:last-child {
+	    border-bottom: 1px solid var(--color-base-3);
+
+}
+.report .report-box input {
+  margin-right: 15px;
+}
+
+.report 
+	.write-reason-box {
+	    margin-bottom: 10px;
+	    text-align: center;
+}
+
+.report 
+	.content{
+	    width: 87%;
+	    height: 150px;
+		resize: none;
+	
+	    outline: none;
+	    border: none;
+	    border-radius: 20px;
+	    padding: 15px;
+	
+	    background-color: var(--color-base-3);
+	    
+	    font-size: 12px;
+}
+.report 
+	textarea::placeholder {
+	    color: white;
+	    font: 12px pretendard;
+}
+
+/* ----- submit 버튼 코드 줄이기...? ----- */
+
+
+.cancle-report-box {
+	   text-align: center;
+    }
+
+.cancle-report-box 
+    .btn-cancel,
+    .btn-report {
+        --radius: var(--radius-2);
+        width: 170px;
+        height: 40px;
+        border-radius: var(--radius-2);
+        border: none;
+        color: var(--color-base-0);
+        filter: drop-shadow(0px 2px 2px #d0d0d1);
+        margin-top: 20px;
+        cursor: pointer;
+        /* margin-right: 10px; */
+}
+
+.cancle-report-box 
+    .btn-report {
+        background-color: var(--color-logo-1);
+}
+
+	.cancle-report-box 
+    	.btn-cancel {
+    		margin-right: 5px;
+    }
+    
+/*.submit 
+	.btn-save {
+    background-color: var(--color-logo-1);
+    margin-left: 5px;
+}*/
+
+/*
+.submit
+    input {
+        /* width: 100%; */
+/* display: flex; */
+/* flex-direction: column; */
+/* align-items: center; */
+
+/* .styled:hover {
+        background-color: rgba(255, 0, 0, 1);
+      }
+      
+      .styled:active {
+        box-shadow:
+          inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+          inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+} */
+
+.report p {
+  display: flex;
+  text-align: center;
+
+  font-size: 12px;
+  color: var(--color-base-4);
+
+  margin: 30px;
+}
+
+.select-sanctionTime
+	input{
+	  margin:10px 10px;
+}
+

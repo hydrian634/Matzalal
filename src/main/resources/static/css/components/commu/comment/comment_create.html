@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link href="/css/reset.css" rel="stylesheet" type="text/css"> <!-- 리셋 -->
+    <link href="/css/root.css" rel="stylesheet" type="text/css"> <!-- 기본변수 -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css"> <!-- 기본 스타일  -->
+
+    <link href="/css/util.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/button.css" rel="stylesheet" type="text/css">
+
+    <link href="/css/components/commu/comment/comment_create.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+
+        <form class="commentbox md:commentbox" id="comment-form" method="post" action="">
+          <legend class="d:none"> 댓글 입력창 </legend>
+
+                <div class="textarea-wrap">
+                        <textarea
+                                class="comment-content"
+                                id="comment-form"
+                                placeholder="댓글을 작성해주세요."
+                                rows="1"></textarea>
+                                <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
+                </div>
+
+                <button class="input-button btn-main btn-main-comment" 
+                        type="submit" > 등록 
+                 </button>
+
+        </form>
+
+</body>
+
+</html>

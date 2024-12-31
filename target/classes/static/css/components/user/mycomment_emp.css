@@ -1,0 +1,50 @@
+.commentempty {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 50px;
+    margin-top : 40px;
+}
+
+.commentempty{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 50px;
+}
+
+.commentempty
+    a {
+        margin-top: 80px;
+    }
+
+.tab {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ment{
+    font-size : 20px;
+    text-align: center;
+}
+
+.ment
+    .impact{
+        font-size: 30px;
+        color:var(--color-logo-2)
+    }
+
+@media(min-width:700px) {
+    .tab {
+            width : 700px;
+            }
+            
+    .commentempty
+        .tab
+            button{
+                width : 350px;
+                }
+}

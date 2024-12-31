@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.RestDetailViewRepository">
+
+
+    <select id="findById" resultType="RestDetailView">
+        select
+               r.rest_id                     as restId
+             , r.rest_name                   as restName
+             , r.plain_business_bgn_hours    as dayOpen
+             , r.plain_business_end_hours    as dayClose
+             , r.end_business_bgn_hours      as endOpen
+             , r.end_business_end_hours      as endClose
+             , r.addr                        as addr
+             , lr.location_rest_id           as locationRestId
+             , lr.area                       as area
+             , r.phone                       as phone
+             , r.menu_id                     as menuId
+             , rv.rating                     as rating
+             , r.banner_img                  as bannerImg
+             , r.img1                        as img1
+             , r.img2                        as img2
+             , r.img3                        as img3
+             , cr.celeb_id                   as celebId
+             , c.name                        as name
+             , r.admin_id                    as adminId
+        from restaurant r
+        left join rating_view rv on r.rest_id = rv.rest_id
+        left join location_rest lr on r.location_rest_id = lr.location_rest_id
+        left join celeb_restaurant cr on r.celeb_rest_id = cr.celeb_rest_id
+        left join celeb c on cr.celeb_id = c.celeb_id
+        where r.rest_id=#{restId}
+              and r.menu_id=#{menuId}
+    </select>
+
+    <select id="findMenuById" resultType="RestDetailView">
+        select r.rest_id, m.menu_id, m.name, m.price
+        from restaurant r
+        left join menu m on r.rest_id=m.rest_id
+        where r.rest_id=#{restId}
+    </select>
+</mapper>

@@ -1,0 +1,126 @@
+.fav{
+    width:100%;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top : 35px;
+}
+
+.list{
+        display: grid;
+        grid-template-columns: 320px;
+        grid-template-rows: repeat(3,90px);
+        row-gap: 20px;
+    }
+
+.total{
+    font-size: var(--font-size-8);
+    margin-bottom: 30px;
+    width: 320px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.fav-card {
+    display: grid;
+    height: 90px;
+    width: 320px;
+    grid-template-columns: 90px 1fr 24px;
+    grid-template-rows: 24px 1fr 24px;
+    column-gap: 20px;
+    padding-bottom : 10px;
+    border-bottom: solid 1px var(--color-base-3);
+}
+
+.fav-card
+    h1{
+    grid-column: 2;
+    grid-row: 1;
+    font-size : var(--font-size-8);
+    font-weight: bold;
+}
+
+.fav-card
+    .card-image{
+    grid-column: 1;
+    grid-row: 1 / 4;
+
+}
+
+.fav-card
+    .image-block
+        img{
+        width:90px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 5px;
+        }
+
+.fav-card
+    .content-block{
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+.fav-card
+    .content-block
+        p{
+            font-size : var(--font-size-4);
+            color : var(--color-base-4);
+            height: 100%;
+            /* justify-content: center; */
+            display: flex;
+            align-items: center;
+        }
+
+.fav-card
+    .like-block{
+        grid-column: 3;
+        grid-row : 1;
+        width: 100%;
+    }
+
+.fav-card
+    .star-review-block{
+        grid-column: 2;
+        grid-row : 3;
+        display: flex;
+        align-items: center;
+    }
+
+.fav-card
+    .star-review-block
+        p{
+            font-size : var(--font-size-2);
+        }
+
+.fav-card
+    .star-review-block {
+        display: flex;
+        gap : var(--gap-2);
+    }
+
+.fav-card
+    .like-block
+        button{
+    cursor: pointer;
+}
+
+
+@media(min-width:700px) {
+    .md\:list{
+        grid-template-columns: repeat(2,320px);
+        grid-template-rows: repeat(2,100px);
+        row-gap: 20px;
+        column-gap: 20px;
+    }
+
+    .md\:fav-card {
+        padding-bottom : 15px;
+    }
+
+    .md\:total{
+        width : 660px;
+
+    }
+}

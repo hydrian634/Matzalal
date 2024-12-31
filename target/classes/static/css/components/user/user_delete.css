@@ -1,0 +1,126 @@
+.user-delete{
+    width:100%;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top : 35px;
+    gap : 40px;
+}
+
+.myinfo{
+    display: flex;
+    height: 90px;
+    align-items: center;
+    gap : 15px;
+    width: 393px;
+    margin-left : 30px;
+}
+
+.myinfo
+    img{
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+    }
+
+.myinfo
+    .badge{
+        width: 100px;
+        height: 100px;
+        border-radius: 100px;
+    }
+
+.nickname{
+    font-size :var(--font-size-10);
+    color : var(--color-accent-3);
+}
+
+/* list */
+
+.list{
+    background-color: var(--color-base-1);
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    gap :50px;
+    width : 393px;
+    border-radius: 20px;
+}
+
+.list-card a{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap : 20px;
+}
+
+.card-label{
+        font-size : var(--font-size-7);
+        font-weight: bold;
+        color : var(--color-base-4);
+    }
+
+li
+    span{
+        font-size : var(--font-size-7);
+        font-weight: bold;
+    }
+
+/* ment */
+.ment-box{
+    display: flex;
+    flex-direction: column;
+    gap : 10px;
+    width: 393px;
+    margin-top: 100px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ment-title {
+    font-size: var(--font-size-10);
+    font-weight: bold;
+    color : var(--color-base-6);
+    
+}
+
+.ment-content{
+    font-size: var(--font-size-2);
+    color:var(--color-base-4);
+
+}
+
+.nickname-impact{
+    color:var(--color-logo-2);
+}
+
+@media (min-width: 700px) {
+
+.md\:myinfo{
+    display: flex;
+    height: 90px;
+    align-items: center;
+    gap : 15px;
+    width: 700px;
+    margin-left : 30px;
+}
+
+.md\:list{
+    display: flex;
+    /* gap : 40px; */
+    height: 100px;
+    align-items: center;
+    justify-content: space-evenly;
+    width : 700px;
+    
+}
+
+.md\:ment-box{
+    display: flex;
+    flex-direction: column;
+    gap : 10px;
+    width: 700px;
+}
+
+}

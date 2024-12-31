@@ -1,0 +1,627 @@
+/* 민아  */
+.icon {
+  display: inline-block;
+  width: var(--icon-size-1);
+  height: var(--icon-size-1);
+  background-size: var(--icon-size-1);
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+.icon::before {
+  content: "";
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: inherit;
+  mask-size: inherit;
+  background-color: var(--color-base-6);
+}
+
+.deco {
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* 민정 deco::after로 되어있음 */
+
+.deco::before{/*안쪽의 박스*/
+    content:'';
+    display: inline-block;
+    width: var(--icon-size-2);
+    height: var(--icon-size-2);
+
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: inherit;
+    mask-size: inherit;
+    background-color:  var(--color-base-6);
+
+    /* 민아*/
+    -webkit-mask-position : center;
+    mask-position : center;
+}
+
+.deco-commu::before{/* 커뮤 포스팅용 추가*/
+    content:'';
+    display: inline-block;
+    width: var(--icon-size-2);
+    height: var(--icon-size-2);
+
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: inherit;
+    mask-size: inherit;
+    background-color:  var(--color-base-6);
+
+}
+
+.deco-after::after{
+    content:'';
+    display: inline-block;
+    width: var(—icon-size-1);
+    height: var(—icon-size-1);
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: inherit;
+    mask-size: inherit;    
+    background-color: var(—color-base-6);
+    margin: 0 10px;
+}
+
+.icon-hover:hover::before {
+  background-color: var(--color-accent-1);
+}
+
+.icon-pointer::before {
+  cursor: pointer;
+}
+
+/* ===========================아이콘 사이즈============================= */
+
+.icon-size\:0 {
+  width: var(--icon-size-0);
+  height: var(--icon-size-0);
+  -webkit-mask-size: var(--icon-size-0);
+  mask-size: var(--icon-size-0);
+}
+
+.icon-size\:1 {
+  width: var(--icon-size-1);
+  height: var(--icon-size-1);
+  -webkit-mask-size: var(--icon-size-1);
+  mask-size: var(--icon-size-1);
+}
+
+.icon-size\:1-1 {
+  width: var(--icon-size-1-1);
+  height: var(--icon-size-1-1);
+  -webkit-mask-size: var(--icon-size-1-1);
+  mask-size: var(--icon-size-1-1);
+}
+
+.icon-size\:2 {
+  width: var(--icon-size-2);
+  height: var(--icon-size-2);
+  -webkit-mask-size: var(--icon-size-2);
+  mask-size: var(--icon-size-2);
+}
+
+.icon-size\:3 {
+  width: var(--icon-size-3);
+  height: var(--icon-size-3);
+  -webkit-mask-size: var(--icon-size-3);
+  mask-size: var(--icon-size-3);
+}
+
+.icon-size\:4 {
+  width: var(--icon-size-4);
+  height: var(--icon-size-4);
+  -webkit-mask-size: var(--icon-size-4);
+  mask-size: var(--icon-size-4);
+}
+.icon-size\:5 {
+  width: var(--icon-size-5);
+  height: var(--icon-size-5);
+  -webkit-mask-size: var(--icon-size-5);
+  mask-size: var(--icon-size-5);
+}
+
+.icon-size\:6 {
+  width: var(--icon-size-6);
+  height: var(--icon-size-6);
+  -webkit-mask-size: var(--icon-size-6);
+  mask-size: var(--icon-size-6);
+}
+
+.icon-size\:7 {
+  width: var(--icon-size-7);
+  height: var(--icon-size-7);
+  -webkit-mask-size: var(--icon-size-7);
+  mask-size: var(--icon-size-7);
+}
+
+/* ===========================아이콘 색상============================= */
+
+.icon-color\:base-0::before {
+  background-color: var(--color-base-0);
+}
+
+.icon-color\:base-1::before {
+    background-color: var(--color-base-2);
+
+}
+/* ======================================================== */
+
+/* .icon-color\:main::before {
+    background-color: var(--color-main-2);
+} */
+
+/* 태호 main : main-2로 되어있음*/
+.icon-color\:main::before {
+  background-color: var(--color-base-6);
+}
+
+/* ======================================================== */
+.icon-color\:base-3::before {
+  background-color: var(--color-base-3);
+}
+
+/* 민아 color-base\:4로 되어있음 */
+.icon-color\:base-4::before {
+  background-color: var(--color-base-4);
+}
+
+.icon-color\:base-5::before {
+  background-color: var(--color-base-5);
+}
+
+.icon-color\:accent::before {
+  background-color: var(--color-accent-1);
+}
+
+.icon-color\:logo-3::before {
+  background-color: var(--color-logo-3);
+}
+
+/*민아 color-black 으로 되어있음*/
+.icon-color\:black::before {
+  background-color: black;
+}
+
+.icon-color\:green::before {
+  background-color: #67a90f;
+}
+
+.icon-color\:red::before {
+  background-color: red;
+}
+
+.icon-color\:yellow::before {
+  background-color: rgba(255, 205, 42, 1);
+}
+
+/* ===========================아이콘 종류============================= */
+
+.icon-home::before {
+  /*안쪽의 박스*/
+  /* background-color: var(--color-accent-1); */
+  -webkit-mask-image: url(/css/image/icon/home.svg);
+  mask-image: url(/css/image/icon/home.svg);
+}
+
+.icon-settings::before {
+  -webkit-mask-image: url(/static/css/image/icon/settings.svg);
+  mask-image: url(/static/css/image/icon/settings.svg);
+}
+
+.icon-back::before {
+    -webkit-mask-image: url(/static/css/image/icon/back.svg);
+    mask-image: url(/static/css/image/icon/back.svg);
+}
+
+/* ------------------ 커뮤니티 조회수, 좋아요, 댓글 ----------------- */
+
+.icon-view::before {
+  -webkit-mask-image: url(/static/css/image/commu/icon/view.svg);
+  mask-image: url(/static/css/image/icon/view.svg);
+}
+
+.icon-heart::before {
+  -webkit-mask-image: url(/css/image/icon/heart.svg);
+  mask-image: url(/css/image/icon/heart.svg);
+}
+
+.icon-redheart::before {
+  -webkit-mask-image: url(/css/image/icon/redheart.svg);
+  mask-image: url(/css/image/icon/redheart.svg);
+}
+
+.icon-logo::before {
+  -webkit-mask-image: url(/static/css/image/icon/logo.svg);
+  mask-image: url(/static/css/image/icon/logo.svg);
+}
+
+.icon-search::before {
+  -webkit-mask-image: url(/css/image/icon/search.svg);
+  mask-image: url(/css/image/icon/search.svg);
+}
+
+.icon-community::before {
+  -webkit-mask-image: url(/static/css/image/icon/community.svg);
+  mask-image: url(/static/css/image/icon/community.svg);
+}
+
+.icon-community-selected::before {
+  /*안쪽의 박스*/
+  -webkit-mask-image: url(/static/css/image/icon/community-selected.svg);
+  mask-image: url(/static/css/image/icon/community-selected.svg);
+}
+
+.icon-person::before {
+  -webkit-mask-image: url(/css/image/icon/person.svg);
+  mask-image: url(/css/image/icon/person.svg);
+}
+
+.icon-sign-out::before {
+    -webkit-mask-image: url(/css/image/icon/sign-out.svg);
+    mask-image: url(/css/image/icon/sign-out.svg);
+
+}
+
+
+.icon-uncheckedbox::before {
+    -webkit-mask-image: url(/css/image/icon/uncheckedbox.svg);
+    mask-image: url(/css/image/icon/uncheckedbox.svg);
+
+}
+
+.icon-checkedbox::before {
+     -webkit-mask-image: url(/css/image/icon/checkedbox.svg);
+     mask-image: url(/css/image/icon/checkedbox.svg);
+
+ }
+
+.icon-food1::before {
+  -webkit-mask-image: url(/static/css/image/icon/food1.svg);
+  mask-image: url(/static/css/image/icon/food1.svg);
+}
+
+.icon-star::before {
+  -webkit-mask-image: url(/css/image/icon/star.svg);
+  mask-image: url(/static/css/image/icon/star.svg);
+}
+
+.icon-star\:fill::before {
+  -webkit-mask-image: url(/css/image/icon/star-fill.svg);
+  mask-image: url(/css/image/icon/star-fill.svg);
+}
+
+.icon-comment-empty::before {
+  -webkit-mask-image: url(/static/css/image/icon/comment-empty.svg);
+  mask-image: url(/static/css/image/icon/comment-empty.svg);
+}
+
+.icon-more-horiz::before {
+  -webkit-mask-image: url(/static/css/image/icon/more-horiz.svg);
+  mask-image: url(/static/css/image/icon/more-horiz.svg);
+}
+
+.icon-user-profile::before {
+  -webkit-mask-image: url(/css/image/icon/user_profile.svg);
+  mask-image: url(/css/image/icon/user_profile.svg);
+}
+
+.icon-checked-mark::before {
+    -webkit-mask-image: url(/css/image/icon/checkmark.png);
+    mask-image: url(/css/image/icon/checkmark.png);
+}
+
+.icon-checkedhas::before {
+  -webkit-mask-image: url(/css/image/icon/inputcheck.png);
+  mask-image: url(/css/image/icon/inputcheck.png);
+}
+
+/* -------------- 나의 게시글 -----*/
+.icon-likes::before {
+  -webkit-mask-image: url(/image/icon/likes.svg);
+  mask-image: url(/image/icon/likes.svg);
+}
+
+.icon-comment::before {
+  -webkit-mask-image: url(/static/css/image/icon/comment.svg);
+  mask-image: url(/static/css/image/icon/comment.svg);
+}
+
+.icon-badge1::before {
+  -webkit-mask-image: url(/css/image/icon/badge1.svg);
+  mask-image: url(/css/image/icon/badge1.svg);
+}
+
+/* ------------------ 커뮤니티  ------------------ */
+
+
+.icon-commu-likes::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-likes.svg);
+    mask-image:  url(/css/image/commu/icon/commu-likes.svg);
+}
+
+.icon-commu-likes-fill::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-likes-fill.svg);
+    mask-image:  url(/css/image/commu/icon/commu-likes-fill.svg);
+}
+
+.icon-commu-view::before{
+    -webkit-mask-image: url(/css/image/commu/icon/view.svg);
+    mask-image:  url(/css/image/commu/icon/view.svg);
+}
+
+.icon-commu-more::before{
+    -webkit-mask-image: url(/css/image/commu/icon/more-horiz.svg);
+    mask-image:  url(css/image/commu/icon/more-horiz.svg);
+}
+
+.icon-commu-recomment::before{
+    -webkit-mask-image: url(/css/image/commu/icon/recomment.svg);
+    mask-image:  url(css/image/commu/icon/recomment.svg);
+}
+
+.icon-commu-img-upload::before{
+    -webkit-mask-image: url(/css/image/commu/icon/imgupload.svg);
+    mask-image:  url(css/image/commu/icon/imgupload.svg);
+}
+
+.icon-expanding-arrow::before {
+    -webkit-mask-image: url(/static/css/image/icon/expanding-arrow.svg);
+    mask-image: url(/static/css/image/icon/expanding-arrow.svg);
+}
+
+.icon-add-photo::before {
+    -webkit-mask-image: url(/static/css/image/icon/add-photo.svg);
+    mask-image: url(/static/css/image/icon/add-photo.svg);
+}
+.icon-add-photo-image::before {
+    -webkit-mask-image: url(/static/css/image/icon/add-photo-image.svg);
+    mask-image: url(/image/icon/add-photo-image.svg);
+}
+
+.icon-commu-delete::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-delete.svg);
+    mask-image:  url(css/image/commu/icon/commu-delete.svg);
+}
+.icon-commu-add-post::before{
+    -webkit-mask-image: url(/css/image/commu/icon/add-post.svg);
+    mask-image:  url(css/image/commu/icon/add-post.svg);
+}
+
+.icon-commu-report::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-report.svg);
+    mask-image:  url(css/image/commu/icon/commu-report.svg);
+}
+
+.icon-commu-edit::before{
+    -webkit-mask-image: url(/css/image/commu/icon/commu-edit.svg);
+    mask-image:  url(css/image/commu/icon/commu-edit.svg);
+}
+
+
+
+/* ------------------ 회원등급  ------------------ */
+
+.icon-user-grade::before {
+  -webkit-mask-image: url(/static/css/image/icon/grade2.svg);
+  mask-image: url(/static/css/image/icon/grade2.svg);
+}
+/* ------------------ 공신큐  ------------------ */
+.icon-add::before{
+    -webkit-mask-image: url(/css/image/cs-center-icon/add.svg);
+    mask-image:  url(/css/image/cs-center-icon/add.svg);
+}
+
+.icon-review::before{
+    -webkit-mask-image : url(/css/image/cs-center-icon/review.svg);
+    mask-image : url(/css/image/cs-center-icon/review.svg);
+}
+.icon-check_box::before{
+    -webkit-mask-image : url(/css/image/cs-center-icon/check_box.svg);
+    mask-image : url(/css/image/cs-center-icon/check_box.svg);
+}
+.icon-close::before{
+    -webkit-mask-image: url(/css/image/cs-center-icon/close.svg);
+    mask-image: url(/css/image/cs-center-icon/close.svg);
+}
+
+.icon-open::before{
+    -webkit-mask-image: url(/css/image/cs-center-icon/open.svg);
+    mask-image: url(/css/image/cs-center-icon/open.svg);
+}
+
+.icon-checked::before{
+    -webkit-mask-image: url(/css/image/cs-center-icon/checked.svg);
+    mask-image: url(/css/image/icon/cs-center/checked.svg);
+}
+
+.icon-unchecked::before{
+    -webkit-mask-image: url(/css/image/cs-center-icon/unchecked.svg);
+    mask-image: url(/css/image/cs-center-icon/unchecked.svg);
+}
+
+.icon-upside::after{
+    -webkit-mask-image: url(/css/image/cs-center-icon/upside.svg);
+    mask-image: url(/css/image/cs-center-icon/upside.svg);
+}
+
+.icon-cs-downside::after{
+    -webkit-mask-image: url(/css/image/cs-center-icon/downside.svg);
+    mask-image: url(/css/image/cs-center-icon/downside.svg);
+}
+
+/* ---------------------------------- admin  ----------------------------- */
+
+.icon-dashboard::before {
+  -webkit-mask-image: url(image/admin-icon/dashboard.svg);
+  mask-image: url(image/admin-icon/dashboard.svg);
+}
+
+.icon-community::before {
+  -webkit-mask-image: url(image/admin-icon/community.svg);
+  mask-image: url(image/admin-icon/community.svg);
+}
+
+.icon-logout::before {
+  -webkit-mask-image: url(image/admin-icon/logout.svg);
+  mask-image: url(image/admin-icon/logout.svg);
+}
+
+.icon-member::before {
+  -webkit-mask-image: url(image/admin-icon/member.svg);
+  mask-image: url(image/admin-icon/member.svg);
+}
+
+.icon-notice::before {
+  -webkit-mask-image: url(image/admin-icon/notice.svg);
+  mask-image: url(image/admin-icon/notice.svg);
+}
+
+.icon-question::before {
+  -webkit-mask-image: url(image/admin-icon/question.svg);
+  mask-image: url(image/admin-icon/question.svg);
+}
+
+.icon-report::before {
+  -webkit-mask-image: url(image/admin-icon/report.svg);
+  mask-image: url(image/admin-icon/report.svg);
+}
+
+.icon-store::before {
+  -webkit-mask-image: url(image/admin-icon/store.svg);
+  mask-image: url(image/admin-icon/store.svg);
+}
+
+.icon-menu::before {
+  -webkit-mask-image: url(image/admin-icon/menu.svg);
+  mask-image: url(image/admin-icon/menu.svg);
+}
+
+.icon-review::before {
+  -webkit-mask-image: url(image/admin-icon/review.svg);
+  mask-image: url(image/admin-icon/review.svg);
+}
+
+/* 공통 아이콘 */
+.icon-page_left_arrow::before {
+  -webkit-mask-image: url(image/admin-icon/page_left_arrow.svg);
+  mask-image: url(image/admin-icon/page_left_arrow.svg);
+}
+
+.icon-page_right_arrow::before {
+  -webkit-mask-image: url(image/admin-icon/page_right_arrow.svg);
+  mask-image: url(image/admin-icon/page_right_arrow.svg);
+}
+
+.icon-right_arrow::before {
+  -webkit-mask-image: url(image/admin-icon/right_arrow.svg);
+  mask-image: url(image/admin-icon/right_arrow.svg);
+}
+
+.icon-down_arrow::before {
+  -webkit-mask-image: url(image/admin-icon/down-arrow.svg);
+  mask-image: url(image/admin-icon/down-arrow.svg);
+}
+
+.icon-search::before {
+  -webkit-mask-image: url(image/admin-icon/search.svg);
+  mask-image: url(image/admin-icon/search.svg);
+}
+
+.icon-drop_down_arrow::before {
+  -webkit-mask-image: url(image/admin-icon/drop_down_arrow.svg);
+  mask-image: url(image/admin-icon/drop_down_arrow.svg);
+}
+
+.icon-check::before {
+  -webkit-mask-image: url(image/admin-icon/check.svg);
+  mask-image: url(image/admin-icon/check.svg);
+}
+
+.icon-check_box::before {
+  -webkit-mask-image: url(image/admin-icon/check_box.svg);
+  mask-image: url(image/admin-icon/check_box.svg);
+}
+
+.icon-star::before {
+  -webkit-mask-image: url(image/admin-icon/star.svg);
+  mask-image: url(image/admin-icon/star.svg);
+}
+
+.icon-comment::before {
+  -webkit-mask-image: url(image/admin-icon/comment.svg);
+  mask-image: url(image/admin-icon/comment.svg);
+}
+
+.icon-gallery::before {
+  -webkit-mask-image: url(image/admin-icon/gallery.svg);
+  mask-image: url(image/admin-icon/gallery.svg);
+}
+
+.icon-public::before {
+  -webkit-mask-image: url(image/admin-icon/public.svg);
+  mask-image: url(image/admin-icon/public.svg);
+}
+
+.icon-private::before {
+  -webkit-mask-image: url(image/admin-icon/private.svg);
+  mask-image: url(image/admin-icon/private.svg);
+}
+
+@media (min-width: 700px) {
+  .md\:deco {
+  }
+
+  .md\:deco::before {
+    display: none;
+  }
+
+  .md\:icon-size\:1 {
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+    -webkit-mask-size: var(--icon-size-1);
+    mask-size: var(--icon-size-1);
+  }
+
+  .md\:icon-size\:2 {
+    width: var(--icon-size-2);
+    height: var(--icon-size-2);
+    -webkit-mask-size: var(--icon-size-2);
+    mask-size: var(--icon-size-2);
+  }
+
+  .md\:icon-size\:3 {
+    width: var(--icon-size-3);
+    height: var(--icon-size-3);
+    -webkit-mask-size: var(--icon-size-3);
+    mask-size: var(--icon-size-3);
+  }
+
+  .md\:icon-size\:4 {
+    width: var(--icon-size-4);
+    height: var(--icon-size-4);
+    -webkit-mask-size: var(--icon-size-4);
+    mask-size: var(--icon-size-4);
+  }
+
+  .md\:icon-size\:5 {
+    width: var(--icon-size-5);
+    height: var(--icon-size-5);
+    -webkit-mask-size: var(--icon-size-5);
+    mask-size: var(--icon-size-5);
+  }
+}

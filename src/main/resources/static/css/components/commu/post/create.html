@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://webfontworld.github.io/sandbox/SBAggro.css" rel="stylesheet">
+
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">   <!-- 리셋 -->
+    <link href="/css/root.css" rel="stylesheet" type="text/css">     <!-- 기본변수 -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">    <!-- 기본 스타일  -->
+
+    <link href="/css/util.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/button.css" rel="stylesheet" type="text/css">
+    
+
+    <link href="/css/components/commu/post/create.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <main>
+
+        <section class = "post-create">
+            <h1 class = "d:none"> 🌝 포스팅 작성 공간 🌝 </h1>
+
+                <div class="post-title-contents md:post-title-contents"> 
+                    
+                    <form action="" id="postcreate-form" class="postcreate-form">
+
+
+                        <form action="">
+                            <legend class="d:none" for="location"> 지역카테고리 선택</legend>
+                            
+                            <select name="location-select" class="location-select md:location-select">
+                                <option value=""> 지역선택 </option> 
+                                <option value="은평/서대문/마포">은평/서대문/마포</option>
+                                <option value="종로/중구/용산">종로/중구/용산</option>
+                                <option value="영등포/구로/금천">영등포/구로/금천</option>
+                                <option value="동작/관악">동작/관악</option>
+                                <option value="강서/양천">강서/양천</option>
+                                <option value="도봉/노원/강북/성북">도봉/노원/강북/성북</option>
+                                <option value="중랑/동대문/성동/광진">중랑/동대문/성동/광진</option>
+                                <option value="강남/서초">강남/서초</option>
+                                <option value="강동/송파">강동/송파</option>
+                            </select>
+
+                        </form>
+
+                        <div class="posting-title">
+                            <textarea
+                                    class="title"
+                                    placeholder="제목을 입력해주세요."
+                                    rows="1"></textarea>
+                                    <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
+                        </div>
+
+                        <div class="posting-contents">
+                            <textarea
+                                    class="contents"
+                                    placeholder="내용을 입력해주세요."
+                                    rows=""></textarea>
+                                    <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
+                        </div>
+
+                    </form>     
+                </div>
+                    <form class="upload-photo md:upload-photo"> 
+                        <input type="image" value="" disabled="disabled">
+                        <label class="d:none">사진추가</label>
+
+                        <a class="icon icon-add-photo icon-size:2 icon-color:main" href=""> 카메라버튼</a>
+                        <a class="icon icon-add-photo-image icon-size:2 icon-color:main" href=""> 이미지첨부</a>
+
+                    </form>
+        
+
+
+
+
+
+            <div class="posting-creating-btn md:posting-creating-btn">
+                <button type="submit" value="등록" class="btn-main btn-main-create md:btn-main-create"> 등록 </button>
+                <button type="submit" value="취소" class="btn-main btn-main-create md:btn-main-create btn-main-create-cancel"> 취소 </button>
+            </div>
+
+        </section>
+
+    </main>
+</body>
+
+</html>

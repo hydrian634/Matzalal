@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.matzalal.web.repository.CommentRepository">
+
+	<insert id="save" parameterType="Comment">
+	insert into comment( user_id, post_id, content)
+	values (#{userId}, #{postId}, #{content})
+	</insert>
+	  
+	<select id="last" resultType="Comment">
+	SELECT * from comment order by comment_id desc limit 1
+	</select>
+
+	<!-- postId별 -->
+	<select id="findViewAllById" resultType="CommentView">
+	select 
+	*
+	from commu_comment_view
+	where post_id=#{postId}
+	</select>
+
+	<!-- userId별 -->
+	<select id="findViewByUserId" resultType="CommentView">
+		select
+			*
+		from commu_comment_view
+		where user_id=#{id}
+	</select>
+  
+  	  <!-- 댓글 개별 조회-->
+	  <select id="findById" resultType="CommentView">
+	  select 
+	  *
+	  from commu_comment_view
+	  where comment_id=#{commentId}
+	  </select>
+  
+  	  <!-- [수정용] 댓글 개별 조회-->
+	  <select id="findByIdForEdit" resultType="Comment">
+	  select 
+	  *
+	  from comment
+	  where comment_id=#{commentId}
+	  </select>
+	
+	  <!--댓글 개수 조회-->
+	 <select id="countComment" resultType="int">
+	   	select 
+	   	count(comment_id) count
+	   	from comment
+	  </select>
+	  
+	  <!--댓글 전체 최신순 조회-->
+  	 <select id="findAll" resultType="CommentPostView">
+	   	select 
+	   	*
+	   	from comment_post_view
+		<where>
+			<if test="query != null">content like '%${query}%'</if>
+		</where>  
+	   	order by created_date desc
+	   	limit #{offset}, #{pageSize}
+	  </select>
+	  
+	  <!--댓글 하나 삭제-->
+      <delete id="delete">
+		  delete 
+		  from comment
+		  where comment_id = #{commentId}
+	  </delete>
+	  
+	  <!--댓글 여러개 삭제-->
+    <delete id="deleteCmts">  
+  	 	delete from comment
+  		where comment_id in 
+  		<foreach collection="cmtList" item="commentId" open="(" separator="," close=")">
+  		 	#{commentId}
+  		</foreach>
+  	</delete>
+  	
+  	  <!-- [포스팅 수정용] 업데이트  -->
+	<update id="modifyComment">
+	    UPDATE `comment`
+	    <set>
+	        <if test="content != null">`content` = #{content}</if>
+	    </set>
+	    WHERE `comment_id` = #{commentId}	
+	</update>
+  	
+</mapper>
+

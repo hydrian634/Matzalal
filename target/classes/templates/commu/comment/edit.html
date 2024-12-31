@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{inc/layout.html}">
+
+<head>
+	<link href="/css/components/commu/comment/comment.css" rel="stylesheet" type="text/css">
+	<script src="/js/commu/comment/detail.js"> </script>
+	<title>댓글 수정</title>
+
+</head>
+
+<body>
+
+<main layout:fragment="main">
+
+	<form action="/commu/commentupdate"
+		  th:method="put" class="commentcreate-form" >
+
+		<input type="hidden" name="commentId" th:value="${commentDtl.commentId}">
+		<section class="comment-list-box md:comment-list-box">
+
+			<section class ="top">
+				<h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+
+				<section class="member_info">
+					<h1 class="d:none"> 작성자 등급 & 닉네임</h1>
+
+					<div class="badge">
+						<img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" />
+					</div>
+
+				</section> <!-- member_info  -->
+
+				<section class="date_info md:date_info">
+					<h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+
+					<div>
+		                            <span th:text="${commentDtl.createdDate}">
+		                                12분전
+		                            </span>
+					</div>
+
+					<div>
+						<a class="icon icon-commu-more icon-size-commu:2 icon-color:base-5" href=""> 세로 확장</a>
+					</div>
+				</section><!-- date_info  -->
+			</section> <!-- top 끝 -->
+
+			<section class="middle">
+				<h1 class="d:none"> 댓글 내용</h1>
+				<textarea
+						type="text"
+						name="content"
+						class="contents"
+						th:text="${commentDtl.content}"
+						rows="1"></textarea>
+
+			</section> <!-- middle 끝 -->
+		</section> <!-- comment-list-box  -->
+
+		<div class="posting-creating-btn md:posting-creating-btn">
+			<input type="submit" value="등록"
+				   class="commu-btn-update md:commu-btn-update">
+			<a href="/commu/main" value="취소"
+			   class="commu-btn-cancle md:commu-btn-cancle"> 취소 </a>
+		</div>
+
+
+
+	</form>
+
+</main>
+
+</body>
+
+</html>

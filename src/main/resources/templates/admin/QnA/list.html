@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A 관리</title>
+    	<link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+	    <link href="/css/components/admin/QnA/list.css" rel="stylesheet" type="text/css">
+    	<script type="text/javascript" src="/js/admin/QnA/list.js" defer></script>
+</head>
+<body>
+    <main layout:fragment="main">
+        <section class="main-section md:main-section">
+            <h1 class="main-section-title">Q&A 관리</h1>
+            <header class="main-section-header">
+                <div class="main-section-count">
+                    <p>총 <span th:text="${count}">00</span>개</p>
+                </div>
+    
+                <!-- 등록, 수정, 삭제 버튼 -->
+                <div class="manage-button">
+                     <a href="/admin/QnA/answer" class="store-create-button">
+                        <input type="button" value="답변" class="cursor-pointer:pointer btn-main btn-main-create-admin btn-main-small">
+                    </a>
+                    <a href="/admin/QnA/QnA" class="store-edit-button">
+                        <input type="button" value="수정" class="cursor-pointer:pointer btn-main btn-main-create-edit btn-main-small">
+                    </a>
+                    <a class="store-delete-button">
+                        <input type="button" value="삭제" class="cursor-pointer:pointer btn-main btn-main-create-admin btn-main-create-delete btn-main-small">
+                    </a>
+                </div>
+            
+                <div class="dropdown-select md:dropdown-select">
+                   <!-- <form action="" class="response-status-select md:response-status-select">
+                        <legend for="response" class="d:none">답변 상태 선택창</legend>
+                            <select id="" name="">
+                                <option value="처리완료">처리완료</option>
+                                <option value="미처리">미처리</option>
+                            </select>
+                    </form>
+
+                    <form class="search-form">
+                        <fieldset class="search md:search">
+                            <legend class="d:none">제목 검색</legend>
+                            <input type="search" placeholder="제목" size="5">
+                            <button type="submit" class="icon icon-color-black icon-search"></button>
+                        </fieldset>
+                    </form>
+                </div>-->
+            </header>
+        
+            <!-- 본문!! -->
+            <!-- Q&A 목록 -->
+            <section class="qna-list">
+	            <section th:each="q : ${qnaList}" class="qna-block md:qna-block">
+	                <h1 th:text="${q.title}" class="cursor-pointer:pointer qna-title">문의글 제목</h1>
+	                <div class="checkbox-block">
+	                    <input type="checkbox" class="checkBox" name="checkBox" th:value="${q.questionId}">
+	                </div>
+	
+	                <div class="qna-number-block">
+	                    <a th:text="${q.rownum}" class="">11.</a>
+	                </div>
+	                
+	                <div class="qna-open-block">
+						<span th:class="${q.open == 0} ? 'icon icon-size:2 icon-close' : 'icon icon-size:2 icon-open'">공개여부 설정</span>
+	                </div>
+	
+	                <div class="qna-alias-block">
+						<img th:src="@{'/css/image/icon/badge' + ${q.gradeId} + '.svg'}">
+	                    <a th:text="${q.alias}" class="">닉네임</a>
+	                </div>
+	
+	                <div class="qna-date-block">
+	                    <a th:text="${#dates.format(q.createdDate, 'yyyy.MM.dd HH:mm')}" class="">2023.09.20. 15:30</a>
+	                </div>
+	
+	                <div class="cursor-pointer:pointer qna-status-block">
+	                    <span th:class="(${q.answerId == null}) ? 'qna-not-completed' : 'qna-completed'"
+	                    	  th:text="(${q.answerId == null}) ? '미처리' : '처리완료'" >
+	                    </span>
+	                </div>
+	            </section> 
+	
+	
+	            <!-- 페이지 이동 -->
+	            <div class="pagination">
+	                <a class="" th:if="${currentPage > 1}" th:href="@{/admin/QnA/list(page=${currentPage-1})}">&laquo;</a>
+	                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+	                	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+	                	th:text="${pageNo}" th:href="@{/admin/QnA/list(page=${pageNo})}" 
+	                	th:class="${currentPage == pageNo} ? 'page-active' : ''">
+	                </a>
+	                <a th:if="${currentPage < pageCount+1}" th:href="@{/admin/QnA/list(page=${currentPage+1})}">&raquo;</a>
+	            </div>
+			</section>
+        </section>
+    </main>
+</body>
+</html>

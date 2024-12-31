@@ -1,0 +1,9 @@
+.commentgroup{
+    margin-top: var(--gap-5);
+    width: 360px;
+
+    background-color: var(--color-base-1);
+    border-radius: 10px;
+    padding: var(--gap-4);
+}
+

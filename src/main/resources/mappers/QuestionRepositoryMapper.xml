@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.QuestionRepository">
+	
+	<select id="findAll" resultType="Question">
+		SELECT 
+		row_number() over(order by question_id asc) as rownum
+		     , q.question_id as question_id
+			 , q.title as title
+		     , q.content as content
+		     , q.img as img
+		     , q.created_date as created_date
+		     , q.user_id as user_id
+		     , u.grade_id as grade_id
+             , u.alias as alias
+		     , q.open as open
+		     , a.answer_id as answer_id
+		FROM question q
+		left join answer a
+		on q.question_id = a.question_id
+        left join user u
+		on q.user_id = u.user_id
+		order by q.question_id des
+	</select>
+
+	<insert id="save" parameterType="Question">
+  		insert into question(title, content, open, img, user_id)
+		values (#{title}, #{content}, #{open}, #{img}, #{userId})
+  	</insert>
+	
+ 	<select id="last" resultType="Question">
+		SELECT * from question order by question_id desc limit 1
+	</select>
+	
+	<select id="count" parameterType="Integer">
+		select count(question_id) count from question
+	</select>
+	
+   	<select id="getListByPage" resultType="Question">
+		SELECT 
+		row_number() over(order by question_id asc) as rownum
+		     , q.question_id as question_id
+			 , q.title as title
+		     , q.content as content
+		     , q.created_date as created_date
+		     , q.user_id as user_id
+		     , q.img as img
+ 		     , u.grade_id as grade_id
+             , u.alias as alias
+		     , q.open as open
+		     , a.answer_id as answer_id
+		FROM question q
+		left join answer a
+		on q.question_id = a.question_id
+        left join user u
+		on q.user_id = u.user_id
+		<where>
+			<if test="questionId != null">q.question_id = #{questionId}</if>
+			<if test="query != null">or q.title like '%${query}%'</if>
+			<if test="query != null">or q.content like '%${query}%'</if>
+		</where>
+		order by q.question_id desc
+   		limit #{offset}, #{size}
+ 	</select>
+ 	
+	<select id="findById" resultType="Question">
+       		SELECT 
+       		row_number() over(order by question_id asc) as rownum
+				 , q.question_id
+				 , q.title
+			     , q.content
+			     , q.img
+			     , q.created_date
+			     , q.user_id
+                 , u.grade_id
+                 , g.grade
+	             , u.alias
+			     , q.open
+			     , a.answer_id
+			FROM question q
+			left join answer a
+			on q.question_id = a.question_id
+	        inner join user u
+			on q.user_id = u.user_id
+            inner join grades g
+			on u.grade_id = g.grades_id
+			where q.question_id = #{questionId}
+    </select>
+    
+    <!-- 답변글과 같이 조회-->
+    <select id="findQnA" resultType="Question">
+		SELECT 
+			   q.question_id as question_id
+			 , q.title as title
+			 , q.content as content
+			 , q.img as img
+			 , q.created_date as created_date
+			 , q.user_id as user_id
+			 , u.grade_id as grade_id
+			 , g.grade as grade
+			 , u.alias as alias
+			 , q.open as open
+			 , a.answer_id as answer_id
+	         , a.title as aTitle
+		     , a.content as aContent
+	         , a.img as aImg
+	         , a.created_date as aCreatedDate
+	         , u.alias as admin_alias
+		FROM question q
+			left join answer a
+			on q.question_id = a.question_id
+			inner join user u
+			on q.user_id = u.user_id
+			inner join grades g
+			on u.grade_id = g.grades_id
+		    left join user ua
+			on a.admin_id = ua.user_id
+	    where q.question_id = #{questionId}
+	</select>
+    
+    <update id="modify">
+        UPDATE `question`
+        <set>
+            <if test="title != null">`title` = #{title},</if>
+            <if test="content != null">`content` = #{content},</if>
+            <if test="img != null">`img` = #{img}</if>
+            <if test="open != null">`open` = #{open},</if>
+        </set>
+        WHERE `question_id` = #{questionId}
+    </update>
+    
+     <delete id="delete">
+		delete from question where question_id= #{questionId}
+	</delete>
+
+    <!-- 답변글 유무 확인 -->
+    <select id="countAnswer" resultType="String">
+	    SELECT COUNT(a.answer_id) AS count
+		FROM question q
+		LEFT JOIN answer a
+		ON q.question_id = a.question_id
+		WHERE q.question_id = #{questionId}
+    </select>
+	  
+	  <!--댓글 여러개 삭제-->
+    <delete id="deleteQnas">  
+  	 	delete from question
+  		where question_id in 
+  		<foreach collection="QnaList" item="questionId" open="(" separator="," close=")">
+  		 	#{questionId}
+  		</foreach>
+  	</delete>
+  	
+<!--   	<select id="findById" resultType="Qna">
+        select * from question where question_id = #{questionId}
+    </select> -->
+  	
+</mapper>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagination</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/util.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="pagination.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="pagination">
+        <a class="" href="">&laquo;</a>
+        <a class="page-active" href="">1</a>
+        <a class="" href="">2</a>
+        <a class="" href="">3</a>
+        <a class="" href="">4</a>
+        <a class="" href="">5</a>
+        <a class="" href="">&raquo;</a>
+    </div>
+    
+    <div class="pagination">
+	    <a class="" th:if="${currentPage > 1}" th:href="@{/admin/commu/post(page=${currentPage-1})}">&laquo;</a>
+	    <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+	    	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+	    	th:text="${pageNo}" th:href="@{/admin/commu/post(page=${pageNo})}" 
+	    	th:class="${currentPage == pageNo} ? 'page-active' : ''">
+	    </a>
+	    <a th:if="${currentPage < pageCount+1}" th:href="@{/admin/commu/post(page=${currentPage+1})}">&raquo;</a>
+	</div>
+
+</body>
+</html>

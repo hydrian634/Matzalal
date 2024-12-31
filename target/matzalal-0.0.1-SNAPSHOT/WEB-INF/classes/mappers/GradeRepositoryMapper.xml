@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.GradeRepository">
+
+    <select id="findAll" resultType="Grade">
+        select
+        *
+        from grades
+    </select>
+
+    <select id="findViewAllById" resultType="GradeView">
+        select
+        *
+        from grades_details
+        where username = #{email}
+    </select>
+
+    <insert id="save" parameterType="User">
+        insert into user_grades(user_id, grades_id)
+        values (#{userId}, #{gradeId})
+    </insert>
+
+</mapper>

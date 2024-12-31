@@ -1,0 +1,201 @@
+.question-list-main{
+	width: 100%;
+    align-items: center;
+	display: flex;
+	flex-direction: column;
+	font-weight: 500;
+}
+
+.jump-tab {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.qna-list-box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-base-2);
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.qna-list-box:last-child {
+	border-bottom: 1px solid var(--color-base-2);
+}
+
+.qna-list-box
+	.fixed-button {
+	    width: fit-content;
+	    display: flex;
+	    flex-direction: column;
+	    gap: 10px;
+	    
+	    cursor: pointer;
+	    position: fixed;
+	    top: 80%;
+	    left: 88%;
+	    z-index: 1;
+}
+
+.question-template {
+	width: 580px;
+}
+
+.question-template
+	.qna-qty {
+	    font-size: 12px;
+		margin-bottom: 5px;
+}
+
+.qna-list-box
+	.qna-list-box-left{
+        width: 400px;
+        height: 50px;
+    }
+
+.qna-list-box-left
+    .list-left-side
+        h1 {
+            font-size: 15px;
+            font-weight: 500;
+            display: inline-flex;
+}
+
+.qna-list-box-left
+    .reg-date {
+        font-size: 12px;
+        color: var(--color-base-5);
+        padding-top: 5px;
+        padding-left: 500px;
+}
+
+.qna-list-box-right {
+    position: absolute;
+    top:50%; right: 10px;
+}
+
+.qna-list-box:nth-child(2n) {
+    background-color: var(--color-main-1);
+}
+
+.gotodetail {
+  -webkit-mask-image: url(/image/cs-center-icon/right-arrow.svg);
+  mask-image: url(/image/cs-center-icon/right-arrow.svg);
+  background-color: var(--color-base-5);
+  cursor: pointer;
+}
+
+/* ---------------- 페이징 ---------------- */
+.pagination a {
+    font-size: var(--font-size-5);
+    float: left;
+    padding: 4px 10px;
+}
+
+/* ---------------- 검색 ---------------- */
+.fixed-button{
+	width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.search {
+    width : 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.search .query-filter fieldset {
+    display: flex;
+    width: 200px;
+    justify-content: flex-end;
+    border-bottom: 1px solid var(--color-base-3);
+    background-color: var(--color-base-2);
+    opacity: 0.5;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-right: 20px;
+}
+
+.search .query-filter fieldset input {
+    width: 100%; /* 수정된 부분 */
+    background-color: var(--color-base-2);
+	margin-left: 20px;
+	margin-right: 5px;
+}
+
+.question-reg-button {
+	width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    cursor: pointer;
+    position: fixed;
+    top: 90%;
+    left: 88%;
+    z-index: 1;
+}
+
+/* ---------------------- 700부터~ 적용됨 ---------------------- */
+
+@media (min-width: 700px) {
+    /* .qna-list { */
+    /* width: 1200px; */
+
+    /* } */
+
+    .md\:bottom-nav {
+        display: none;
+    }
+
+    /* .md\:qna-list {
+        display:flex;
+        
+    } */
+
+    /* .md\:content-box 
+        .md\:qna-title {
+            /* width: 100%;  */
+    /* height: 35px;
+            margin-top: 205px; */
+
+    /* display: flex; */
+    /* align-items: flex-start;
+            justify-content: flex-start; */
+
+    /* font-size: 18px;
+            font-weight: medium; */
+}
+
+/* .md\:wrapper {
+        max-width: 1024px;
+        width: 90%;
+        margin: 0 auto;
+      } */
+
+
+
+
+
+
+
+
+/* 
+::-webkit-scrollbar {
+    display: none;
+} 
+*/
+
+
+
+
+
+/* 
+::-webkit-scrollbar {
+    display: none;
+} 
+*/

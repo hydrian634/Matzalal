@@ -1,0 +1,101 @@
+.recomment-area{
+    padding: var(--gap-4);
+    }
+
+.recomment-area
+    h1{
+    margin-left: var(--gap-3);
+    }
+
+.recomment-area
+    h1
+    span{
+        margin-left: var(--gap-3);
+    }
+
+.recomment-list-box{
+
+    /* margin-top: var(--gap-5); */
+    width: 360px;
+
+    /* background-color: var(--color-base-1);
+    border-radius: 10px; 
+    padding: var(--gap-4);*/
+
+    color: var(--color-base-4);
+
+    display: grid;
+    grid-template-columns: 1fr 90px;
+    grid-template-rows: 30px 1fr 30px;
+    grid-template-areas: 
+    "top top"
+    "middle middle"
+    "bottom bottom";
+
+    grid-gap: var(--gap-3);
+    background-color: var(--color-base-1);
+    border-radius: var(--gap-1);
+    padding: var(--gap-4);
+
+    border-top: solid 1px var(--color-base-0)
+}
+
+.recomment-list-box
+    .top{
+        grid-area: top;
+        display: flex;
+        justify-content : space-between;
+    }
+
+.recomment-list-box
+    .top
+    .member_info{   
+        display: flex;
+        align-items: center;
+        gap: var(--gap-2);
+}
+
+.recomment-list-box
+    .top
+    .date_info{
+        display: flex;
+        gap: var(--gap-2);
+} 
+
+.recomment-list-box
+    .middle{
+        grid-area: middle;
+        margin-left: var(--gap-6);
+    }
+
+.recomment-list-box
+    .bottom
+        {
+        grid-area: bottom;
+        display: flex;
+        align-items: center;
+        margin-left: var(--gap-6);
+
+    }
+
+
+.recomment-list-box
+    .bottom
+        .likes-numbers
+        {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-2);
+    }
+
+/*------------------ 반응형 --------------------*/
+
+    @media (min-width: 700px) {
+     
+           .md\:recomment-list-box{ 
+                width: 660px;
+                /* padding: 40px 40px;
+                padding-right: 20px; */
+            }
+    
+        }

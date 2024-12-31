@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+
+<head>
+    <title>공지사항</title>
+    <link href="/css/components/notice/detail.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <main layout:fragment="main" class="notice-detail-main" th:object="${notice}">
+        <h1 class="d:none">공지사항 상세</h1>
+
+        <section class="notice-detail">
+            <div class="title-box">
+                <h1 class="notice-title" th:text="*{title}">시스템 점검 안내</h1>
+                <span class="reg-date" th:text="${#dates.format(notice.createdDate,'yyyy.MM.dd')}">2023.08.04</span>
+            </div>
+
+            <div class="content-box d:flex">
+                <article class="article-content d:flex md:article-content">
+                    <h1 class="d:none">NOTICE 내용</h1>
+                    <p class="article-content-p md:article-content-p" th:text="*{content}">
+                        23.08.10. 오후 6시~<br><br>
+                        시스템 점검이 있을 예정이오니, 
+                        위 내용을 참고하시어 이용에 불편이 없으시길 바랍니다. 고객님의 이해와 배려가 맛잘알 운영에 많은 도움이 됩니다.<br>
+                        감사합니다.
+                    </p>
+                </article>
+            </div>
+        </section>
+            <section class="prev-next-box md:prev-next-box">
+                <div class="prev-box d:flex md:prev-box">
+                    <span class="prev-post deco-after icon-upside md:deco-after">이전 글</span>
+                    <!--<span class="prev-title" th:text="*{title}" a href="">이전 글이 없습니다.-->
+					<span class="prev-title" th:text="*{title}" 
+						th:onclick="|location.href='@{/notice/detail(prev-notice-id=${notice.prevNoticeId})}'|" 
+						th:if="${noticeId > 1}">
+					<!--<a th:href="@{'/notice/detail?notice-id=' + (noticeId-1)}">이전 글 제목과 링크</a>-->
+					</span>
+					<span class="prev-title inactive" th:unless="${noticeId <= 1}">이전 글이 없습니다.</span>
+                    </span>
+                </div>
+
+                <div class="next-box d:flex md:next-box">
+                    <span class="next-post deco-after icon-cs-downside md:deco-after">다음 글</span>
+                    <span class="next-title" th:text="*{title}" th:if="${noticeId < 1}">
+						<a th:href="@{'/notice/detail?notice-id=' + (noticeId + 1)}">다음 글 제목과 링크</a>
+					</span>
+					<span class="next-title inactive" th:unless="${noticeId < 1}">다음 글이 없습니다.</span>
+                    </span>
+                    <!--<span class="next-title" th:text="*{title}" a href="">개인정보 이용내역 안내-->
+                    </span>
+                </div>
+            </section>
+
+                <div class="backtolist-box d:flex mt:4-2">
+<!--                    <input onclick="location.href='/notice/list'" class=btn-notice-list type="button" value="공지사항 목록">
+-->                    <button class="cursor-pointer:pointer btn btn-notice-list mv:auto md:btn-bigger" onclick="location.href='/notice/list'">공지사항 목록</button>
+                </div>
+
+    </main>
+
+</body>
+
+</html>

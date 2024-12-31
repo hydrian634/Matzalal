@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/inc/layout.html}">
+<head>
+<meta charset="UTF-8">
+<!--<meta charset="EUC-KR">은 기본설정인데, 한글 지원 안함-->
+<title>관리자 시스</title>
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/search.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/stat-card.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/index.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<main layout:fragment="main">
+		    <section class="stat-card md:stat-card">
+        	<h1 class="d:none">통계 카드</h1>
+	            <div class="card-list md:card-list">
+					<div class="card md:card left-card">
+		                <a href="/admin/user/list">
+		                    <h1>전체 회원</h1>
+		                    <div class="count-block">
+								<span th:text="${count}"></span>
+								<span>명</span>
+							</div>
+		                </a>
+	                </div>
+	              
+	              	<div class="card md:card right-card">
+		                <a href="/admin/QnA/list">
+		                    <h1>문의(미답변)</h1>
+		                    <div class="count-block">
+								<span></span>
+								<span>명</span>
+							</div>
+		                </a>
+		            </div>
+	            </div>
+	
+	            <div class="card-list md:card-list">
+					<div class="card md:card left-card">
+		                <a href="/admin/commu/post">
+		                    <h1>신규 게시글</h1>
+		                    <div class="count-block">
+								<span></span>
+								<span>명</span>
+							</div>
+		                </a>
+	                </div>
+	              
+	              	<div class="card md:card right-card">
+		                <a href="/admin/report/list">
+		                    <h1>신고(미처리)</h1>
+		                    <div class="count-block">
+								<span></span>
+								<span>명</span>
+							</div>
+		                </a>
+	                </div>
+	            </div>
+    	</section>
+	</main>
+</body>
+</html>

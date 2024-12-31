@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A 답변 수정</title>
+		<link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    	<link href="/css/components/admin/QnA/answer.css" rel="stylesheet" type="text/css">
+		<!--<script type="text/javascript" src="/js/admin/QnA/reg.js" defer></script>-->
+
+</head>
+<body>
+    <main layout:fragment="main" class="main-section md:main-section">
+        <section class="reg-qna">
+            <h1 class="reg-qna-title">Q&A 답변 수정</h1>
+            <div class="question-block">
+                <div class="question-title-block">
+                    <div class="question-title">
+                        <span th:text="${QnA.title}">이것은 질문글의 제목입니다.</span>
+                    </div>
+                    <div class="question-user-date">
+                        <img th:src="@{'/css/image/icon/badge' + ${QnA.gradeId} + '.svg'}">
+                        <span th:text="${QnA.alias}">닉네임</span>
+                        <span th:text="${#dates.format(QnA.createdDate, 'yyyy.MM.dd HH:mm')}" class="question-date">2023.10.07</span>
+                    </div>
+                </div>
+                <p th:text="${QnA.content}" class="question-content">
+                    여기는 질문자가 작성한 본문이 들어가는 곳입니다.
+                </p>
+                <div>
+                    <span th:class="${QnA.open == 0} ? 'icon icon-size:2 icon-close' : 'icon icon-size:2 icon-open'">공개여부 설정</span>
+                </div>
+            </div>
+            
+            <form action="editAnswer" th:method="put" class="reg-answer-form">
+				<input type="hidden" name="answerId" th:value="${QnA.answerId}">
+				<input type="hidden" name="questionId" th:value="${QnA.questionId}">
+                <div class="answer-title-block">
+                    <div class="answer-title">
+                        <input th:value="${QnA.aTitle}" name="title">
+                    </div>
+                    <div>
+                        <div class="answer-admin-date">
+                            <span>원문 답변자:<span th:text="${QnA.adminAlias}"></span></span>
+                            <input type="hidden" name="adminId" th:value="${#authentication.principal.id}">
+                            <span th:text="${#dates.format(QnA.aCreatedDate, 'yyyy.MM.dd HH:mm')}">2023.10.07</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answer-content-block">
+                    <textarea th:text="${QnA.aContent}" class="answer-content" name="content"
+                    placeholder="답변 본문을 작성 바랍니다."></textarea>
+
+                    <!--<div class="add-answer-pic" >
+                        <label onchange="readURL(this);"></label>
+                        <input type="file" class="icon icon-size:2 icon-color:black icon-gallery">
+                        <img id="preview" />
+                    </div>-->
+                </div>
+
+            <div class="manage-button">
+				<a class="store-edit-button">
+                    <input type="submit" value="수정"
+                        class="btn-main btn-main-create-edit btn-main-small">
+                </a>
+                <a class="store-delete-button" href="/admin/QnA/list">
+                    <input type="button" value="취소"
+                		class="btn-main btn-main-create bg-color:logo-1 btn-main-small">
+                </a>
+            </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

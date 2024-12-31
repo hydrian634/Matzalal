@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.FavRepository">
+
+	<delete id = "delete">
+		delete from `favorite` where user_id = #{userId} and rest_id = #{restId}
+	</delete>
+
+	<select id="findViewByRestId" resultType="FavView">
+		select
+		*
+		from fav_review_view
+		<where>
+			<if test="id != null">`rest_id` = #{id}</if>
+		</where>
+		order by reg_date desc
+	</select>
+
+	<select id="findViewByUserId" resultType="FavView">
+		select
+		*
+		from fav_review_view
+		<where>
+			<if test="id != null">`user_id` = #{userId}</if>
+		</where>
+	</select>
+
+	<select id="countViewByUserId" resultType="int">
+		select
+		count(user_id) count
+		from fav_review_view
+		where user_id = ${id}
+	</select>
+
+</mapper>

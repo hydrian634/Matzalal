@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{inc/layout.html}">
+
+<head>
+	<title>커뮤니티</title>
+	<link href="/css/components/commu/post/create.css" rel="stylesheet" type="text/css">
+	<script src="/js/commu/post/create.js" > </script>
+</head>
+
+<body>
+<main layout:fragment="main" >
+
+	<section class = "post-create">
+		<h1 class = "d:none"> 🌝 포스팅 작성 공간 🌝 </h1>
+
+		<form
+				class="postcreate-form"
+				action="/commu/postupdate"
+				enctype="multipart/form-data"
+				th:method="put"  >
+			<legend class="d:none" for="location"> 지역카테고리 선택</legend>
+			<input type="hidden" name="postId" th:value="${postDtl.postId}">
+			<div class="post-title-contents md:post-title-contents">
+
+				<select
+						th:name="areaId"
+						class="location-select md:location-select"
+				>
+					<option
+							th:each="l:${locCateList}"
+							th:value="${l.locationPostId}"
+							th:text="${l.area}"
+							th:selected="${l.locationPostId eq postDtl.areaId}"
+					>은평/서대문/마포</option>
+				</select>
+
+				<div class="posting-title">
+	                            <textarea
+										type="text"
+										name="title"
+										class="title"
+										placeholder="제목을 입력해주세요."
+										th:text="${postDtl.title}"
+										maxlength="80px"
+										rows="1"></textarea>
+					<!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
+				</div>
+
+				<div class="posting-contents">
+	                            <textarea
+										type="text"
+										name="content"
+										class="contents"
+										th:text="${postDtl.content}"
+										placeholder="내용을 입력해주세요."
+								></textarea>
+					<!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
+				</div>
+			</div>  <!-- post-title-contents -->
+<!--			<div class="upload-photo md:upload-photo">-->
+<!--				&lt;!&ndash;                        <input type="image" value="" disabled="disabled">&ndash;&gt;-->
+<!--				&lt;!&ndash;                        <a class="icon icon-add-photo icon-size:2 icon-color:main" href=""> 카메라버튼</a>&ndash;&gt;-->
+<!--				<label class="d:none">사진추가</label>-->
+
+<!--				<input-->
+<!--						class="d:none icon icon-add-photo-image icon-size:2 icon-color:main"-->
+<!--						type="file"-->
+<!--						name="img1"-->
+<!--				>-->
+<!--				<img th:src="@{'/css/image/user/' + ${postDtl.img1}}">-->
+
+<!--			</div> &lt;!&ndash; upload-photo  &ndash;&gt;-->
+
+
+			<div class="posting-creating-btn md:posting-creating-btn">
+				<!--                <input type="submit" value="등록" class="btn-main btn-main-create md:btn-main-create"> 등록 -->
+				<input type="submit" value="등록"
+					   class="cursor-pointer:pointer commu-btn-update md:commu-btn-update">  </input>
+				<a href="/commu/main" value="취소"
+				   class="cursor-pointer:pointer commu-btn-cancle md:commu-btn-cancle"> 취소 </a>
+			</div>
+
+		</form>
+	</section>
+
+
+</main>
+</body>
+</html>

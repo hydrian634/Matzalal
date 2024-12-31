@@ -1,0 +1,145 @@
+.main-section-count{
+	margin: 30px 0;
+}
+
+.report-list{
+	width: 100%;
+}
+
+.report-block{
+    display: grid;
+    width: 100%;
+    height: 80px;
+
+    grid-template-columns: 30px minmax(130px, auto) minmax(15px, auto) minmax(100px, auto) minmax(60px, auto);
+    grid-template-rows: minmax(30px,auto) 20px 1fr;
+
+    grid-template-areas: 
+    "checkbox type         .    date  status"
+    "checkbox category reporter alias status"
+    "checkbox descript reportee  tbl  status"
+    ;
+
+    align-items: center;
+    font-size: var(--font-size-0);
+    grid-gap: var(--gap-3);
+    border-bottom: 1px solid var(--color-base-3);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.report-block
+    .checkbox-block{
+        grid-area: checkbox;
+        padding: 10px;
+    }
+
+.report-block
+    .report-type-block{
+        grid-area: type;
+        font-weight: 700;
+    }
+    
+.report-block
+    .report-type-block
+        .report-type-user{
+                background-color: var(--color-accent-1);
+                color: var(--color-base-0);
+                padding: 5px 13px;
+                border-radius: 5px;
+        }
+       
+.report-block
+    .report-type-block
+        .report-type-post{
+                background-color: var(--color-accent-2);
+                color: var(--color-base-0);
+                padding: 5px 7px;
+                border-radius: 5px;
+        }
+        
+.report-block
+    .report-type-block
+        .report-type-comment{
+                background-color: var(--color-accent-3);
+                color: var(--color-base-0);
+                padding: 5px 13px;
+                border-radius: 5px;
+        }        
+
+.report-block
+    .report-date-block{
+        grid-area: date;
+    }
+
+.report-block
+    .report-category-block{
+        grid-area: category;    
+    }   
+
+.report-block
+    .report-reporter-block{
+        grid-area: reporter;    
+        text-align: right; 
+    }
+
+.report-block
+    .report-reportee-block{
+        grid-area: reportee;    
+        text-align: right; 
+    }
+    
+.report-block
+	.report-tbl-block{
+		grid-area: tbl;
+	}  
+
+.report-block
+    .report-reporter-alias-block{
+        grid-area: alias;   
+
+    } 
+
+.report-block
+    .report-descript-block{
+        grid-area: descript;    
+        color: var(--color-base-4);
+    }    
+
+.report-block
+    .report-status-block{
+        grid-area: status; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    } 
+
+.report-block
+    .report-status-block
+        .report-completed{    
+            background-color: var(--color-accent-1);
+            color: var(--color-base-0);
+            padding: 7px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+.report-block
+    .report-status-block
+        .report-completed-no{ 
+            padding: 7px 16px;
+            border-radius: 5px;
+            font-weight: 700;   
+            color: var(--color-base-0);
+            background-color: var(--color-logo-1);
+        }
+
+
+@media (min-width : 700px) {
+    .md\:report-block{
+        font-size: var(--font-size-5);
+        height: 100px;
+    }
+
+    
+}

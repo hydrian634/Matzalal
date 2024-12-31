@@ -1,0 +1,125 @@
+@import url('https://webfontworld.github.io/sandbox/SBAggro.css');
+
+
+.ranking{
+    max-width: 340px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--gap-5);
+
+    font-family: 'SBAggro';
+    font-weight: 400;
+    margin: var(--gap-4);
+
+    /* border: solid 1px blue; */
+}
+
+.ranking
+h1{
+
+    width: inherit;
+    height: 30px;
+    padding-top: var(--gap-4);
+    font-size: var(--font-size-7);
+    line-height: 22px;
+    color: var(--color-base-6);
+
+}
+
+.ranking
+ul{
+    font-size: var(--font-size-3);
+}
+
+.ranking
+li{
+    margin-bottom: var(--gap-5);
+
+}
+
+.ranking
+p{
+    width: 200px;
+}
+
+.ranking
+.post{
+    display: flex;
+    align-items: center;
+    gap: var(--gap-5);
+    padding-left: var(--gap-3);
+    /* padding-right: 10px; */
+
+}
+
+.ranking
+.list::after
+{
+    content: "";
+    display: block;
+
+    background-color: var(--color-base-2);
+    margin: var(--gap-5);
+    transform: translate(0, 20px) ;
+    width: 300px;
+    height: 1px;
+}
+
+.ranking
+.number{
+    width: 30px;
+
+    font-weight: 700;
+    font-size: var(--font-size-5);
+
+    line-height: 22px;
+    /* border: solid 1px blue; */
+}
+
+
+.ranking
+.list
+img{
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/*--------------------color-------------------- */
+
+.ranking
+.color-purple{
+    color: rgba(219, 196, 240, 1);
+}
+
+.ranking
+.color-blue{
+    color:rgba(140, 192, 222, 1);
+}
+
+.ranking
+.color-green{
+    color:rgba(163, 215, 191, 1);
+
+}
+
+
+
+/*---------------------- 반응형 ----------------------*/
+.ranking
+.list::after
+{
+    content: "";
+    display: block;
+
+    background-color: var(--color-base-2);
+    margin: var(--gap-5);
+    transform: translate(0, 20px) ;
+    width: 300px;
+    height: 1px;
+}

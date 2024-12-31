@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="/css/components/user/reg_agree.css" rel="stylesheet" type="text/css">
+    <script src="/js/stranger/reg_agree.js"></script>
+
+    <!--    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
+
+</head>
+<body>
+    <main layout:fragment="main" id="app">
+        <div class="agree-box">
+            <section class="title-box">
+                <h1 class="title">약관동의</h1>
+                <p class="agreement">가입을 위해 다음 약관 동의가 필요합니다.</p>
+            </section>
+            <form action="reg" method="post">
+                <ul class="check-box">
+                    <li class="text-line">
+                        <label>
+                            <input type="checkbox" name="all-policy" class="icon icon-size:4 icon-color:black icon-uncheckedbox" >
+                            <p>전체 동의합니다.</p>
+                        </label>
+                    </li>
+                    <li class="text-line">
+                        <label>
+                            <input type="checkbox" name="privacy-policy" class="icon icon-size:4 icon-color:black icon-uncheckedbox">
+                            <p>[필수]개인정보 수집 및 이용에 동의합니다.</p>
+                        </label>
+                        <a href="">보기</a>
+                    </li>
+                    <li class="text-line">
+                        <label>
+                            <input type="checkbox" name="age-policy" class="icon icon-size:4 icon-color:black icon-uncheckedbox"    >
+                            <p>[필수]본인이 만 14세 이상입니다.</p>
+                        </label>
+                    </li>
+                    <li class="text-line">
+                        <label>
+                            <input type="checkbox" name="location-policy" class="icon icon-size:4 icon-color:black icon-uncheckedbox">
+                            <input type="checkbox">
+                            <p>[선택]위치정보 수집에 동의합니다.</p>
+                        </label>
+                        <a href="">보기</a>
+                    </li>
+                </ul>
+                <input type="checkbox" id="check">
+                <button type="submit" id="agree-check" class="btn btn-main">다음</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

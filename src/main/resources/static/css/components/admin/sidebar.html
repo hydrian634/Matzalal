@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sidebar</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/util.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="sidebar.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+     <aside class="sidebar md:sidebar">
+        <h1 class="d:none">관리자 메뉴</h1>
+        <nav class="content-box md:content-box">
+           
+            <ul class="aside-list">
+            <div class="category-block">
+                <li class="first-aside sidebar-hover">
+                    <a href="/admin/index" class="first-title">
+                        <i class="icon icon-dashboard icon-size:3 icon-color:black" href="">DashBoard</i>
+                        <span class="sidebar-title md:sidebar-title">DashBoard</span>
+                    </a>
+                </li>
+
+                <!-- <li class="sidebar-hover" tabindex="0" data-descr="맛집관리"> -->
+                <li class="second-aside sidebar-hover">
+                    <div class="second-title">
+                        <i class="icon icon-size:4 icon-store icon-color:black">Store</i>
+                        <span class="sidebar-title md:sidebar-title">Store</span>
+                        <p class="mxd:d:none md:drop-down icon icon-size:1 icon-down_arrow icon-color:black">화살표</p>
+                    </div>    
+                    <div>
+                        <ul class="dropdown-container">
+                            <li><a href="/admin/store/list">맛집 관리</a></li>
+                            <li><a href="/admin/store/review">후기 관리</a></li>
+                        </ul>
+                    </div>    
+                </li>
+            
+                <li class="second-aside sidebar-hover">
+                    <div class="second-title">    
+                        <i class="icon icon-size:4 icon-community icon-color:black">community</i>    
+                        <span class="sidebar-title md:sidebar-title">Community</span>
+                        <p class="mxd:d:none md:drop-down icon icon-size:1 icon-down_arrow icon-color:black">화살표</p>
+                    </div>
+                    <div>
+                        <ul class="dropdown-container">
+                            <li><a  href="/admin/community/post">게시글 관리</a></li>
+                            <li><a href="/admin/community/comment">댓글 관리</a></li>
+                        </ul>
+                    </div>    
+                </li>    
+
+                <li class="first-aside sidebar-hover">
+                    <a href="/admin/user/list" class="first-title">
+                        <i class="icon icon-size:4 icon-member icon-color:black">Member</i>
+                        <span class="sidebar-title md:sidebar-title">Member</span>
+                    </a>
+                </li>   
+
+                <li class="second-aside sidebar-hover">
+                    <div class="second-title">
+                        <i class="icon icon-size:4 icon-question icon-color:black" href="">Q&A</i>
+                        <span class="sidebar-title md:sidebar-title">Q&A</span>
+                        <p class="mxd:d:none md:drop-down icon icon-size:1 icon-down_arrow icon-color:black">화살표</p>
+                    </div>
+                    <div>
+                        <ul class="dropdown-container">
+                            <li><a href="/admin/Q&A/list">FAQ 관리</a></li>
+                            <li><a href="/admin/Q&A/answer">Q&A 관리</a></li>
+                        </ul>
+                    </div>    
+                </li>
+
+                <li class="first-aside sidebar-hover">
+                    <a href="/admin/report/list" class="first-title">
+                        <i class="icon icon-size:4 icon-report icon-color:black" href="">Report</i>
+                        <span class="sidebar-title md:sidebar-title">Report</span>
+                    </a>
+                </li>  
+            </div>          
+                <!-- <li class="sidebar-hover">
+                    <a href="">
+                        <i class="icon icon-logout icon-color:black" href="">Logout</i>
+                        <span class="sidebar-title md:sidebar-title">Logout</span>
+                    </a>
+                </li> -->
+                
+                <!-- 로그아웃 버튼을 따로 div로 두어서 위치를 조정하려고 했는데...실패 -->
+            </ul>
+        </nav>
+        <div class="logout-block">   
+            <li class="bottom-content md:bottom-content sidebar-hover">
+                <a href="" class="logout-title">
+                    <i class="icon icon-size:4 icon-logout icon-color:black" href="">Logout</i>
+                    <span class="sidebar-title md:sidebar-title">Logout</span>
+                </a>
+            </li>
+        </div>
+    </aside>
+</body>
+
+</html>

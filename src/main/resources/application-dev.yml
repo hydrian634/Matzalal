@@ -1,0 +1,13 @@
+  
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://db.newlecture.com:3306/matzipdb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: matzip
+    password: 1004
+      
+logging:
+  level:
+    com.matzalal.web.entity: TRACE
+    
+    

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link href="/css/components/user/reg_user.css" rel="stylesheet" type="text/css">
+
+
+</head>
+<body>
+    <main layout:fragment="main">
+        <section class = "user-reg">
+            <h1 class="d:none">회원가입</h1>
+            <form action ="reg">
+                <div class="email-box">
+                    <label class="text" for="email">이메일</label>
+                    <input class="text-box" id="email" name="email" placeholder="이메일을 입력하세요." required>
+                    <input class="btn btn-check" value="중복확인">
+                    <p class="d:none">이미 가입된 이메일입니다.</p>
+                    <p class="d:none">사용이 가능한 이메일입니다.</p>
+                </div>
+
+                <div>
+                    <label class="text" for="pwd">비밀번호</label>
+                    <input class="text-box" type="password" id="pwd" name="pwd" placeholder="영문, 숫자, 특수문자 중 2개 이상을 입력해주세요." required>
+                    <p class="d:none">영문, 숫자, 특수 문자 중 2개 이상을 입력해주세요.</p>
+                </div>
+                <div>
+                    <label class="text" for="checkpwd">비밀번호 확인</label>
+                    <input class="text-box" type="password" id="checkpwd" name="checkpwd" placeholder="다시 한번 비밀번호를 입력하세요." required>
+                </div>
+                <div>
+                    <label class="text" for="name">이름</label>
+                    <input class="text-box" id="name" name="name" placeholder="이름을 입력하세요." required>
+                </div>
+                <div>
+                    <label class="text" for="phone">휴대폰번호</label>
+                    <input class="text-box" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요." required>
+                </div>
+                <div>
+                    <label class="text" for="nickname">닉네임</label>
+                    <input class="text-box" id="nickname" name="nickname" placeholder="닉네임을 입력하세요." required>
+
+                    <input class="btn btn-check" value="중복확인">
+                    <p class="d:none">이미 사용중인 닉네임입니다.</p>
+                    <p class="d:none">사용이 가능한 닉네임입니다.</p>
+                </div>
+                <div >
+                    <input class="btn btn-main btn-reg" type="submit" name="cmd" value="회원가입">
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

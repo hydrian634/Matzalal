@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{inc/layout.html}"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>마이페이지</title>
+        <link href="/css/components/user/mypage.css" rel="stylesheet"
+            type="text/css">
+        <script type="module" src="/js/user/mypage.js" defer></script>
+</head>
+<body>
+    <main layout:fragment="main" th:object="${userView}">
+<!--        <section th:object="${userView}" class="mypage" enctype="multipart/form-data">-->
+        <section class="mypage">
+            <h1 class="d:none">마이페이지</h1>
+            <ul class="myinfo md:myinfo">
+                <li>
+                    <form method="post" enctype="multipart/form-data">
+                        <label>
+                                <input type="file" th:data-id="${#authentication.principal.id}" class="profile-img d:none" name="f" multiple>
+                                <img alt="프로필 이미지선택" th:src="@{'/css/image/user/' + ${userView.profileImg}}">
+            <!--                        <img id="profile-img" src="/css/image/user/noh-profile.png" th:src="@{'/css/image/user/' + ${userView.profileImg}}" alt="프로필이미지">-->
+                        </label>
+                    </form>
+
+                </li>
+                <li><img src="/css/image/icon/badge1.svg" th:src="@{'/css/image/icon/' + ${userView.gradeImg}}"></li>
+                <li>
+                    <span th:text="${userView.alias}" class="nickname">바지사장</span>
+                    <p th:text="${loc.area}">ddd</p>
+                </li>
+                <li><span sec:authentication="principal.username" >pantsCEO@matzalal.com</span></li>
+                <li><span>가입일자 : </span><span sec:authentication="principal.createdDate">2023.08.30</span></li>
+            </ul>
+
+            <section class="active">
+                <h1>활동내역</h1>
+                <ul class="active-list md:active-list">
+                    <li class="active-list-card"><a href="/user/mypost">
+                        <span class="card-label">작성한 글</span>
+                        <span th:text="${userView.postCount}">155</span>
+                    </a>
+                    </li>
+                    <li class="active-list-card"><a href="/user/mycomment">
+                        <span class="card-label">작성한 댓글</span>
+                        <span th:text="${userView.commentCount}">55</span>
+                    </a>
+                    </li>
+                    <li class="active-list-card"><a href="/user/myfav">
+                        <span class="card-label">찜한 목록</span>
+                        <span th:text="${userView.favCount}">5</span>
+                    </a>
+                    </li>
+                </ul>
+            </section>
+
+                <div class="list">
+                    <section>
+                        <h1 class="list-label">나의 계정 정보</h1>
+                        <ul>
+                            <li class="list-content"><a href="/user/edit">회원정보
+                                    수정</a></li>
+                            <li class="list-content"><a href="/user/grade">등급표</a></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1 class="list-label">고객센터</h1>
+                        <ul>
+                            <li class="list-content">
+                                <a href="../qna/question/list">QnA</a>
+                            </li>
+                            <li class="list-content">
+                                <a href="../faq/list">FAQ</a>
+                            </li>
+                            <li class="list-content">
+                                <a href="../notice/list">공지사항</a>
+                            </li>
+                        </ul>
+                    </section>
+                    
+                    <section sec:authorize="hasRole('ADMIN')">
+                        <h1 class="list-label">관리자</h1>
+                        <ul>
+                            <li class="list-content"><a href="/admin/user/list">관리자 Index</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

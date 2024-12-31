@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.matzalal.web.repository.LocationUserRepository">
+
+ 	<select id="findAll" resultType="LocCategory">
+ 	select 
+ 	*
+ 	from location_user
+ 	</select>
+
+	<select id="findById" resultType="LocationUser">
+		select
+		*
+		from location_user
+		where location_user_id = #{locId}
+	</select>
+  
+</mapper>

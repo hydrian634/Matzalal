@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.UserRepository">
+
+    <select id="findAll" resultType="User">
+        select
+	        user_id as id
+	      , pwd
+	      , alias
+	      , email
+	      , phone
+	      , name
+	      , grade_id
+	      , profile_img
+	      , created_date as date
+	      , status_id
+	      , access_location as location_id
+	      , sanction_time
+        from user
+    </select>
+    
+    <select id="findAllByPage" resultType="User">
+	  	select
+		      user_id as id
+		    , pwd
+		    , alias
+		    , email
+		    , phone
+		    , name
+		    , grade_id
+		    , profile_img
+		    , created_date as date
+		    , status_id
+		    , access_location as location_id
+		    , sanction_time
+		from user
+		<where>
+		    <if test="query != null">email like '%${query}%'</if>
+			<if test="query != null">or alias like '%${query}%'</if>
+		</where>    
+		order by created_date desc
+		limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="findUserView" resultType="UserView">
+        select
+		      user_id as id
+		    , pwd
+		    , alias
+		    , email
+		    , phone
+		    , name
+		    , grade_id
+		    , profile_img
+		    , created_date as date
+		    , status_id
+		    , access_location as location_id
+		    , post_count
+		    , comment_count
+		    , fav_count
+		    , grade_name
+		    , grade_img
+		    , sanction_time
+        from user_view
+    </select>
+
+    <select id="findUserViewById" resultType="UserView">
+        select
+		      user_id as id
+		    , pwd
+		    , alias
+		    , email
+		    , phone
+		    , name
+		    , grade_id
+		    , profile_img
+		    , created_date as date
+		    , status_id
+		    , access_location as location_id
+		    , post_count
+		    , comment_count
+		    , fav_count
+		    , grade_name
+		    , grade_img
+		    , sanction_time
+        from user_view
+        where
+        user_id = #{id}
+    </select>
+
+    <select id="findUserViewByEmail" resultType="UserView">
+        select
+		      user_id as id
+		    , pwd
+		    , alias
+		    , email
+		    , phone
+		    , name
+		    , grade_id
+		    , profile_img
+		    , created_date as date
+		    , status_id
+		    , access_location as location_id
+		    , post_count
+		    , comment_count
+		    , fav_count
+		    , grade_name
+		    , grade_img
+		    , sanction_time
+        from user_view
+        where
+        email = #{email}
+    </select>
+
+    <insert id="save" parameterType="User">
+        insert into user(
+               email
+             , pwd  
+             , alias
+             , phone
+             , name 
+             , access_location
+      ) values (
+               #{email}
+             , #{pwd}  
+             , #{alias}
+             , #{phone}
+             , #{name}
+             , #{locationId}
+      )
+    </insert>
+
+    <!--쿼리문 내용 다름-->
+    <select id="findById" resultType="User">
+        select user_id as id
+        , pwd 			
+        , alias
+        , email
+        , phone
+        , name
+        , grade_id
+        , profile_img
+        , concat(substring(date_format(created_date, '%Y%m%d%h%m'), 1, 4), '-',
+        substring(date_format(created_date, '%Y%m%d%h%m'), 5, 2), '-',
+        substring(date_format(created_date, '%Y%m%d%h%m'), 7, 2), ' ',
+        substring(date_format(created_date, '%Y%m%d%H%i'), 9, 2), ':',
+        substring(date_format(created_date, '%Y%m%d%H%i'), 11, 2)) as date
+        , status_id
+        , access_location as locationId
+        , sanction_time 
+        from user
+        where user_id=#{id}
+    </select>
+
+    <select id="findByEmail" resultType="User">
+        select 
+		      user_id as id
+		    , pwd
+		    , alias
+		    , email
+		    , phone
+		    , name
+		    , grade_id
+		    , profile_img
+		    , created_date as date
+		    , status_id
+		    , access_location as location_id
+		    , sanction_time
+		from user where email = #{email}
+    </select>
+
+    <select id="last" resultType="User">
+        SELECT 
+			user_id as id
+	      , pwd
+	      , alias
+	      , email
+	      , phone
+	      , name
+	      , grade_id
+	      , profile_img
+	      , created_date as date
+	      , status_id
+	      , access_location as location_id
+	      , sanction_time
+		 from user order by created_date desc limit 1
+    </select>
+
+    <select id="findEmail" resultType="int">
+        select count(email) cnt from user where email = #{email}
+    </select>
+
+    <select id="findAlias" resultType="int">
+        select count(alias) cnt from user where alias = #{alias}
+    </select>
+
+    <select id="findByName" resultType="User">
+        select 
+			  user_id as id
+		    , pwd
+		    , alias
+		    , email
+		    , phone
+		    , name
+		    , grade_id
+		    , profile_img
+		    , created_date as date
+		    , status_id
+		    , access_location as location_id
+		    , sanction_time
+		from user where name = #{name}
+    </select>
+
+    <select id="hasIdByAlias" resultType="Boolean">
+        select 
+			  user_id as id
+		    , pwd
+		    , alias
+		    , email
+		    , phone
+		    , name
+		    , grade_id
+		    , profile_img
+		    , created_date as date
+		    , status_id
+		    , access_location as location_id
+		    , sanction_time
+		 from user where alias = #{alias}
+    </select>
+
+    <select id="hasIdByName" resultType="boolean">
+        select count(name) cnt from user where name = #{name}
+    </select>
+
+    <select id="hasIdByPhone" resultType="boolean">
+        select count(phone) cnt from user where phone = #{phone}
+    </select>
+
+    <select id="findForFindId" parameterType="User">
+        select count(*) from user
+        where name = #{name}
+        and phone = #{phone};
+    </select>
+
+    <select id="findForFindPwd" parameterType="User">
+        select count(*) from user
+        where name = #{name}
+        and email = #{email};
+    </select>
+
+
+    <select id="findByUser" parameterType="User">
+        select * from user
+        where name = #{name}
+        and phone = #{phone};
+    </select>
+
+    <select id="findPostViewById" resultType="PostUserLikeCommentView">
+        select 
+			  post_id as id
+		    , alias
+		    , user_id
+		    , area_id
+		    , title
+		    , content
+		    , img1
+		    , img2
+		    , img3
+		    , hit
+		    , created_date
+		    , grade_id
+		    , profile_img
+		    , post_like_count
+		    , comment_count as post_comment_count
+		    , sanction_time
+		from post_u_li_co_view where user_id = #{id}
+    </select>
+
+    <!--관리자 페이지-->
+    <select id="count" resultType="Integer">
+        select count(user_id) count from user
+    </select>
+
+
+    <update id="modify">
+        UPDATE `user`
+        <set>
+            <if test="pwd != null">`pwd` = #{pwd},</if>
+            <if test="alias != null">`alias` = #{alias},</if>
+            <if test="email != null">`email` = #{email},</if>
+            <if test="phone != null">`phone` = #{phone},</if>
+            <if test="name != null">`name` = #{name},</if>
+            <if test="gradeId != null">`grade_id` = #{gradeId},</if>
+            <if test="profileImg != null">`profile_img` = #{profileImg},</if>
+            <if test="statusId != null">`status_id` = #{statusId},</if>
+            <if test="locationId != null">`access_location` = #{locationId}</if>
+        </set>
+        WHERE `user_id` = #{id}
+    </update>
+    
+    <delete id="delete"> <!-- 삭제는 반환값이 필요없음  -->
+  	 	delete from user 
+  		where user_id=#{id}
+  	</delete>
+  	
+    <delete id="deleteUsers"> <!-- 삭제는 반환값이 필요없음  -->
+  	 	delete from user 
+  		where user_id in 
+  		<foreach collection="idList" item="id" open="(" separator="," close=")">
+  		 	#{id}
+  		</foreach>
+  	</delete>
+  	
+  	<!-- 회원 활동 정지 -->
+  	<update id="userSanction">
+ 	update user
+        set grade_id = 5
+          , sanction_time = DATE_ADD(NOW(), INTERVAL #{sanctionTime} DAY)
+        where email = #{email}
+	</update>
+	
+	<!-- 정지해제 -->
+	<update id="userSanctionCancel">
+		update user 
+		set grade_id = 1,
+        sanction_time = now() 
+		where email = #{email}
+	</update>
+	
+	<!-- 정지기간 확인 -->
+	<select id="userSanctionTime" resultType="date">
+		select sanction_time 
+		from user 
+		where email = #{email}
+	</select>
+</mapper>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 관리</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/search.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    <link href="post.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <main class="main">
+        <section class="main-section md:main-section">
+            <h1 class="main-section-title">게시글 관리</h1>
+            <header class="main-section-header">
+                <div class="main-section-count">
+                    <p>총 <span>00</span>개</p>
+                </div>
+    
+                <!-- 삭제 버튼 -->
+                <div class="manage-button">
+                    <form action="" class="">
+                        <input type="button" value="삭제" class="btn-main btn-main-create btn-main-create-delete btn-main-small">
+                    </form>
+                </div>
+
+                <!-- 지역 선택창 -->
+                <div class="dropdown-select md:dropdown-select">
+                    <form action="">
+                        <legend for="location" class="d:none">지역 선택창</legend>
+                            <select id="" name="" class="location-select md:location-select">
+                                <option value="서울 전체">서울 전체</option>
+                                <option value="은평/서대문/마포">은평/서대문/마포</option>
+                                <option value="종로/중구/용산">종로/중구/용산</option>
+                                <option value="영등포/구로/금천">영등포/구로/금천</option>
+                                <option value="동작/관악">동작/관악</option>
+                                <option value="강서/양천">강서/양천</option>
+                                <option value="도봉/노원/강북/성북">도봉/노원/강북/성북</option>
+                                <option value="중랑/동대문/성동/광진">중랑/동대문/성동/광진</option>
+                                <option value="강남/서초">강남/서초</option>
+                                <option value="강동/송파">강동/송파</option>
+                            </select>
+                    </form>
+                    
+                    <!-- 내용 검색 버튼 -->
+                    <form class="search-form">
+                        <fieldset class="search md:search">
+                            <legend class="d:none">내용</legend>
+                            <input type="search" placeholder="내용" size="5">
+                            <button type="submit" class="icon icon-color-black icon-search"></button>
+                        </fieldset>
+                    </form>
+                </div>    
+            </header>
+        
+            <!-- 게시글 목록 -->
+            <section class="post-block md:post-block">
+                <h1 class="post-content">게시글 내용~~~</h1>
+                <form action="" class="checkbox-block">
+                    <input type="checkbox">
+                </form>
+    
+                <div class="post-alias-block">
+                    <a class="">닉네임</a>
+                </div>
+    
+                <div class="post-date-block">
+                    <a class="">2023년 9월 20일</a>
+                </div>
+
+                <div class="post-viewcount-block">
+                    <a class="">조회 <span>15</span>건</a>
+                </div>
+    
+                <div class="post-location-block">
+                    <a class="">서울 전체</a>
+                </div>
+
+                <div class="post-comment-block">
+                    <a class="deco md:deco icon-color-black icon-comment">15건</a>
+                </div>
+            </section> 
+
+            <section class="post-block md:post-block">
+                <h1 class="post-content">게시글 내용~~~</h1>
+                <form action="" class="checkbox-block">
+                    <input type="checkbox">
+                </form>
+    
+                <div class="post-alias-block">
+                    <a class="">닉네임</a>
+                </div>
+    
+                <div class="post-date-block">
+                    <a class="">2023년 9월 20일</a>
+                </div>
+
+                <div class="post-viewcount-block">
+                    <a class="">조회 <span>15</span>건</a>
+                </div>
+    
+                <div class="post-location-block">
+                    <a class="">서울 전체</a>
+                </div>
+
+                <div class="post-comment-block">
+                    <a class="deco md:deco icon-color-black icon-comment">15건</a>
+                </div>
+            </section> 
+
+
+            <!-- 페이지 이동 -->
+            <div class="pagination">
+                <a class="" href="">&laquo;</a>
+                <a class="page-active" href="">1</a>
+                <a class="" href="">2</a>
+                <a class="" href="">3</a>
+                <a class="" href="">4</a>
+                <a class="" href="">5</a>
+                <a class="" href="">&raquo;</a>
+            </div>
+
+        </section>
+    </main>
+</body>
+</html>

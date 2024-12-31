@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원상세조회</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/search.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/user/detail.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <main class="main">
+        <section class="user-detail">
+            <h1 class="user-detail-title">회원 상세 조회</h1>
+    
+                <form action="" id="" class="">
+                    
+                    <div class="filebox">
+                        <img src="/css/image/admin-icon/user.svg" class="user-img">
+                        <!-- <label for="file">사진추가</label>
+                            <input type="file" id="file" value="사진추가"> -->
+                        </div>
+                        
+                    <div class="input-box">
+                        <div class="text-box grade-box">
+                            <label>등 급</label>
+                            <div class="user-grade dropdown-select md:dropdown-select">
+                                <!-- 직접 입력하는 일 없이, 현재 등급을 출력하거나, 오른쪽의 등급 선택하면 변경되도록 -->
+                                <input type="text" class="grade" size="15" disabled>
+                                
+                                <label for="grade" class="d:none">등급 선택창</label>
+                                <select id="" name="">
+                                        <option value="유명인1">볶음밥</option>
+                                        <option value="유명인2">쌀밥</option>
+                                        <option value="유명인3">쌀알</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            
+                        <div class="text-box alias-box">
+                            <label>닉네임</label>
+                            <div>
+                                <input type="text" size="32">
+                            </div>
+                        </div>
+
+                        <div class="text-box email-box">
+                            <label>이메일</label>
+                            <div>
+                                <input type="text" size="32">
+                            </div>
+                        </div>
+
+                        <div class="text-box pwd-box">
+                            <label>비밀번호</label>
+                            <div>
+                                <button class="pwd-change-btn">비밀번호 변경</button>
+                            </div>
+                        </div>
+                        
+                        <div class="text-box name-box">
+                            <label>실 명</label>
+                            <div class="">
+                                <input type="text" size="33">
+                            </div>
+                        </div>
+    
+                        <div class="text-box phone-box">
+                            <label>연락처</label>
+                            <div class="">
+                                <input type="tel" size="32">
+                            </div>
+                        </div>
+    
+                        <div class="text-box sign-up-date-box">
+                            <label>가입일</label>
+                            <div class="">
+                                <input type="datetime" size="32">
+                            </div>
+                        </div>            
+    
+                        <div class="text-box user-status-box">
+                            <label>활동상태</label>
+                            <div class="dropdown-select md:dropdown-select">
+                                <input type="text" size="12">
+                            
+                                <label for="" class="d:none">활동상태 선택창</label>
+                                    <select id="" name="">
+                                        <option value="">상태 변경</option>
+                                        <option value="정상">정상</option>
+                                        <option value="정지(7일)">정지(7일)</option>
+                                        <option value="정지(30일)">정지(30일)</option>
+                                        <option value="강퇴">강퇴</option>
+                                    </select>
+                            </div>
+                        </div> 
+
+                        <div class="text-box report-reason-box">
+                            <label>신고유형</label>
+                            <div class="dropdown-select md:dropdown-select">
+                                <input type="text" size="12">
+                                <label for="" class="d:none">신고사유 선택창</label>
+                                    <select id="" name="">
+                                        <option value="">신고 사유</option>
+                                        <option value="">욕설, 비방, 차별, 혐오</option>
+                                        <option value="">홍보, 영리 목적</option>
+                                        <option value="">불법정보</option>
+                                        <option value="">음란, 청소년 유해</option>
+                                        <option value="">개인 정보 노출, 유포, 거래</option>
+                                        <option value="">도배, 스팸</option>
+                                        <option value="">기타</option>
+                                    </select>
+                            </div>
+                        </div> 
+                        
+                    </div>
+                </form>
+
+                <div class="manage-button">
+                    <form action="" class="store-create-button">
+                        <input type="button" value="등록" class="btn-main btn-main-create btn-main-small">
+                    </form>
+                    <form action="" class="store-edit-button">
+                        <input type="button" value="수정" class="btn-main btn-main-create-edit btn-main-small">
+                    </form>
+                    <form action="" class="store-delete-button">
+                        <input type="button" value="취소" class="btn-main btn-main-create bg-color:logo-1 btn-main-small">
+                    </form>
+                </div>
+
+        </section>
+    </main>
+</body>
+</html>

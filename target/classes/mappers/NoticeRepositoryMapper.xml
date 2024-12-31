@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.NoticeRepository">
+
+	<select id="findAll" resultType="Notice">
+		select * from notice order by notice_id desc
+	</select>
+
+	<select id="count" resultType="Integer">
+		select count(notice_id) count from notice
+	</select>
+
+	<select id="last" resultType="Notice">
+		SELECT * from notice order by notice_id desc limit 1
+	</select>
+	
+   	<select id="getListByPage" resultType="Notice">
+	 	select * from notice
+		<where>
+			<if test="noticeId != null">notice_id=#{noticeId}</if>
+		    <if test="query != null">or title like '%${query}%'</if>
+		    <if test="query != null">or content like '%${query}%'</if>
+		</where>
+		order by notice_id desc 
+		limit #{offset}, #{size}
+ 	</select>
+ 	
+ 	<select id="findById" resultType="Notice">
+  		select * from notice where notice_id=#{noticeId}
+  	</select>
+  	
+  	<!--공지사항 등록-->
+  	<insert id="save" parameterType="Notice">
+		INSERT INTO notice(
+			  title
+			, content
+			, opened_date
+			, closed_date
+		) VALUES (
+			  #{title}
+			, #{content}
+			, #{openedDate}
+			, #{closedDate}
+		) 
+    </insert>
+    
+    <!--공지사항 수정-->
+        <update id="modify">
+        UPDATE `notice`
+        <set>
+            <if test="title != null">`title` = #{title},</if>
+            <if test="content != null">`content` = #{content},</if>
+            <if test="openedDate != null">`opened_date` = #{openedDate},</if>
+            <if test="closedDate != null">`closed_date` = #{closedDate}</if>
+        </set>
+        WHERE `notice_id` = #{noticeId}
+    </update>
+    
+	  <!--공지사항 하나 삭제-->
+      <delete id="delete">
+		  delete 
+		  from notice
+		  where notice_id = #{noticeId}
+	  </delete>
+	  
+	  <!--댓글 여러개 삭제-->
+    <delete id="deleteNotices">  
+  	 	delete from notice
+  		where notice_id in 
+  		<foreach collection="noticeList" item="noticeId" open="(" separator="," close=")">
+  		 	#{noticeId}
+  		</foreach>
+  	</delete>
+  
+  	
+</mapper>

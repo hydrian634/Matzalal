@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/components/restDetail/rest_detail.css" rel="stylesheet"
+          type="text/css">
+
+<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2c5ad4cee12e89d07d96681dd05da5b9" defer></script>-->
+<!--    &lt;!&ndash;    <script src="/js/map/map.js" ></script>&ndash;&gt;-->
+<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2c5ad4cee12e89d07d96681dd05da5b9&libraries=LIBRARY" ></script>-->
+<!--    &lt;!&ndash; services 라이브러리 불러오기 &ndash;&gt;-->
+<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2c5ad4cee12e89d07d96681dd05da5b9&libraries=services" ></script>-->
+<!--    &lt;!&ndash; services와 clusterer, drawing 라이브러리 불러오기 &ndash;&gt;-->
+<!--    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2c5ad4cee12e89d07d96681dd05da5b9&libraries=services,clusterer,drawing" ></script>-->
+<!--    <script type="text/javascript" src="/js/function/findRestByAddr.js"></script>-->
+
+</head>
+<body>
+    <main layout:fragment="main">
+<!-- -----------------------------상단 이미지 및 상호명---------------------------------- -->
+<section class="top" >
+    <h1 style="display : none;">상단</h1>
+    <div>
+        <img class="rest_img bg-size:cover" src="/css/image/rest/default-rest.jpeg">
+    </div>
+    <div class="head-container" >
+        <a class="rest_name" th:text="${restDetail.restName}">상호명</a>
+
+    </div>
+    <section class="info" >
+        <h1 style="display : none;">가게 정보</h1>
+        <div class="simple-info">
+            <a class="a1"><span th:if="${restDetail.name != null}"  th:text="${restDetail.name}"></span></a>
+            <a class="icon icon-size:3 icon-heart heart">찜 아이콘</a>
+            <a>
+				<img src="/css/image/icon/star.svg">
+				<span th:if="${restDetail.rating != null}" th:text="${restDetail.rating+'점'}"></span>
+			</a>
+        </div>
+
+        <div class="rest_info">
+            <p class="addr" >주소<span th:text="${restDetail.addr}"></span></p>
+            <p class="phone-no" >전화번호 <span th:text="${restDetail.phone}"></span></p>
+            <p class="time">
+
+                평일  <span th:text="${#strings.substring(restDetail.dayOpen, 0, 2) + ':' + #strings.substring(restDetail.dayOpen, 2, 4)}"></span>
+                	~<span th:text="${#strings.substring(restDetail.dayClose, 0, 2) + ':' + #strings.substring(restDetail.dayClose, 2, 4)}">23:00</span><br>
+                주말 : <span th:text="${#strings.substring(restDetail.endOpen, 0, 2) + ':' + #strings.substring(restDetail.endOpen, 2, 4)}">11:00</span>
+                	~<span th:text="${#strings.substring(restDetail.endClose, 0, 2) + ':' + #strings.substring(restDetail.endClose, 2, 4)}">22:00</span>
+            </p>
+<!--            -->
+        </div>
+
+        <div class="map-layer">
+            <span class="d:none">지도</span>
+
+        </div>
+        <!------------------------------ 메뉴 탭 ----------------------------------->
+        <section class="rest_info_img">
+            <h1 class="img-contain">메뉴</h1>
+            <article class="menu_img">
+                <h1 class="d:none">메뉴</h1>
+                <div class="scroll-img" th:each="ml:${menuList}">
+                    <p th:text="${ml.name}">
+<!--                        <p th:text="${ml.name}"></p>-->
+<!--                        <span ></span>-->
+                    </p>
+<!--                        <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">-->
+                </div>
+            </article>
+        </section>
+        <!----------------------------------- 사진 탭 ------------------------------------->
+        <section class="rest_info_img">
+            <h1 class="img-contain">사진</h1>
+            <div class="scroll-img">
+<!--                <div class="menu_img">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img1})}">-->
+<!--                </div>-->
+<!--                <div class="menu_img">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img2})}">-->
+<!--                </div>-->
+                <div class="menu_img">
+                    <img class="food-img" src="/css/image/rest/taegwang1.jpeg">
+                    <img class="food-img" src="/css/image/rest/taegwang2.png">
+                    <img class="food-img" src="/css/image/rest/taegwang3.jpeg">
+                </div>
+<!--                <div class="menu_img">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img1})}">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img2})}">-->
+<!--                    <img class="food-img" th:src="@{/css/image/{img}(img=${restDetail.img3})}">-->
+<!--                </div>-->
+            </div>
+        </section>
+        <!-- -----------------------------경계선----------------------------- -->
+        <div class="review-btn">
+<!--            <a class="write-review">리뷰 쓰기</a>-->
+            <a class="more-review" href="" th:href="@{/celeb/detail/review(restId=${restDetail.restId})}">더보기</a>
+        </div>
+	<!--  ------------------------ 리뷰 쓰기 ------------------------------>
+        <!--<section class="postReview">
+            <h1 class="d:none"></h1>
+            <div>
+                <form id="reviewForm" class="review-form">
+                    <div class="content_">
+                        <input class="img-onload" type="file" id="photo" name="photo" accept="image/*" >
+                                              <div id="imagePreview" style="width: 100px; height: 100px; overflow: hidden;">
+                                                   <img id="previewImage" src="" alt="이미지 미리보기">
+                                                </div>
+                        <input class="rating-input" type="text" name="rating" placeholder="1~5까지 점수 입력">
+                        <textarea class="txt-area" name="content" maxlength="130"  placeholder="130글자 내외로 작성해 주세요."></textarea>
+                        <div class="command">
+                            <input type="hidden" name="rest_id" th:value="${restDetail.restId}">
+                            <button type="submit" class="btn  font-size:-1">확인</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>-->
+
+        <!--------------------- 후기 탭 ---------------------->
+        <section class="review-area" >
+            <h1 class="d:none">후기</h1>
+            <div class="review-card" th:each="rvv:${reviewView}">
+                <div class="img-container">
+                <img class="review-img" src=""  th:if="${rvv.img != null}" th:src="/css/image/${rvv.img}">
+                </div>
+                    <div class="review-box">
+                    <p class="content" th:text="${rvv.content}">
+                        리뷰 내용
+                    </p>
+                </div>
+                <div class="review-info">
+                    <img class="icon icon-size:1 rank" style="width:32px; height : 32px;" th:src="'/css/image/icon/badge'+${rvv.gradeId}+'.svg'"></img>
+
+                    <a class="user-id" th:text="${rvv.alias}">ID</a>
+                    <a class="rating" th:if="${rvv.rating != null}" th:text="${rvv.rating+'점'}">평점</a>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+    </main>
+</body>
+</html>

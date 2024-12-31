@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuestionEdit</title>
+    <link href="/css/components/qna/question/edit.css" rel="stylesheet" type="text/css">
+<!--	<script src="/js/qna/question.js"></script>-->
+</head>
+<!-- form, div - block
+label, input, textarea - inline -->
+<body>
+    <main layout:fragment="main" class="qna-edit-main">
+        <section class="qna-edit-section">
+            <h1 class="d:none">문의하기 글 수정 폼</h1>
+
+            <form class="qna-edit-form" action="edit" th:method="put" th:object="${question}">
+				
+                <div class="title-box">
+                    <input class="qna-title" type="text" name="title" th:value="*{title}" rows="1" required>
+                </div>
+                <div class="contents-box">
+                    <div class="content-box">
+                        <textarea class="qna-content" name="content" th:text="*{content}" rows="13" required></textarea>
+
+                        <div class="img-box">
+							<i class="icon icon-add-photo-image"></i>
+                            <input class="img-content" type="file" name="imageFile" >
+                            <img th:src="@{'/css/image/cs-center/qna' + ${question.img}}" >
+                        </div>
+
+<!--                        <div class="open-close-box">
+                            <span class="icon"><i class="icon icon-open icon-color:black"></i></span>
+                            <input type="radio" name="open" value="true"> 공개
+                            <span class="icon"><i class="icon icon-close icon-size:4 icon-color:black"></i></span>
+                            <input type="radio" name="open" value="false"> 비공개
+						</div>-->
+						 <fieldset>
+						  <div class="open-close-box">
+				                <label><input type="radio" name="open" value="0" >공개</label>
+				                <label><input type="radio" name="open" value="1">비공개</label>
+				          </div>
+	                     </fieldset>
+<!--						<div class="open-close-box">
+     							<input class="input-query" type="text" placeholder="공개 여부">
+								<button class="icon icon-open">공개 여부</button>
+						</div>-->
+						</div>
+                    </div>
+
+                <!-- type submit 으로 해야 하나..? -->
+                <div class="cancle-edit-box">
+                    <input onclick="location.href='/qna/question/list'" class="btn-cancel" type="button" value="취소">
+                    <input onclick="location.href='/qna/question/list'" class="btn-edit" type="submit" name="cmd" value="수정">
+                </div>
+
+                <!-- <div class="qna-edit-btn-box d:flex mt:4-2">
+                <a class="btn btn-editister mv:auto md:btn-bigger">등록</a>
+            	</div> -->
+            	
+                <input type="hidden" name="questionId" th:value="*{questionId}" class="id">
+
+            </form>
+
+        </section>
+
+    </main>
+</body>
+
+</html>

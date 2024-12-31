@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/util.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/sidebar.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/layout.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/js/admin/inc/aside.js" defer></script>
+</head>
+<body class="md:body body layout">
+	<div class="layout-header" >
+    	<div th:replace="~{admin/inc/header::.header}"></div>
+    </div>
+    
+    <div class="layout-aside">
+    	<div th:replace="~{admin/inc/sidebar::.aside}"></div>
+    </div>
+    
+    <div class="layout-main">
+	    <div layout:fragment="main">
+	    	이 내용이 나오면 안됨.
+    	</div>
+    </div>	  
+</body>
+</html>

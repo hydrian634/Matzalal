@@ -1,0 +1,80 @@
+.main-section-count{
+	margin: 10px 0;
+}
+
+.manage-button{
+	margin-bottom: 20px;
+}
+
+.notice-list{
+	width: 100%
+}
+
+.notice-block{
+    display: grid;
+    width: 100%;
+    height: 80px;
+
+    grid-template-columns: 30px 1fr 1fr;
+    grid-template-rows: minmax(20px, auto) 20px 20px;
+
+    grid-template-areas: 
+    "checkbox notice    notice"
+    "checkbox reg_date view_count"
+    "checkbox start_date end_date"
+    ;
+
+    align-items: center;
+    font-size: var(--font-size-0);
+    grid-gap: var(--gap-3);
+    border-bottom: 1px solid var(--color-base-3);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.notice-block
+    .checkbox-block{
+        grid-area: checkbox;
+        padding: 10px;
+    }
+
+.notice-block
+    .notice-title{
+        grid-area: notice;
+        font-weight: 700;
+        font-size: var(--font-size-2);
+    }
+
+.notice-block
+    .notice-reg_date-block{
+        grid-area: reg_date;
+    }
+
+.notice-block
+    .notice-start_date-block{
+        grid-area: start_date;    
+        font-size: var(--font-size-2);
+        color: var(--color-base-4);
+    }   
+
+.notice-block
+    .notice-end_date-block{
+        grid-area: end_date;    
+        font-size: var(--font-size-2);
+        color: var(--color-base-4);
+    }  
+
+
+@media (min-width : 700px) {
+    .md\:notice-block{
+        font-size: var(--font-size-2);
+        height: 100px;
+    }
+
+    .md\:notice-block
+        .notice-title{
+            font-size: var(--font-size-5);
+        }
+
+    
+}

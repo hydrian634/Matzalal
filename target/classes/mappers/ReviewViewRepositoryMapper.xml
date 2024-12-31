@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.ReviewViewRepository">
+
+
+    <select id="findReviewThreeByRestId" resultType="ReviewView">
+            select distinct
+                    rv.*
+                 , u.user_id as user_id
+                 , u.alias as alias
+                 , g.grades_id as grade_id
+                 , g.grade as grade
+                 , g.img  as img
+             from review_view rv
+            left join user u on rv.user_id = u.user_id
+            left join grades g on u.grade_id = g.grades_id
+            where rest_id = #{restId}
+            limit 3
+    </select>
+    <select id="findReviewAllByRestId" resultType="ReviewView">
+        select distinct rv.*, u.user_id, u.alias, g.grades_id, g.grade, g.img from review_view rv
+        left join user u on rv.user_id = u.user_id
+        left  join grades g on u.grade_id = g.grades_id
+        where rest_id = #{restId};
+    </select>
+    <select id="findReviewCount" resultType="ReviewTotal">
+        select count(rest_id) total from review_view rv
+        where rv.rest_id=#{rest_id}
+        group by rest_id
+    </select>
+</mapper>

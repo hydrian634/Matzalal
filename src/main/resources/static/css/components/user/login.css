@@ -1,0 +1,82 @@
+/*.body{*/
+/*    width : 393px;*/
+/*    height: 100vh;*/
+/*}*/
+
+.login-box{
+    width : inherit;
+    height: 147px;
+
+}
+
+.login-logo{
+    height : 80px;
+    width : 85px;
+}
+
+.label-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.label{
+    width: 270px;
+    text-align: left;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+.find_reg_idpw{
+    color : var(--color-base-4);
+    font-size: 18px;
+    width: 120px;
+    height: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+
+/* -----------layout---------------- */
+
+.login{
+    display: flex;
+    flex-direction: column;
+    gap : 35px;
+    align-items: center;
+    margin-top : 35px;
+}
+
+.login
+    .label-btn{
+    display: flex;
+    flex-direction: column;
+    gap : 35px;
+}
+
+.login-box{
+    display: flex;
+    flex-direction: column;
+    gap : 25px;
+    align-items: center;
+    
+}
+
+
+.find-box {
+    display: flex;
+    gap : 10px;
+    align-items: center;
+}
+
+.sns-box {
+    gap : 10px;
+    align-items: center;
+}
+
+.socialbtn-list{
+    display: flex;
+    flex-direction: column;
+    gap : 5px;
+}
+

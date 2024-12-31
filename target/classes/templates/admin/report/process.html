@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/inc/layout.html}">
+
+    <head>
+        <title>회원 활동 정지</title>
+        <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/report/process.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="/js/admin/report/process.js" defer></script>
+    </head>
+
+    <body>
+        <main layout:fragment="main" class="report">
+            <section class="main-section md:main-section">
+                <h1 class="d:none">회원 활동 정지 처리</h1>
+
+            <!-- Form with fieldset, legend, and label -->
+            <form class="report-form" action="process" th:method="PUT">
+                <fieldset>
+                    <legend class="report-title">회원 활동 처분</legend>
+                    <div class="reported-user-block">
+						<span>신고 구분 : <input name="reportGbn" th:value="${report.reportGbn}"></span>
+						<span>회원 닉네임 : <span th:text="${report.alias}"></span></span>
+						<span>회원 이메일 : <span th:text="${report.email}"></span></span>
+						<input type="hidden" name="userId" th:value="${report.userId}">
+						<input type="hidden" name="adminId" th:value="${#authentication.principal.id}">
+						<input type="hidden" name="postId" th:value="${report.postId}">
+						<input type="hidden" name="commentId" th:value="${report.commentId}">
+						
+						<div th:switch="${report.reportGbn}">
+							<span>신고 대상 : 
+								<span th:case="USER" th:text="${report.alias}"></span>
+								<span th:case="POST" th:text="${report.title}"></span>
+								<span th:case="COMMENT" th:text="${report.cmtContent}"></span>
+							</span>
+						</div>
+					</div>
+                    <div class="report-box">
+						<ul>
+	                        <li th:each="r:${list}">
+                    			<input type="radio" name="reason" th:field="*{report.reportReasonId}"
+                    				   th:value="${r.reportReasonId}" th:checked="${report.reportReasonId == r.reportReasonId}">
+                				<label for="reason" th:text="${r.category}"></label>
+                			</li>
+						</ul>
+                    </div>
+                </fieldset>
+
+                <!-- Form which will send a POST request to the current URL -->
+                <div class="write-reason-box">
+                    <textarea class="content" name="content" rows="8"
+                        placeholder="회원 정지 사유에 대해 더 기술할 것이 있다면 작성해주세요."></textarea>
+                </div>
+                
+                <div class="select-sanctionTime">
+					<span>회원정지기간</span>
+					<input type="radio" name="sanctionTime" value="1" th:text="1일">
+					<input type="radio" name="sanctionTime" value="7" th:text="7일">
+					<input type="radio" name="sanctionTime" value="30" th:text="30일">
+					<input type="radio" name="sanctionTime" value="365000" th:text="1000년">
+				</div>
+
+                 <div class="cancle-report-box">
+					<a href="/admin/report/list">
+                    	<input class="btn-cancel" type="button" value="취소">
+                    </a>
+                    <a>
+                    	<input class="btn-report" type="submit" value="처리">
+					</a>
+                </div>
+            </form>
+
+            </section>
+
+        </main>
+    </body>
+
+</html>

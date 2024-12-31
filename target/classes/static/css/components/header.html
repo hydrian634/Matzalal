@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="../reset.css" rel="stylesheet" type="text/css">
+  <link href="../root.css" rel="stylesheet" type="text/css">
+  <link href="../style.css" rel="stylesheet" type="text/css">
+  <link href="../util.css" rel="stylesheet" type="text/css">
+  <link href="../icon.css" rel="stylesheet" type="text/css">
+  <link href="../button.css" rel="stylesheet" type="text/css">
+  <link href="layout.css" rel="stylesheet" type="text/css">
+  <link href="header.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<header class="header md:header">
+	  <nav class="main-menu content-box">
+					<!-- 모바일 -->
+	    <div class="md:d:none content-box">
+	      <a class="d:flex" href="../"><img src="/css/image/icon/back.svg"></a>
+	      <h1> 커뮤니티 </h1>
+	    </div>
+	    			<!-- 웹 -->
+	    <a class="mxd:d:none" href="/index"><img src="/css/image/icon/logo.svg" style="height:20%" alt="맛잘알"></a>
+	    <ul class="mxd:d:none web">
+		  <li class="mxd:d:none active"><a href="/commu/main" class="active">커뮤니티</a></li>
+		  <li class="mxd:d:none"><a href="/celeb/list" >유명인</a></li>
+		  <li class="mxd:d:none"><a href="/user/mypage">마이페이지</a></li>
+		  <li class="mxd:d:none"><a href="/notice/list" >고객센터</a></li>
+			<li class="log" sec:authorize="isAnonymous()"><a class="d:flex" href="/stranger/login"><img src="/css/image/icon/person.svg">
+													</a></li>
+			<li class="log" sec:authorize="isAuthenticated()"><a class="d:flex" href="/user/logout"><img src="/css/image/admin-icon/logout.svg"></a></li>
+	    </ul>
+	  </nav>
+	</header>
+
+</body>
+</html>

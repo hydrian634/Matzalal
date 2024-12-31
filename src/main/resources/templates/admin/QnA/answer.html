@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/inc/layout.html}"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A 답변 등록</title>
+		<link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    	<link href="/css/components/admin/QnA/answer.css" rel="stylesheet" type="text/css">
+		<!--<script type="text/javascript" src="/js/admin/QnA/reg.js" defer></script>-->
+
+</head>
+<body>
+    <main layout:fragment="main" class="main-section md:main-section">
+        <section class="reg-qna">
+            <h1 class="reg-qna-title">Q&A 답변 등록</h1>
+            <div class="question-block">
+                <div class="question-title-block">
+                    <div class="question-title">
+                        <span th:text="${question.title}">이것은 질문글의 제목입니다.</span>
+                    </div>
+                    <div class="question-user-date">
+						<img th:src="@{'/css/image/icon/badge' + ${question.gradeId} + '.svg'}">
+                        <!--<span th:class="${question.gradeId}">등급</span>-->
+                        <span th:text="${question.alias}">닉네임</span>
+                        <span th:text="${#dates.format(question.createdDate, 'yyyy.MM.dd HH:mm')}" class="question-date">2023.10.07</span>
+                    </div>
+                </div>
+                <p th:text="${question.content}" class="question-content">
+                    여기는 질문자가 작성한 본문이 들어가는 곳입니다.
+                </p>
+                <div>
+                    <span th:class="${question.open == 0} ? 'icon icon-size:2 icon-close' : 'icon icon-size:2 icon-open'" class="icon icon-color-black icon-private">공개여부 설정</span>
+                </div>
+            </div>
+            
+            <form action="regAnswer" method="POST" class="reg-answer-form">
+				<input type="hidden" name="questionId" th:value="${question.questionId}">
+                <div class="answer-title-block">
+                    <div class="answer-title">
+                        <input name="aTitle" placeholder="답변글 제목을 작성해주세요">
+                    </div>
+                    <div>
+                        <div class="answer-admin-date">
+                            <input type="hidden" name="adminId" th:value="${#authentication.principal.id}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="answer-content-block">
+                    <textarea class="answer-content" name="aContent"
+                    placeholder="답변 본문을 작성 바랍니다."></textarea>
+
+                    <!--<div class="add-answer-pic" >
+                        <label onchange="readURL(this);"></label>
+                        <input type="file" class="icon icon-color-black icon-gallery">
+                        <img id="preview" />
+                    </div>-->
+                </div>
+
+            <div class="manage-button">
+				<a class="store-create-button">
+                    <input type="submit" value="등록"
+                        class="btn-main btn-main-create-admin btn-main-small">
+                </a>
+                <a class="store-delete-button" href="/admin/QnA/list">
+                    <input type="button" value="취소"
+                		class="btn-main btn-main-create-admin bg-color:logo-1 btn-main-small">
+                </a>
+            </div>
+        
+        </form>
+        </section>
+    </main>
+</body>
+</html>

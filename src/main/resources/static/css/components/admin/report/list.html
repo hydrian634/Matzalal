@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신고 관리</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/search.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/report/list.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <main class="main">
+        <section class="main-section md:main-section">
+            <h1 class="main-section-title">신고 관리</h1>
+            <header class="main-section-header">
+                <div class="main-section-count">
+                    <p>총 <span>00</span>개</p>
+                </div>
+    
+                <!-- 등록, 수정, 삭제 버튼 -->
+                <div class="manage-button">
+                    <form action="" class="store-create-button">
+                        <input type="button" value="처리" class="btn-main btn-main-create btn-main-small">
+                    </form>
+                    <form action="" class="store-delete-button">
+                        <input type="button" value="삭제" class="btn-main btn-main-create btn-main-create-delete btn-main-small">
+                    </form>
+                </div>
+                  
+                <div class="dropdown-select md:dropdown-select">
+                    <form action="" class="report-select md:report-select">
+                        <legend for="report" class="d:none">신고구분 선택창</legend>
+                            <select id="" name="">
+                                <option value="회원신고">회원신고</option>
+                                <option value="게시글신고">게시글 신고</option>
+                                <option value="댓글신고">댓글 신고</option>
+                            </select>
+                    </form>
+            
+                    <form action="" class="response-status-select md:response-status-select">
+                        <legend for="response" class="d:none">답변 상태 선택창</legend>
+                            <select id="" name="">
+                                <option value="처리완료">처리완료</option>
+                                <option value="미처리">미처리</option>
+                            </select>
+                    </form>
+                </div>
+            </header>
+        
+            <!-- 본문!! -->
+            <!-- 신고 목록 -->
+            <section class="report-block md:report-block">
+                <h1 class="report-title d:none">신고 목록</h1>
+                <form action="" class="checkbox-block">
+                    <input type="checkbox">
+                </form>
+
+                <!-- 회원 신고, 게시글 신고, 댓글 신고 인지에 따라 바뀌는 걸로. -->
+                <div class="report-type-block">
+                    <a class="report-type-style">회원 신고</a>
+                </div>
+
+                <div class="report-date-block">
+                    <a class="">2023년 9월 20일</a>
+                </div>
+
+                <div class="report-category-block">
+                    <a class="">욕설, 비방, 차별, 혐오</a>
+                </div>
+
+                <div class="report-reporter-block">
+                    <a class="">신고자 :</a>
+                </div>
+
+                <div class="report-reporter-alias-block">
+                    <a class="">닉네임</a>
+                </div>
+
+                <div class="report-descript-block">
+                    <a class="">신고사유 설명</a>
+                </div>
+
+                <!-- 미처리 시 색이 accent 2, 처리완료 시 accent 1로 변경-->
+                <div class="report-status-block">
+                    <a class="report-completed report-completed-no">미처리</a>
+                </div>
+            </section> 
+
+
+
+            <section class="report-block md:report-block">
+                <h1 class="report-title d:none">신고 목록</h1>
+                <form action="" class="checkbox-block">
+                    <input type="checkbox">
+                </form>
+
+                <div class="report-type-block">
+                    <a class="report-type-style">회원 신고</a>
+                </div>
+
+                <div class="report-date-block">
+                    <a class="">2023년 9월 20일</a>
+                </div>
+
+                <div class="report-category-block">
+                    <a class="">욕설, 비방, 차별, 혐오</a>
+                </div>
+
+                <div class="report-reporter-block">
+                    <a class="">신고자 :</a>
+                </div>
+
+                <div class="report-reporter-alias-block">
+                    <a class="">닉네임</a>
+                </div>
+
+                <div class="report-descript-block">
+                    <a class="">신고사유 설명</a>
+                </div>
+
+                <!-- 미처리 시 색이 accent 2, 처리완료 시 accent 1로 변경-->
+                <div class="report-status-block">
+                    <a class="report-completed">처리완료</a>
+                </div>
+            </section> 
+
+            <!-- 페이지 이동 -->
+            <div class="pagination">
+                <a class="" href="">&laquo;</a>
+                <a class="page-active" href="">1</a>
+                <a class="" href="">2</a>
+                <a class="" href="">3</a>
+                <a class="" href="">4</a>
+                <a class="" href="">5</a>
+                <a class="" href="">&raquo;</a>
+            </div>
+
+        </section>
+    </main>
+</body>
+</html>

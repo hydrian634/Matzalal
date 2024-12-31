@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+	
+<head>
+    <title>공지사항</title>
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/notice/list.css" rel="stylesheet" type="text/css">
+ 	<script src="/js/notice/notice-dom.js"> </script> 
+</head>
+
+<body>
+	<main layout:fragment="main" class="notice-list-main">
+	<!--tab 부분-->
+        <div class="jump-tab">
+            <button onclick="location.href='list'" class="cursor-pointer:pointer btn btn-user-tab btn-user-tab-line md:findbtn">NOTICE</button>
+            <button onclick="location.href='/faq/list'" class="cursor-pointer:pointer btn btn-user-tab md:findbtn" style="color: #818181;">FAQ</button>
+            <button onclick="location.href='/qna/question/list'" class="cursor-pointer:pointer btn btn-user-tab md:findbtn" style="color: #818181;">QNA</button>
+        </div>
+	<!--검색 commu_main.css 에서 가져온 부분-->
+	<!--- 고정버튼:검색,글쓰기 - -->
+    <section class="fixed-button md:fixed-button">
+        <h1 class="d:none"> 고정버튼: 검색</h1>
+
+        <div class="search">
+          <section class="query-filter">
+			<!--<a href="" class="icon icon-search icon-size:5 icon-color:base-5"> 검색</a>-->
+	            <form>
+		            <fieldset>
+		                <legend class="d:none">검색</legend>
+		                <input class="search-input input-query" 
+		                		type="text" 
+		                		placeholder="검색어를 입력하세요.">
+		                <button class="cursor-pointer:pointer btn-search icon icon-search icon-size:2 icon-color:base-5">검색</button>
+		            </fieldset>
+	        	</form>
+      	 </section> <!--  query-filter  -->
+        </div>
+    </section>
+		
+<!--=========================notice-template=========================-->
+	<div class="notice-template">
+	    <div class="notice-qty">총 <span th:text="${count}"></span><span>건</span></div>
+	    
+		<!--디테일 조회 링크-->
+		<div class="notice-list-box" th:each="n:${list}" id="link"
+			th:onclick="|location.href='@{/notice/detail(notice-id=${n.noticeId})}'|">  <!-- 여기 div class로 구역 잡기 -->
+	        <section class="notice-list-box-left">
+	            <h1 class="d:none">공지사항 목록</h1>
+	            <div class="list-left-side"><span class="notice-number" th:text="${n.noticeId}" 
+	            	href="?n=1" th:href="@{?n={n} (n=${n.noticeId})}"></span><span>.</span>
+	                <h1 class="cursor-pointer:pointer" th:text="${n.title}">공지사항 리스트 제목</h1>
+	                <div class="reg-date" th:text="${#dates.format(n.createdDate, 'yyyy.MM.dd.')}">2023.08.04</div>
+	            </div>
+	        </section>
+	            
+	        <section class="notice-list-box-right">
+	          <div class="list-right-side">
+	          	<span class="gotodetail deco icon-right-arrow icon-size:2">화살표</span>
+	          </div>
+	        </section>
+    	</div>
+        
+		<!-- 페이지 이동 -->
+            <div class="pagination">
+                <a class="" th:if="${currentPage > 1}" th:href="@{/notice/list(page=${currentPage-1})}">&laquo;</a>
+                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+                	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+                	th:text="${pageNo}" th:href="@{/notice/list(page=${pageNo})}" 
+                	th:class="${currentPage == pageNo} ? 'page-active' : ''">
+                </a>
+                <a th:if="${currentPage < pageCount+1}" th:href="@{/notice/list(page=${currentPage+1})}">&raquo;</a>
+            </div>
+	</div>
+	</main>
+</body>	
+</html>

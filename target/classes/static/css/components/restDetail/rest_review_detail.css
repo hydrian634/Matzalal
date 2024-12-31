@@ -1,0 +1,42 @@
+.review-btn .write-review {
+  grid-column: 5;
+}
+
+.review-area {
+  padding-top: 10px;
+}
+
+.review-box .content {
+   grid-row: 2;
+  display: -webkit-flex;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 30;
+  overflow: hidden;
+  white-space: no-wrap;
+  text-overflow: ellipsis;
+  word-break: break-word;
+
+  width: 350px;
+  height: 75px;
+
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+
+
+  /* margin-left: 45px; */
+  margin: auto;
+  line-height: 15px;
+
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .review-btn {
+    width: 90%;
+  }
+
+  .review-btn .write-review {
+    grid-column: 5;
+  }
+}

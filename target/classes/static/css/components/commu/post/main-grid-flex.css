@@ -1,0 +1,208 @@
+
+/*----------------- grid --------------------*/
+
+.commu-area 
+    .container {
+    width: 360px;
+    /* height: 100%; */
+    background-color: var(--color-base-1);
+    padding: 30px 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    
+    display: grid;
+    grid-template-columns: 180px 180px;
+    grid-template-rows: 20px 1fr 20px;
+    grid-template-areas: 
+    "top top"
+    "middle middle"
+    "bottom bottom";
+    grid-gap: 30px;
+}
+
+
+
+/*------------------ grid --------------------*/
+.top{
+    grid-area: top;
+    display: flex;
+    justify-content : space-between;
+    margin-right: 20px;
+} 
+
+.middle{
+    grid-area: middle;
+    margin-right: 20px;
+}
+
+.bottom{
+    grid-area: bottom;
+}
+
+.middle{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    grid-template-areas: 
+    "title"
+    "content"
+    "picture";
+}
+
+.middle
+    .title{
+        grid-area: title;
+    }
+
+.middle
+    .content{
+        grid-area: content;
+    }
+.middle
+    .picture{
+        grid-area: picture;
+    }
+/*------------------ top --------------------*/
+
+.top{
+}
+
+.member_info,
+.date_info{
+    display: flex;
+justify-content: center;    
+gap: 10px;
+}
+.member_info{
+    font-size: 14px; 
+}
+
+.date_info{
+    font-size: 12px; 
+    color: var(--color-base-4);
+    margin-right: 5px;
+}
+
+/*------------------ middle --------------------*/
+
+
+.middle{
+    /* display: flex;
+    flex-direction: column;     */
+    padding-right: 10px;
+    gap:30px; 
+    }
+
+.middle
+    .title{
+    font-size: 15px;
+    }
+
+
+.middle
+    .content{
+    font-size: 14px;
+    color: var(--color-base-4);
+
+}
+
+
+.middle
+    picture{
+        display: flex;
+        gap:15px; 
+}
+
+
+.middle
+    .picture
+        img{
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 5px; 
+            
+        }
+
+/* 이미지가 없을 때 숨깁니다. */
+.middle 
+    .picture 
+        img[src=""] {
+        display: none;
+        }
+/*------------------ bottom --------------------*/
+
+.commu-area 
+    .bottom{
+        display: flex;
+        gap:10px; 
+    }
+
+.view,
+.like,
+.comment{
+    display: flex;
+    /* align-items: center; */
+    gap:10px;
+}
+
+
+/*------------------  --------------------*/
+.commu-area
+.post-card{
+
+}
+
+
+
+
+/*------------------ 반응형 --------------------*/
+
+@media (min-width: 700px) {
+    .commu-area 
+       .md\:container{ 
+            width: 300px;
+
+            display: grid;
+            grid-template-columns: 150px 150px;
+            grid-template-rows: repeat(auto-fit 20px);
+            grid-template-areas: 
+            "top top"
+            "middle middle"
+            "bottom bottom";
+            grid-gap: 30px;
+            
+        }
+    .middle
+        .md\:picture{
+            display: flex;
+            gap: 10px;
+        }
+        
+    .top
+        .md\:date_info{
+
+            margin-right: px;
+        }
+
+    }
+
+
+/*------------------ card layout --------------------*/
+
+.post-layout{  
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--gap-3);
+}
+
+
+@media (min-width: 700px) {
+    .md\:commu-area
+       { 
+        display: flex;
+        gap: var(--gap-3);
+    }            
+
+}

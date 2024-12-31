@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.UserGradeRepository">
+
+    <insert id="save" parameterType="userGrade">
+        insert into user_grades(user_id)
+        values (#{userId})
+    </insert>
+
+    <!--회원 수정 시 등급 권한 설정 업데이트-->
+    <update id="modify">
+        UPDATE user_grades
+        SET
+        user_id = #{id},
+        grades_id = #{gradeId}
+        WHERE user_id = #{id}
+    </update>
+
+</mapper>

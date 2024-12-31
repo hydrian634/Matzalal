@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>맛집 정보 관리</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/search.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    <link href="list.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- 헤더는 플렉스, 본문은 그리드 적용 -->
+
+    <main class="main">
+    <section class="main-section md:main-section">
+        <h1 class="main-section-title">맛집 정보 관리</h1>
+        <header class="main-section-header">
+            <div class="main-section-count">
+                <p >총 <span>00</span>개</p>
+            </div>
+
+            <!-- 등록, 수정, 삭제 버튼 -->
+            <div class="manage-button">
+                <form action="" class="store-create-button">
+                    <input type="button" value="등록" class="btn-main btn-main-create btn-main-small">
+                </form>
+                <form action="" class="store-edit-button">
+                    <input type="button" value="수정" class="btn-main btn-main-create-edit btn-main-small">
+                </form>
+                <form action="" class="store-delete-button">
+                    <input type="button" value="삭제" class="btn-main btn-main-create btn-main-create-delete btn-main-small">
+                </form>
+            </div>
+
+            <div class="dropdown-select md:dropdown-select">
+                <!-- 유명인 선택창 -->
+                <form action="">
+                    <legend for="celeb" class="d:none">유명인 선택창</legend>
+                        <select id="" name="" class="celeb-select md:celeb-select">
+                            <option value="유명인1">유명인1</option>
+                            <option value="유명인2">유명인2</option>
+                            <option value="유명인3">유명인3</option>
+                            <option value="유명인4">유명인4</option>
+                            <option value="유명인5">유명인5</option>
+                        </select>
+                </form>
+
+                <!-- 지역 선택창 -->
+                <form action="">
+                    <legend for="location" class="d:none">지역 선택창</legend>
+                        <select id="" name="" class="location-select md:location-select">
+                            <option value="서울 전체">서울 전체</option>
+                            <option value="은평/서대문/마포">은평/서대문/마포</option>
+                            <option value="종로/중구/용산">종로/중구/용산</option>
+                            <option value="영등포/구로/금천">영등포/구로/금천</option>
+                            <option value="동작/관악">동작/관악</option>
+                            <option value="강서/양천">강서/양천</option>
+                            <option value="도봉/노원/강북/성북">도봉/노원/강북/성북</option>
+                            <option value="중랑/동대문/성동/광진">중랑/동대문/성동/광진</option>
+                            <option value="강남/서초">강남/서초</option>
+                            <option value="강동/송파">강동/송파</option>
+                        </select>
+                <!-- <button class="icon icon-color-base:4 icon-drop-down-arrow">선택</button> -->
+                </form>
+
+                <!-- 상호명 검색창 -->
+                <form class="search-form">
+                    <fieldset class="search md:search">
+                        <legend class="d:none">상호명 검색</legend>
+                            <input type="search" placeholder="상호명" size="5">
+                            <button type="submit" class="icon icon-color-black icon-search"></button>
+                    </fieldset>
+                </form>
+
+            </div>
+        </header>
+
+
+        <!-- 맛집 목록 -->
+        <section class="store-block md:store-block">
+            <h1 class="store-name-block">상호명1dddddddsdsfdfsfds</h1>
+            <form action="" class="checkbox-block">
+                <input type="checkbox">
+            </form>
+
+            <div class="celeb-block">
+                <a class="">유명인1</a>
+            </div>
+
+            <div class="location-block">
+                <a class="">중랑/동대문/성동/광진</a>
+            </div>
+
+            <div class="date-block">
+                <a class="">2023년 9월 20일</a>
+            </div>
+
+            <div class="review-block md:review-block">
+                <a class="deco md:deco icon-color-black icon-review">0건</a>
+            </div>
+        </section> 
+
+        <section class="store-block md:store-block">
+            <h1 class="store-name-block">상호명1dddddddsdsfdfsfds</h1>
+            <form action="" class="checkbox-block">
+                <input type="checkbox">
+            </form>
+
+            <div class="celeb-block">
+                <a class="">유명인1</a>
+            </div>
+
+            <div class="location-block">
+                <a class="">중랑/동대문/성동/광진</a>
+            </div>
+
+            <div class="date-block">
+                <a class="">2023년 9월 20일</a>
+            </div>
+
+            <div class="review-block md:review-block">
+                <a class="deco md:deco icon-color-black icon-review">0건</a>
+            </div>
+        </section> 
+
+        <!-- 페이지 이동 -->
+        <div class="pagination">
+            <a class="" href="">&laquo;</a>
+            <a class="page-active" href="">1</a>
+            <a class="" href="">2</a>
+            <a class="" href="">3</a>
+            <a class="" href="">4</a>
+            <a class="" href="">5</a>
+            <a class="" href="">&raquo;</a>
+        </div>
+    </section>
+</main>
+
+</body>
+</html>

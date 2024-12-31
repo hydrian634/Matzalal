@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원탈퇴</title>
+
+    <link href="/css/components/user/user_delete.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <main layout:fragment="main">
+        <section th:object="${userView}" class="user-delete">
+            <h1 class="d:none">회원탈퇴</h1>
+            <div class="myinfo md:myinfo">
+                <img id="profile-img" src="/css/image/user/noh-profile.png" th:src="@{'/css/image/user/' + ${userView.profileImg}}">
+                <img class="w:32 h:32" src="/css/image/icon/badge1.svg" th:src="@{'/css/image/icon/' + ${userView.gradeImg}}">
+                <p th:text="${userView.alias}" class="nickname">바지사장</p>
+            </div>
+            <ul class="list md:list">
+                <li class="list-card"><a href="/user/mypost">
+                    <span class="card-label">작성한 글</span>
+                    <span th:text="${userView.postCount}">155</span>
+                </a>
+                </li>
+                <li class="list-card"><a href="/user/mycomment">
+                    <span class="card-label">작성한 후기</span>
+                    <span th:text="${userView.commentCount}">55</span>
+                </a>
+                </li>
+                <li class="list-card"><a href="/user/myfav">
+                    <span class="card-label">찜한 목록</span>
+                    <span th:text="${userView.favCount}">5</span>
+                </a>
+                </li>
+            </ul>
+
+            <section class="ment-box md:ment-box">
+                <h1 class="ment-title"><span th:text="*{name}" class="nickname-impact">바지사장</span> 회원님, 탈퇴하시겠습니까?</h1>
+                <p class="ment-content">탈퇴시 회원님의 정보 및 서비스 이용 기록이 삭제됩니다</p>
+            </section>
+            <form action="delete" th:method="put">
+                <div>
+                    <input type="hidden" name="id" th:value="${userView.id}">
+                    <input class="btn btn-main" type="submit" name="cmd" value="탈퇴하기">
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

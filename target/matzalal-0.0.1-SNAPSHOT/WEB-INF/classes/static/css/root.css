@@ -1,0 +1,71 @@
+
+:root{
+    /* ========== color palette ===========  */
+
+    /* base color */
+    --color-base-0: #FFFFFF;
+    --color-base-1: #F5F5F5;
+    --color-base-2: #E7E7E7;
+    --color-base-3: #D9D9D9;
+    --color-base-3-1: #B7B7B7;
+    --color-base-4: #A39F9F;
+    --color-base-5: #818181;
+    --color-base-6: #000000;
+
+    --color-accent-1: #677899;
+    --color-accent-2: #9EA6BA;
+    --color-accent-3: #A7A7A7;
+    --color-main-1: #FFFAF5;
+    --color-main-2: #F5EAD1;
+
+    --color-red: red;
+
+    /* color logo */
+    --color-logo-1: #FF5A5A;
+    --color-logo-2: #F58634;
+    --color-logo-3: #FFCC29;
+
+    /* radius size */
+    --radius-1: 5px;
+    --radius-1-1: 8px;
+    --radius-2: 10px;
+    --radius-2-1: 12px;
+    --radius-3: 20px;
+    --radius-4: 30px;
+
+    /* icon size */
+    --icon-size-0: 15px;
+    --icon-size-1: 18px;
+    --icon-size-1-1: 20px;
+    --icon-size-2: 24px;
+    --icon-size-3: 28px;
+    --icon-size-4: 30px;
+    --icon-size-5: 32px;
+    --icon-size-5-1: 35px;
+    --icon-size-6: 90px;
+    --icon-size-6-1 : 100px;
+    --icon-size-7: 120px;
+
+    /* font size */
+    --font-size-0 : 10px;
+    --font-size-1 : 11px;
+    --font-size-2 : 12px;
+    --font-size-3 : 13px;
+    --font-size-4 : 14px;
+    --font-size-5 : 15px;
+    --font-size-6 : 16px;
+    --font-size-7 : 17px;
+    --font-size-8 : 18px;
+    --font-size-9 : 19px;
+    --font-size-10 : 20px;
+
+    /* gap size */
+    --gap-1: 5px;
+    --gap-2: 8px;
+    --gap-3: 10px;
+    --gap-4: 15px;
+    --gap-5: 20px;
+    --gap-6: 30px;
+    --gap-7: 45px;
+
+}

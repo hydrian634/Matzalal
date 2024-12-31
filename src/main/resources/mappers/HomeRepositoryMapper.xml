@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.HomeRepository">
+
+    <select id="findRecomViewAll" parameterType="RecomView">
+        select * from restaurant
+    </select>
+
+    <select id="findReview" parameterType="Review">
+<!--        select rvv.*, user.alias from review_view rvv-->
+<!--        left join user on (rvv.user_id = user.user_id)-->
+
+        select r.rest_id, r.rest_name, rv.review_id, u.user_id, u.alias, rv.content  from restaurant r
+        left join review rv on r.rest_id = rv.rest_id
+        left join `user` u on rv.user_id = u.user_id and u.user_id is not null
+        where content is not null
+        order by r.rest_id asc;
+
+    </select>
+    <select id="findRankLimitThree" parameterType="RatingView">
+        <![CDATA[
+	       	select row_number() over(order by rv.rating desc) as `rank`
+                  , r.rest_id                                  as rest_id
+                  , r.rest_name                                as rest_name
+                  , m.menu_id                                  as menu_id
+                  , count(rv.rest_id)                          as rest_amount
+                  , round(avg(rv.rating), 1)                   as rating
+                  , rv.img                                     as img
+                  , rv.created_date                            as created_date
+            from review rv
+            left join restaurant r on r.review_id = rv.review_id
+            left join menu m on r.rest_id = m.rest_id
+            WHERE rv.created_date >= DATE_SUB(CURDATE(), INTERVAL 1 WEEK)
+	        AND rv.created_date <= CURDATE()
+            GROUP BY r.rest_id
+            order by rv.rating desc
+            limit 3
+        ]]>
+    </select>
+
+    <select id="findRankAll" parameterType="RatingView">
+        select 
+			  row_number() over(order by rv.rating desc) `rank`
+            , r.rest_id
+            , r.rest_name
+            , m.menu_id
+            , count(rv.rest_id) rest_amount
+            , round(avg(rv.rating), 1) rating
+            , rv.img
+        from review rv
+        left join restaurant r on rv.rest_id = r.rest_id
+        left join menu m on r.rest_id = m.rest_id
+        GROUP BY r.rest_id
+        order by rv.rating desc
+        limit 3
+    </select>
+
+    <select id="getList" parameterType="Rest">
+        SELECT r.rest_id                     as    rest_id
+        , r.rest_name                   as    rest_name
+        , r.plain_business_bgn_hours    as    plain_business_bgn_hours
+        , r.plain_business_end_hours    as    plain_business_end_hours
+        , r.end_business_bgn_hours      as    end_business_bgn_hours
+        , r.end_business_end_hours      as    end_business_end_hours
+        , r.addr                        as    addr
+        , r.location_rest_id            as    location_rest_id
+        , r.phone                       as    phone
+        , r.menu_id                     as    menu_id
+        , m.name                        as    name
+        , r.rating                      as    rating
+        , r.banner_img                  as    banner_img
+        , r.img1                        as    img1
+        , r.img2                        as    img2
+        , r.img3                        as    img3
+        , r.celeb_rest_id               as    celeb_rest_id
+        , cr.celeb_id                   as    celeb_id
+        , c.name                        as    celeb_name
+        , r.admin_id                    as    admin_id
+        , u.alias                       as    alias
+        , r.review_id                   as    review_id
+        , r.created_date                as    created_date
+        , r.etc                         as    etc
+        FROM restaurant r
+        left join menu m
+        on r.rest_id = m.rest_id
+        and r.menu_id = m.menu_id
+        left join user u
+        on r.admin_id = u.user_id
+        left join celeb_restaurant cr
+        on r.celeb_rest_id = cr.celeb_rest_id
+        left join celeb c
+        on cr.celeb_id = c.celeb_id
+    </select>
+
+<!--    최신 리뷰 출력-->
+    <select id="getReviewList" resultType="Review">
+        SELECT r.review_id       as review_id
+        , r.user_id         as user_id
+        , u.alias           as alias
+        , r.rest_id         as rest_id
+        , rest.rest_name    as rest_name
+        , r.rating          as rating
+        , r.content         as content
+        , r.img             as img
+        , r.created_date    as created_date
+        FROM review r
+        left join restaurant rest
+        on r.review_id = rest.review_id
+        left join user u
+        on r.user_id = u.user_id
+        order by created_date desc
+    </select>
+
+<!--    리뷰 작성-->
+    <insert id="save" parameterType="Review">
+        insert into post(user_id, rest_id, rating, content, img)
+        values (#{userId}, #{restId}, #{rating}, #{content}, #{img})
+    </insert>
+
+    <select id="last" resultType="Review">
+        SELECT * from review order by review_id DESC limit 1
+    </select>
+
+    <select id="findReviewByRestId" resultType="Review">
+        SELECT r.review_id       as review_id
+        , r.user_id         as user_id
+        , u.alias           as alias
+        , r.rest_id         as rest_id
+        , rest.rest_name    as rest_name
+        , r.rating          as rating
+        , r.content         as content
+        , r.img             as img
+        , r.created_date    as created_date
+        FROM review r
+        left join restaurant rest
+        on r.review_id = rest.review_id
+        left join user u
+        on r.user_id = u.user_id
+        order by created_date desc
+        where r.rest_id = #{restId}
+    </select>
+</mapper>

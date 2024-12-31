@@ -1,0 +1,74 @@
+.user-info-edit{
+    width:100%;
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top : 35px;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-box
+    .input-box {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+}
+
+.form-box
+    p{
+    color: red;
+}
+
+.form-box
+    .loc-select{
+        width: 270px;
+    }
+
+.form-box
+    input[type=submit]{
+    cursor: pointer;
+ }
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+fieldset
+    .text{
+        font-size : var(--font-size-7);
+        font-weight: bold;
+    }
+
+.text-box{
+    font-size : var(--font-size-1);
+}
+
+.text-box:focus{
+    border-bottom-color: orange;
+}
+
+.text-box:valid{
+    border-bottom-color: green;
+}
+
+.btn-reg {
+    background-color: var(--color-logo-2);
+    width :inherit;
+    height : 50px;
+    font-size : var(--font-size-5);
+    margin-top : 45px;
+}
+
+.deluser{
+    text-align: center;
+    color : var(--color-base-4);
+    font-size: var(--font-size-3);
+    margin-top : 50px;
+}
+

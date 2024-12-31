@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+
+<head>
+    <title>QnA</title>
+    <link href="/css/components/qna/question/detail.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <main layout:fragment="main" class="qna-detail-main" th:object="${question}">
+        <h1 class="d:none">QnA 상세</h1>
+
+        <section class="qna-detail">
+            <div class="title-box">
+                <div class="d:flex">
+                    <h1 class="qna-title" th:text="*{title}">qna 제목</h1>
+                    <label class="d:flex">
+    <!--                    <a class="d:none" th:onclick="|location.href='@{/qna/question/edit(question-id=*{questionId})}'|"> qna 수정 삭제 버튼 만들어요!!</a>-->
+                        <img src="/css/image/commu/icon/commu-edit.svg" class="cursor-pointer:pointer w:15 h:15"  th:onclick="|location.href='@{/qna/question/edit(question-id=*{questionId})}'|">
+                        <img src="/css/image/commu/icon/commu-delete.svg" class="cursor-pointer:pointer w:15 h:15"  th:onclick="|location.href='@{/qna/question/delete(question-id=*{questionId})}'|">
+                    </label>
+
+                </div>
+
+                <span class="reg-date" th:text="${#dates.format(question.createdDate,'yyyy.MM.dd')}">2023.08.04</span>
+            </div>
+
+            <div class="content-box d:flex">
+                <article class="article-content d:flex md:article-content">
+                    <h1 class="d:none">qna 내용</h1>
+                    <p class="article-content-p md:article-content-p" th:text="*{content}">
+                        23.08.10. 오후 6시~<br><br>
+                        시스템 점검이 있을 예정이오니, 
+                        위 내용을 참고하시어 이용에 불편이 없으시길 바랍니다. 고객님의 이해와 배려가 맛잘알 운영에 많은 도움이 됩니다.<br>
+                        감사합니다.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+                <div class="backtolist-box d:flex mt:4-2">
+	                 <button class="cursor-pointer:pointer btn btn-qna-list mv:auto md:btn-bigger" onclick="location.href='/qna/question/list'">QnA 목록</button>
+                </div>
+
+    </main>
+</body>
+</html>

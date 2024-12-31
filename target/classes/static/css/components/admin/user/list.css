@@ -1,0 +1,91 @@
+.main-section-count{
+	margin: 10px 0;
+}
+
+.manage-button{
+	margin-bottom: 20px;
+}
+
+.user-list{
+	width: 100%;
+}
+
+.user-block{
+    display: grid;
+    width: 100%;
+    height: 80px;
+
+    grid-template-columns: 30px minmax(60px, 100px) 1fr 2fr;
+    grid-template-rows: minmax(30px, auto) 20px;
+
+    grid-template-areas: 
+    "checkbox user_image user_alias user_email"
+    "checkbox user_image user_grade user_reg_date"
+    ;
+
+    align-items: center;
+    font-size: var(--font-size-0);
+    grid-gap: var(--gap-3);
+    border-bottom: 1px solid var(--color-base-3);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.user-block
+    .checkbox-block{
+        grid-area: checkbox;
+        padding: 10px;
+    }
+
+.user-block
+    .user-image-block{
+        grid-area: user_image;      
+    }
+    
+.user-block
+	.user-image-block
+    	.img{    
+	        max-width: 80%;
+	        max-height: 80%;
+	        object-fit: fill;
+    	}
+    
+.user-block
+    .user-alias-block{
+        grid-area: user_alias;
+        font-weight: 700;
+        font-size: var(--font-size-2);
+    }
+
+.user-block
+    .user-email-block{
+        grid-area: user_email;    
+        font-size: var(--font-size-2);
+        font-weight: 700;
+    }   
+
+.user-block
+    .user-grade-block{
+        grid-area: user_grade;    
+        /* font-size: var(--font-size-2);
+        color: var(--color-base-4); */
+    }  
+
+
+@media (min-width : 700px) {
+    .md\:user-block{
+        font-size: var(--font-size-2);
+        height: 100px;
+    }
+
+    .md\:user-block
+        .user-alias-block{
+            font-size: var(--font-size-5);
+        }
+
+    .md\:user-block
+        .user-email-block{
+            font-size: var(--font-size-5);
+        }
+    
+}

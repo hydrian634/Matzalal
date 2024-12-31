@@ -1,0 +1,118 @@
+.stat-card{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.stat-card
+    .card-list{
+        margin-left: 13px;
+    }
+
+.stat-card
+    .card{
+        width: 160px;
+        height: 140px;
+        margin-top: 13px;
+        border-radius: 30px;
+    }
+
+.stat-card
+	.card-list
+	    .left-card{
+	        background-color: var(--color-accent-2);
+	    }
+
+.stat-card
+	.card-list
+	    .right-card{
+	        background-color: var(--color-accent-1);
+	    }	
+
+
+
+.card-list
+    .card
+        h1{
+            width: 130px;
+            height: 50px;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px;
+
+            font-size: 18px;
+            
+            padding-top: 22px;
+            padding-left: 15px;
+            
+            
+        }
+
+.card-list
+    .card
+        .count-block{
+            width: 130px;
+            height: 50px;
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 600;
+            line-height: 22px;
+
+            font-size: 32px;
+
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+            padding-left: 15px;
+
+        }
+
+
+@media (min-width : 700px) {
+    .md\:stat-card{
+        
+    }
+    
+    .md\:stat-card
+    .md\:card{
+        width: 250px;
+        margin-right: 20px;
+    }
+    
+    .md\:card-list{
+        display: flex;
+        width: 540px;
+        
+    }
+
+    .md\:stat-card
+        .md\:card-list{
+            margin: 0;
+        }
+        
+    .md\:stat-card
+        .md\:card
+            h1{
+                margin-left: 10px;
+            }
+
+    .md\:stat-card
+        .md\:card
+            .count-block{
+             margin-left: 70px;
+            }
+
+
+            
+/*	.md\:stat-card
+    	.md\:1st-card{
+       	 	background-color: var(--color-accent-2);
+   		 }*/
+
+/*	.md\:stat-card
+	    .md\:2st-card{
+	        background-color: var(--color-accent-1);
+	    }*/
+}

@@ -1,0 +1,17 @@
+.review-btn .write-review {
+    grid-column: 5;
+}
+
+.review-area {
+    padding-top: 10px;
+}
+
+@media (max-width: 700px) {
+    .review-btn {
+        width: 90%;
+    }
+
+    .review-btn .write-review {
+        grid-column: 5;
+    }
+}

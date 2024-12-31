@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}"
+>
+
+<head>
+    <title>회원가입</title>
+
+<!--    <link href="/css/components/user/reg_user.css" rel="stylesheet" type="text/css">-->
+    <link href="/css/components/user/reg_user_flex.css" rel="stylesheet" type="text/css">
+    <script src="/js/user/signup.js"></script>
+
+</head>
+<body>
+    <main layout:fragment="main">
+        <section class="user-reg">
+            <h1 class="font-size:2 font-weight:2">회원가입</h1>
+            <form action ="signup" method="post">
+                <fieldset>
+                    <div class="email-box">
+                        <label class="text">이메일</label>
+                        <input type="email" class="text-box " name="email" placeholder="이메일을 입력하세요."
+                         pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}" required>
+                        <p class="d:none" id="invalid">중복된 이메일입니다.</p>
+<!--                        <img class="d:none icon-size:3" th:src="@{'/css/image/icon/uncheckedinput.png'}" id="invalid">-->
+<!--                        <img class="d:none icon-size:3" th:src="@{'/css/image/icon/inputcheck.png'}" id="valid">-->
+                    </div>
+                    <div>
+                        <label class="text" >비밀번호</label>
+                        <input type="password" class="text-box" name="password" placeholder="영문, 숫자, 특수기호 조합 8자리 이상"
+                               pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required>
+                        <p class="d:none" id="invalid-pwd">영문, 숫자, 특수기호 조합 8자리 이상</p>
+                    </div>
+                    <div>
+                        <label class="text" >비밀번호 확인</label>
+                        <input type="password" name="checked-password" class="text-box" placeholder="다시 한번 비밀번호를 입력하세요." required>
+                        <p class="d:none color:red" id="invalid-checked-pwd">비밀번호가 일치하지 않습니다.</p>
+                    </div>
+                    <div>
+                        <label class="text">이름</label>
+                        <input type="text" class="text-box" name="name" placeholder="이름을 입력하세요." required>
+                    </div>
+                    <div>
+                        <label class="text" >휴대폰번호</label>
+                        <input type="text" class="text-box" name="phone"  placeholder="휴대폰 번호"
+                               pattern="^01[016789]-\d{3,4}-\d{4}$" required>
+                        <p class="d:none color:red" id="invalid-phone">'-'을 포함하여 형식에 맞게 입력해주세요.</p>
+                    </div>
+                    <div>
+                        <label class="text" >닉네임</label>
+                        <input type="text" class="text-box" name="alias" minlength="2" maxlength="6" placeholder="2~6자 이내의 특수문자를 제외한 닉네임을 입력하세요."
+                               pattern="[A-Za-z0-9가-힣]+" required>
+                        <p class="d:none color:red" id="invalid-alias">특수문자를 제외한 2~6자를 입력해주세요.</p>
+                        <p class="d:none color:red" id="double-alias">중복된 닉네임입니다.</p>
+
+
+                    </div>
+                    <div>
+                        <label class="text margin-bottom:3">지역</label>
+                        <select name="location-id">
+                            <option name="location-id" value="">선택해주세요.</option>
+                            <option name="location-id" value="1">은평/서대문구/마포</option>
+                            <option name="location-id" value="2">종로/중구/용산</option>
+                            <option name="location-id" value="3">영등포/구로/금천</option>
+                            <option name="location-id" value="4">동작/관악</option>
+                            <option name="location-id" value="5">강서/양천</option>
+                            <option name="location-id" value="6">도봉/노원/강북/성북</option>
+                            <option name="location-id" value="7">중랑/동대문/성동/광진</option>
+                            <option name="location-id" value="8">강남/서초</option>
+                            <option name="location-id" value="9">강동/송파</option>
+                        </select>
+                    </div>
+
+                    <!-- 약관 동의 -->
+                    <div class="agree-box">
+                        <section class="title-box">
+                            <h1 class="title">약관동의</h1>
+                            <span class="agreement">가입을 위해 다음 약관 동의가 필요합니다.</span>
+                        </section>
+                        <ul class="check-box">
+                            <li class="text-line">
+                                <label>
+                                    <input type="checkbox" name="privacy-policy" required>
+                                    <span>[필수]개인정보 수집 및 이용에 동의합니다.</span>
+                                </label>
+                                <a href="user-policy">보기</a>
+                            </li>
+                            <li class="text-line">
+                                <label>
+                                    <input type="checkbox" name="age-policy" required >
+                                    <span>[필수]본인이 만 14세 이상입니다.</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+<!--                    <div style="border: 1px solid #DDD;">-->
+<!--                        <img src="/css/image/icon/badge1.svg"/>-->
+<!--                        <input type="" value="true" name="test" style="border: none;"/>-->
+<!--                    </div>-->
+                </fieldset>
+                <div class="justify-content:center">
+                    <input type="submit" class="btn btn-main btn-reg" name="cmd" value="회원가입">
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,144 @@
+.commu-area
+.container {
+    width: 320px;
+    /* height: 100%; */
+    background-color: var(--color-base-1);
+    padding: 30px 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6);
+}
+
+
+/*------------------ top --------------------*/
+
+
+
+.top{
+    display: flex;
+    justify-content : space-between;
+}
+
+.member_info,
+.date_info{
+    display: flex;
+    align-items: center;
+    gap: var(--gap-3);
+}
+.member_info{
+    font-size: var(--font-size-4);
+}
+
+.date_info{
+    font-size: var(--font-size-2);
+    color: var(--color-base-4);
+    margin-right: var(--gap-1);
+}
+
+/*------------------ middle --------------------*/
+
+
+.middle{
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    gap: var(--gap-6);
+}
+
+.middle
+.title{
+    font-size: var(--font-size-5);
+}
+
+
+.middle
+.content{
+    font-size: var(--font-size-4);
+    color: var(--color-base-4);
+
+}
+
+
+.middle
+picture{
+    display: flex;
+    flex-shrink: 1;
+    gap: var(--gap-4);
+}
+
+
+.middle
+.picture
+img{
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
+
+/* 이미지가 없을 때 숨깁니다. */
+.middle
+.picture
+img[src=""] {
+    display: none;
+
+}
+/*------------------ bottom --------------------*/
+
+.commu-area
+.bottom{
+    display: flex;
+    gap: var(--gap-3);
+}
+
+.view,
+.like,
+.comment{
+    display: flex;
+    /* align-items: center; */
+    gap: var(--gap-3);
+}
+/*------------------ 반응형 --------------------*/
+
+@media (min-width: 700px) {
+    .commu-area
+    .md\:container{
+        width: 300px;
+    }
+
+    .middle
+    .md\:picture{
+        display: flex;
+        gap: var(--gap-3);
+    }
+    .top
+    .md\:date_info{
+        /* margin-right: 10px; */
+    }
+
+}
+
+/*------------------ card layout --------------------*/
+
+.post-layout{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--gap-3);
+}
+
+
+@media (min-width: 700px) {
+    .md\:commu-area
+    {
+        display: flex;
+        gap: var(--gap-3);
+    }
+
+}
+
+    

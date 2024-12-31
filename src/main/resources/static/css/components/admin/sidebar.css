@@ -1,0 +1,249 @@
+.aside{
+	height: 100vh;
+}
+
+
+.sidebar{
+    display: block;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    
+    width: 105px;
+    height: 100%;
+
+    background-color: var(--color-base-1);
+    color: var(--color-black);
+    
+    position: fixed;
+	top: 0;	
+    left: -300px;
+    z-index: 1;
+    transition: .35s;
+}
+
+.sidebar.show{
+    left: 0px;
+}
+
+.sidebar
+    .content-box{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 100vh;
+        justify-content: space-between;
+    }
+
+
+.sidebar   
+    .content-box
+        .aside-list{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+		.aside-list
+			.logo{
+				margin-top: 30px;
+				margin-bottom: 10px;
+			}
+.sidebar   
+    .content-box
+        .aside-list
+        	.category-block{
+				display: flex;
+				flex-direction: column;
+        		gap: 20px;
+			}
+
+.sidebar
+    .content-box
+        .first-aside{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            padding: 10px 0;
+        }
+
+    .sidebar-title{
+        display: block;
+
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 12px;
+
+        align-items: center;
+        text-align: center;
+        padding: 2px 5px;
+    }
+
+    .sidebar-hover:hover{
+        background-color: var(--color-accent-2);
+        border-radius: 4px;
+    }
+
+    .bottom-content{
+        list-style: none;
+        background-color: var(--color-base-1);
+    }
+
+    .bottom-content
+        .logout-title{
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            padding: 10px 0;   
+            margin-top: 20px;
+    }
+    
+    .second-aside
+    	.second-title{
+			padding: 5px 0;
+		}
+
+    .second-aside
+        .dropdown-container {
+            /* display: none; */
+            min-width: 105px;
+            text-align: center;
+            font-size: 10px;
+        }
+
+    .second-aside
+        .dropdown-container 
+            li{
+                padding: 3px;
+        }   
+
+
+/* 2차 메뉴 호버 넣기! */
+
+@media (min-width : 700px) {
+    .md\:sidebar{
+        width: 300px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        padding-top: 16px;
+
+        /* display: inline-block;
+        align-items: center; */
+        transition: var(--tran-05);
+    }
+
+.md\:sidebar 
+    .md\:content-box{
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: center; 
+        justify-content: space-between;
+        /*margin-top: 53px;*/
+    }
+
+.md\:sidebar 
+    .md\:content-box
+        .aside-list
+        .first-aside{
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                min-width: 280px;
+                padding: 10px 0 10px 20px; 
+            }    
+
+.md\:sidebar 
+    .md\:content-box
+        .aside-list
+            .first-aside
+                .first-title{
+                    display:flex;
+                    align-items: center;
+                }
+            
+.md\:sidebar 
+    .md\:content-box
+        .second-aside{
+            display: flex;
+            flex-direction: column;
+            padding: 5px 0 5px 20px; 
+        }
+
+.md\:sidebar 
+    .md\:content-box
+        .second-aside
+            .second-title{
+                display:flex;
+                align-items: center;
+            }
+            
+.md\:sidebar 
+    .md\:content-box
+        .second-aside
+            .dropdown-container
+            	li{
+                	font-size: 12px;
+            	}
+                        
+
+    .md\:sidebar-title{
+        display: inline-block;
+        
+        width: 200px;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 30px;
+
+        /* border: 1px solid blue; */
+
+    }
+
+.logout-block
+    .md\:bottom-content{
+        min-width: 280px;
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start;
+        padding: 10px 0 20px 20px; 
+        /* margin-top: 20px; */
+    }
+
+.logout-block
+    .md\:bottom-content
+        .logout-title{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+
+    /* 탭인덱스 실험. 비상호작용으로 보여주기만 할때에 적절하겠다. */
+    /* li[data-descr]{
+        position: relative;
+    }
+
+    li[data-descr]:hover::after,
+    li[data-descr]:focus::after {
+        content: attr(data-descr);
+        position: absolute;
+        left: 200px;
+        top: 24px;
+        min-width: 300px;
+        border: 1px #aaaaaa solid;
+        border-radius: 10px;
+        background-color: #ffffcc;
+        padding: 12px;
+        color: #000000;
+        font-size: 14px;
+        z-index: 1;
+    } */
+}
+

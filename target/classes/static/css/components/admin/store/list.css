@@ -1,0 +1,87 @@
+.main-section-count{
+	margin: 10px 0;
+}
+
+.manage-button{
+	margin-bottom: 20px;
+}
+
+/* ~~~~~~~~~~~~~본문 섹션(맛집 목록) 영역 ~~~~~~~~~~~~~~~*/
+
+
+.store-block{
+    display: grid;
+    width: 100%;
+    height: 80px;
+
+    grid-template-columns: 30px 60px minmax(120px, auto) minmax(100px, auto) minmax(30px, auto);
+    grid-template-rows: minmax(20px, auto) minmax(30px, auto);
+
+    grid-template-areas: 
+    "checkbox store-name store-name  . review"
+    "checkbox   celeb    location  date  review"
+    ;
+    align-items: center;
+    font-size: var(--font-size-0);
+    grid-gap: var(--gap-3);
+    border-bottom: 1px solid var(--color-base-3);
+    margin-bottom: 10px;
+
+}
+
+.store-block
+    .checkbox-block{
+        grid-area: checkbox;
+        padding: 10px;
+    }
+
+.store-block
+    .store-name-block{
+        grid-area: store-name;
+        font-size: var(--font-size-2);
+        font-weight: 700;
+    }
+
+.store-block
+    .celeb-block{
+        grid-area: celeb;
+    }
+
+.store-block
+    .location-block{
+        grid-area: location;
+    }
+
+.store-block
+    .date-block{
+        grid-area: date;
+        padding-right: 10px;
+    }
+
+.store-block
+   .review-block{
+        grid-area: review;
+        align-self: center;
+        justify-self: center;
+        font-size: var(--font-size-2);
+    }    
+
+
+
+@media (min-width : 700px) {
+    .md\:store-block{
+        font-size: var(--font-size-2);
+        height: 100px;
+    }
+
+    .md\:store-block
+        .store-name-block{
+            font-size: var(--font-size-5);
+        }
+
+    .md\:store-block
+        .review-block{
+            font-size: var(--font-size-5);
+        }
+    
+}

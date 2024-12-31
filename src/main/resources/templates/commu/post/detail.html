@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}">
+
+<head>
+    <meta id="userid" name="userid" th:content="${#authentication.principal.id}">
+    <!-- meta(전역)로 token을 전역으로 받고 -->
+    <!-- js에서 token 심어야!!! -->
+    <title>커뮤니티</title>
+
+    <link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/commu/post/detail.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/commu/comment/comment.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/commu/comment/recomment.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/commu/comment/comment_create.css" rel="stylesheet" type="text/css">
+    <script src="/js/commu/post/detail.js" > </script>
+
+</head>
+
+<body>
+
+<main layout:fragment="main"
+      class="mainlayout md:mainlayout detail-main">
+
+    <section class = "commu_area" >
+        <h1 class = "d:none"> 🌝 커뮤 공간 🌝 </h1>
+
+        <div class="post-layout md:post-layout" >
+
+            <div class = "container md:container"
+                 th:each="p:${post}">
+
+                <section class ="top">
+                    <h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+
+                    <section class="member_info">
+                        <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
+
+                        <div class="badge">
+                            <img src="/image/icon/grade2.svg"
+                                 th:src="@{'/css/image/icon/badge' + ${p.gradeId -1} + '.svg'}"
+                                 style="height:20px;" alt="등급2" />
+                        </div>
+
+                        <div class="nickname">
+                                <span th:text="${p.alias}">
+                                    팅클이졸귀임
+                                </span>
+                        </div>
+                    </section><!-- member_info-->
+
+                    <section class="date_info">
+                        <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+                        <div>
+                                <span th:text="${p.createdDate}">
+                                    12분전
+                                </span>
+                        </div>
+
+                        <div>
+                            <a class="cursor-pointer:pointer commu-edit"
+                               th:href="@{edit(postId=${p.postId})}"
+                               th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
+                               th:data-post="${p.postId}"
+                               type="submit" value="" > </a>
+                        </div>
+
+                        <div >
+                            <button class="cursor-pointer:pointer post-delete commu-delete"
+                                    th:classappend="${#authentication.principal.id == p.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
+                                    th:data-post="${p.postId}"
+                                    th:data-postUser="${p.userId}"
+                                    type="submit" value="" > </button>
+                        </div>
+                        <!--
+                        <div>
+                            <a class="icon icon-commu-more icon-size-commu:2 icon-color:va" href=""> 세로 확장</a>
+                        </div>
+                        -->
+                    </section><!-- date_info -->
+                </section><!-- top -->
+
+                <section class ="middle">
+                    <h1 class="d:none"> 게시글-제목, 내용, 사진  </h1>
+
+                    <section class="title">
+                        <h1 class="d:none"> 제목</h1>
+                        <p th:text="${p.title}"> 111 첫번째 피드 .</p>
+                    </section><!-- title -->
+
+                    <section class="content">
+                        <h1 class="d:none"> 내용</h1>
+                        <p th:text="${p.content}"> 내용입니다. 내용을 많이많이많이 적으면 어떻게 되려나아아아아아아아아아아아아아</p>
+                    </section> <!-- content -->
+
+                    <section class="picture md:picture">
+                        <h1 class="d:none"> 사진</h1>
+                        <picture>
+                            <img
+                                    src="/image/ranking1.JPG"
+                                    th:src="@{/css/image/commu/post/{img} (img=${p.img1})}"
+                                    alt="Responsive Image1">
+
+                        </picture>
+                    </section><!-- picture -->
+                </section><!-- middle -->
+
+                <section class ="bottom">
+                    <h1 class="d:none"> 조회수 좋아요 댓글 </h1>
+
+                    <section class="view">
+                        <h1 class="d:none"> 조회수 </h1>
+
+                        <div>
+                            <span class="deco-commu icon-commu-view icon-size:1 icon-color:main" href=""> </span>
+                        </div>
+
+                        <div>
+                            <span th:text="${p.hit}"> 367</span>
+                        </div>
+                    </section>
+
+                    <section class="like">
+                        <h1 class="d:none"> 좋아요 </h1>
+
+                        <div>
+                            <button class="icon icon-size:1 icon-hover icon-pointer icon-color:main"
+                                    th:classappend ="${p.isLiked}? 'icon-commu-likes-fill': 'icon-commu-likes' "
+                                    type="button"> 좋아요</button>
+                        </div>
+
+
+                        <div>
+                            <span th:text="${p.postLikeCount}"> 98</span>
+                        </div>
+                    </section>
+
+                    <section class="comment">
+                        <h1 class="d:none"> 댓글 </h1>
+
+                        <div>
+                            <span class="deco-commu icon-comment icon-size:1 icon-color:main" href=""> </span>
+                        </div>
+
+                        <div>
+                            <span th:text="${p.commentCount}"> 57</span>
+                        </div>
+                    </section>
+
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------------- 댓글영역 ----------------  -->
+    <section class = "comment-area">
+
+        <!-- 댓글영역-->
+        <h1 class = "comment heading-1"> 댓글
+            <span
+                    th:text= "${count}"
+                    class ="count color:logo-2">
+					0</span>
+            <span>개</span>
+        </h1>
+
+        <section class="commentgroup">
+            <h1 class="d:none"> 댓글+대댓 </h1>
+
+            <section
+                    class="comment-list-box md:comment-list-box"
+                    th:each="c:${commentList}"
+            >
+                <div  class="d:none" th:text="${c.userId}"></div>
+                <h2 class="d:none"> 댓글 </h2>
+
+                <section class ="top">
+                    <h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+
+                    <section class="member_info">
+                        <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
+
+                        <div class="badge">
+                            <img src="/image/icon/grade2.svg"
+                                 th:src="@{'/css/image/icon/badge' + ${c.gradeId -1} + '.svg'}"
+                                 style="height:20px;" alt="등급2" />
+                        </div>
+
+                        <div class="nickname"
+                             th:text="${c.alias}">
+                                    <span >
+                                        루피햅삐
+                                    </span>
+                        </div>
+                    </section>
+
+                    <section class="date_info md:date_info">
+                        <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+                        <div>
+                                    <span th:text="${c.createdDate}">
+                                        12분전
+                                    </span>
+                        </div>
+
+                        <div>
+                            <!--	[수정조회] commu/comment/edit
+                                    http://localhost:8000/commu/comment/edit?&commentId=76-->
+                            <a class="cursor-pointer:pointer commu-edit"
+                               th:href="@{/commu/comment/edit(commentId=${c.commentId})}"                							th:classappend="${#authentication.principal.id == c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-edit' : 'd:none'"
+                               th:data-post="${c.postId}"
+                               value="" > </a>
+                        </div>
+
+
+                        <div >
+                            <button class="cursor-pointer:pointer commu-delete comment-delete"
+                                    th:classappend="${#authentication.principal.id ==c.userId} ? 'icon icon-size:0 icon-color:base-4 icon-commu-delete' : 'd:none'"
+                                    th:data-post="${c.postId}"
+                                    th:data-comment="${c.commentId}"
+                                    th:data-postUser="${c.userId}"
+                                    type="submit" value="">
+                            </button>
+                        </div>
+                    </section>
+
+                </section> <!-- top 끝 -->
+
+                <section class="middle">
+                    <h1 class="d:none"> 댓글 내용</h1>
+                    <p th:text="${c.content}"> 댓글내용이 어쩌구저쩌구 </p>
+                </section> <!-- middle 끝 -->
+
+                <!--     <section class="bottom">
+                         <h1 class="d:none"> 좋아요 & 대댓글버튼 </h1>
+
+                         <div class="likes-numbers">
+                             <a class="icon icon-commu-likes icon-size:1 icon-color:main" href=""> 좋아요</a>
+                             <span th:text="${c.cmtLikeCount}"> 98</span>
+                         </div>
+
+                         <div>
+                             <a class="btn-main btn-main-comment btn-main-comment-recomment"> 대댓글 </a>
+                         </div>
+
+                     </section>   -->
+
+            </section> <!-- 댓글 comment-list-box: thymeleaf 반복 -->
+
+        </section>   <!-- commentgroup -->
+
+
+
+    </section>  <!-- 댓글영역 끝 -->
+
+    <!-- ---------------- 댓글입력 ----------------  -->
+    <div >
+        <form class="commentbox md:commentbox"
+              id="comment-form"
+              method="post"
+              th:data-userId="${post.userId}"
+              th:data-postId="${post.postId}"
+        >
+            <!--	           	action="/post/detail"-->
+            <!--            	th:text="${username}"-->
+
+            <legend class="d:none"> 댓글 입력창 </legend>
+            <div class="textarea-wrap">
+	                              <textarea
+                                          class="comment-content"
+                                          name ="content"
+                                          placeholder="댓글을 작성해주세요. "
+                                          rows="1"></textarea>
+                <!-- 태그사이에 공백이 있으면 placehoder 적용 안됨 -->
+            </div>
+
+            <button class="cursor-pointer:pointer btn-post input-button btn-main btn-main-comment"
+                    th:data-userId="${post.userId}"
+                    th:data-postId="${post.postId}"
+                    type="submit"
+                    value="등록" > 등록
+            </button>
+
+        </form>
+        <div>
+</main>
+</body>
+</html>

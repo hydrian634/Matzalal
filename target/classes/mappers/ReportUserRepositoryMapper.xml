@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.ReportUserRepository">
+	
+	<insert id="save" parameterType="ReportUser">
+  		insert into user_report(content, report_user_id, user_id, report_reason_id)
+		values (#{content}, #{reportUserId}, #{userId}, #{reportReasonId})
+  	</insert>
+	
+    <select id="last" resultType="ReportUser">
+        SELECT * from user_report order by created_date desc limit 1
+    </select>
+    
+	<!-- 회원 신고 목록 조회(페이지별)-->
+	<select id="getListByPage" resultType="ReportUser">
+	 	select * from user_report
+		<where>
+			<if test="userReportId != null">user_report_id=#{userReportId}</if>
+		    <if test="query != null">or content like '%${query}%'</if>
+		</where>
+		order by created_date desc 
+		limit #{offset}, #{size}
+ 	</select>
+ 	
+ 	<!-- 회원 신고 개수-->
+	<select id="count" resultType="Integer">
+		select count(user_report_id) count from user_report
+	</select>
+ 	
+	<select id="findAll" resultType="ReportUser">
+		select * from user_report order by report_user_id desc
+	</select>
+</mapper>

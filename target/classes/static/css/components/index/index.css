@@ -1,0 +1,429 @@
+
+/* --------------------랭킹 + 버튼----------------------- */
+.body {
+    margin-top : 50px;
+    margin-bottom : 50px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 40px;
+}
+/* -----------------랭킹-------------------- */
+
+.main_btn_div {
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
+    justify-content: center;
+    width: 700px;
+}
+
+.main_btn_div .title {
+    display: flex;
+    width: 242px;
+    font-family: 'SBAggro';
+    font-size: 20px;
+    justify-content: center;
+}
+
+.main_btn_div .rank {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    align-items: center;
+    gap : 20px;
+}
+
+.rank-container {
+    /* text-align: center;
+      align-items: center; */
+    justify-content: center;
+}
+.rank-container .rank-box {
+    display: flex;
+    flex-direction: row;
+
+    gap: 15px;
+
+    align-items: center;
+}
+.rank-container .rest-img {
+    width: 70px;
+    height: 70px;
+}
+
+.rank-container .rank-img {
+    width: 50px;
+    height: 50px;
+}
+
+.rank-container .rank-name{
+	font-family: 'SBAggro';
+	font-size: var(--font-size-5);
+}
+
+
+/* -------------------------버튼------------------------ */
+.btn-menu {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    /*height: 281px;*/
+
+    gap : 20px;
+    align-items: center;
+}
+.btn-menu .btn-menu-title {
+}
+.btn-menu .btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 210px;
+    gap: 30px;
+
+}
+
+.btn-menu .btn-container .rest-map {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.btn-menu .btn-container .rest-map:hover {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset,
+    rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+
+
+.btn-container .find-rest a,
+.btn-container .rest-map a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 80px;
+
+    gap: 30px;
+
+    text-decoration-line: none;
+}
+.find-rest .hidden{
+    border:none;
+    background-color:#FFFFFF05;
+    width : 100%;
+    height : 100%;
+    font-size : 15px;
+    font-family : "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+.btn-menu .btn-container .find-rest {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.btn-menu .btn-container .find-rest:hover {
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset,
+    rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+}
+
+/* -----------------------검색창-------------------  */
+.srchbar_div {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid var(--color-base-4);
+    border-radius: 30px;
+    width: 530px;
+    height: 50px;
+    justify-content: center;
+    /* margin-top: 30px; */
+}
+.srchbar_div form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.srchbar_div input {
+    border: none;
+    background-color: #ffffff00;
+    /* border: 2px solid black; */
+    font-size: 17px;
+    width: 90%;
+    height: 100%;
+    text-align: center;
+}
+
+/*.srchbar_div input::placeholder {
+	font-size: 10px;
+}
+*/	
+	
+.srchbar_div input:focus {
+    outline: none;
+}
+
+.icon{
+    width: 32px;
+    height: 32px;
+    background-size: 32px;
+    margin-right: 10px;
+}
+
+.srchbar_div .icon-search::before {
+	background-color: var(--color-base-5);
+}
+
+
+/* ==================== 카테고리 목록======================== */
+.category-link{
+    display:none;
+}
+/* --------------------------맛집 추천------------------- */
+.skin {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.skin .scrollMenu {
+    display: flex;
+    flex-direction: column;
+}
+.scrollMenu .title {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+.scrollMenu .container {
+    display: flex;
+    flex-direction: row;
+    grid-column: 1;
+    grid-row: 2;
+    width: 700px;
+    gap: 30px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.scrollMenu .container::-webkit-scrollbar {
+    display: none;
+}
+.container .card {
+    display: grid;
+    grid-template-rows: 130px 30px;
+}
+.container .card h1 {
+    font-size: 13px;
+	font-weight: 500;    
+    grid-row: 2;
+    text-align: center;
+    margin-top: 10px;
+}
+.container .card img {
+    width: 155px;
+    height: 130px;
+    grid-row: 1;
+    border-radius: 15px;
+    /* border: 1px solid black; */
+}
+/* -------------------- 후기 ---------------------- */
+
+.container .reviewCard {
+    display: grid;
+    grid-template-rows: 30px 10px 1fr 10px 30px;
+    width: 245px;
+    height: 150px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    align-items: center;
+}
+.container .reviewCard .rest-name {
+    display: flex;
+
+    grid-row: 1;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    margin: 10px;
+    /* margin-left: 10px; */
+    padding: 10px 0 0 10px;
+}
+.container .reviewCard .text-box {
+    grid-row: 3;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    width: 245px;
+    border-bottom: none;
+}
+.reviewCard .text-box p {
+    width: 200px;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    white-space: no-wrap;
+    text-overflow: ellipsis;
+}
+.container .reviewCard .alias {
+    grid-row: 5;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: right;
+    padding: 0 30px 20px 0;
+
+}
+
+/* ----------------------- 반응형 ----------------------------- */
+
+@media (max-width: 700px) {
+    .body {
+        margin-top : 30px;
+        margin-bottom : 30px;
+        width: 100%;
+    }
+    /* -----------------랭킹-------------------- */
+
+    .main_btn_div {
+        width: 100%;
+    }
+
+    .main_btn_div .title {
+
+        justify-content: center;
+    }
+
+    .main_btn_div .rank {
+        width: 100%;
+    }
+
+    /* -------------------------버튼------------------------ */
+
+    .btn-menu {
+        display: none;
+    }
+    /* -----------------------검색창-------------------  */
+    .srchbar_div {
+        display : none;
+        /*width: 80%;*/
+
+        /* margin-top: 30px; */
+    }
+    /*.srchbar_div form {*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+
+    /*}*/
+    /*.srchbar_div input {*/
+    /*    border: none;*/
+    /*    background-color: #ffffff00;*/
+    /*    !* border: 2px solid black; *!*/
+    /*    font-size: 17px;*/
+    /*    width: 100%;*/
+    /*    height: 100%;*/
+    /*    text-align: center;*/
+    /*}*/
+
+    /*.srchbar_div .icon-search::before {*/
+    /*    width: 32px;*/
+    /*    height: 32px;*/
+    /*}*/
+    /* ==================== 카테고리 목록======================== */
+    .category-link{
+        display : flex;
+        width : 100%;
+        justify-content: center;
+    }
+    .menu-link{
+        display : flex;
+        flex-direction: column;
+        gap: 20px;
+
+    }
+    .menu-link .link-first{
+        display : flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .menu-link .link-second{
+        display : flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    
+    .menu-link .link-card{
+        display : flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        width: 170px;
+        height: 160px;
+        border-radius: 10px;     
+        position: relative;   
+
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 0px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    }
+    .menu-link .link-card:hover {
+        box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 0px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset,
+        rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+        rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    }
+    
+    .menu-link .card1{
+		background-color: #FBFBFB;
+	}
+	.menu-link .card2{
+		background-color: #FFFAF5;
+	}
+    
+    .menu-link .link-card .card-text{
+		position: absolute;
+		font-family: 'SBAggro';
+		font-size: 20px;
+	}
+
+    /* --------------------------맛집 추천------------------- */
+    .skin {
+        width: 90%;
+    }
+    .skin .scrollMenu {
+        width: 100%;
+    }
+    .scrollMenu .title {
+        font-size: 17px;
+    }
+    .scrollMenu .container {
+        width: 100%;
+    }
+
+    .container .card {
+        display: grid;
+        grid-template-rows: 130px 30px;
+    }
+    .container .card h1 {
+        font-size: 10px;
+    }
+    .container .card img {
+        width: 155px;
+        height: 130px;
+        grid-row: 1;
+        border-radius: 15px;
+        /* border: 1px solid black; */
+    }
+}

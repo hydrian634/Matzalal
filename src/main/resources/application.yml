@@ -1,0 +1,47 @@
+
+spring:
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 600MB
+      max-request-size: 600MB
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  devtools:
+    remote:
+      restart:
+        enabled: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 'matzzalal@gmail.com'
+    password: 'xxnp oezt vnbo phfu'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+#mybatis.configuration.map-underscore-to-camel-case: true
+#mybatis.mapper-locations=mappers/*Mapper.xml
+#mybatis.type-aliases-package= kr.co.rland.web.entity
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mappers/*Mapper.xml
+  type-aliases-package: com.matzalal.web.entity
+
+server:
+  port: 8080
+#  원래 포트는 8000
+  host:
+    api: https://matzalal.site:8443
+    front: https://matzalal.site
+# 호스트 없었음
+

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 관리</title>
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+	    <link href="/css/components/admin/notice/list.css" rel="stylesheet" type="text/css">
+    	<script type="text/javascript" src="/js/admin/notice/list.js" defer></script>
+</head>
+<body>
+     <main layout:fragment="main">
+        <section class="main-section md:main-section">
+            <h1 class="main-section-title">공지 관리</h1>
+            <header class="main-section-header">
+                <div class="main-section-count">
+                    <p>총 <span th:text="${count}">00</span>개</p>
+                </div>
+    
+                <!-- 등록, 수정, 삭제 버튼 -->
+                <div class="manage-button">
+                    <a href="/admin/notice/reg" class="store-create-button">
+                        <input type="button" value="등록" class="cursor-pointer:pointer btn-main btn-main-create-admin btn-main-small">
+                    </a>
+                    <a href="/admin/notice/edit" class="store-edit-button">
+                        <input type="button" value="수정" class="cursor-pointer:pointer btn-main btn-main-create-edit btn-main-small">
+                    </a>
+                    <a class="store-delete-button">
+                        <input type="button" value="삭제" class="cursor-pointer:pointer btn-main btn-main-create-delete btn-main-small">
+                    </a>
+                </div>
+                    
+                    <!-- 내용 검색 버튼 -->
+                    <!--<form class="search-form">
+                        <fieldset class="search md:search">
+                            <legend class="d:none">내용</legend>
+                            <input type="search" placeholder="내용" size="5">
+                            <button type="submit" class="icon icon-color-black icon-search"></button>
+                        </fieldset>
+                    </form>-->
+            </header>
+        
+            <!-- 본문!! -->
+            <!-- 공지 목록 -->
+            <section class="notice-list">
+				<h1 class="d:none">공지사항 목록</h1>
+	            <section th:each="n : ${noticeList}" class="notice-block md:notice-block">
+	                <h1 th:text="${n.title}" class="cursor-pointer:pointer notice-title">공지사항 제목</h1>
+	                <div class="checkbox-block">
+	                    <input type="checkbox" class="checkBox" name="checkBox" th:value="${n.noticeId}">
+	                </div>
+	
+	                <div class="notice-reg_date-block">
+						<span>작성일 : </span>
+	                    <a th:text="${#dates.format(n.createdDate, 'yyyy.MM.dd HH:mm')}" class="">2023년 9월 20일</a>
+	                </div>
+	
+<!--	                <div class="notice-view_count-block">
+	                    <a class="">조회수 10건</a>
+	                </div>
+	-->
+	                <div class="notice-start_date-block">
+						<span>공지 시작일 : </span>
+	                    <a th:text="${#dates.format(n.openedDate, 'yyyy.MM.dd HH:mm')}" class="">게시시작일 23.09.30. 15:30</a>
+	                </div>
+	
+	                <div class="notice-end_date-block">
+						<span>공지 종료일 : </span>
+	                    <a th:text="${#dates.format(n.closedDate, 'yyyy.MM.dd HH:mm')}" class="">게시종료일 23.09.30. 15:30</a>
+	                </div>
+	            </section> 
+
+            <!-- 페이지 이동 -->
+            <div class="pagination">
+	                <a class="" th:if="${currentPage > 1}" th:href="@{/admin/notice/list(page=${currentPage-1})}">&laquo;</a>
+	                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+	                	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+	                	th:text="${pageNo}" th:href="@{/admin/notice/list(page=${pageNo})}" 
+	                	th:class="${currentPage == pageNo} ? 'page-active' : ''">
+	                </a>
+	                <a th:if="${currentPage < pageCount+1}" th:href="@{/admin/notice/list(page=${currentPage+1})}">&raquo;</a>
+	            </div>
+
+           </section>
+        </section>
+    </main>
+</body>
+</html>

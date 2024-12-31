@@ -1,0 +1,83 @@
+.findpw{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--gap-7);
+}
+
+.findtab {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    margin-top : 50px;
+}
+
+.comment-box{
+    width : 270px;
+}
+
+.comment\:findpw {
+    color:var(--color-base-4);
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    gap : 30px;
+    width: 330px;
+}
+
+.label-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-box
+.text-box::placeholder {
+    font-size : var(--font-size-1);
+    color : var(--color-base-4);
+}
+
+.certi-btn {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    margin-top : 30px;
+}
+
+.box\:certi-btn {
+    width : 250px;
+    margin-top : 20px;
+
+}
+
+@media(min-width:700px) {
+    .findpw
+    .findtab {
+        width : 700px;
+        display: flex;
+    }
+    .findpw
+    .findtab
+    .md\:findbtn{
+        width : 350px;
+    }
+}
+
+/* ------------------findid---------------------------- */
+
+.findid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 30px;
+}
+
+
+.input-box{
+    align-items: center;
+
+}
+

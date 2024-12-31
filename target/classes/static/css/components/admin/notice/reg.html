@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 등록</title>
+    <link href="/css/reset.css" rel="stylesheet" type="text/css">
+    <link href="/css/root.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/icon.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/box.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/content.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/form.css" rel="stylesheet" type="text/css">
+    <link href="/css/util/layout.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="reg.css" rel="stylesheet" type="text/css">
+
+    <script src="reg.js"></script>
+</head>
+<body>
+    <main class="main">
+        <section class="reg-notice">
+            <h1 class="reg-notice-title">공지 등록</h1>
+            <form action="" class="reg-notice-form">
+                <div class="notice-title">
+                    <label class="d:none">제목</label>
+                    <input type="text">
+                </div>
+
+                <div class="reg-notice-date">
+                    <span>2023. 10. 08.</span>
+                </div>
+
+                <div class="notice-content-block">
+                    <textarea class="notice-content" name="textarea"
+                    placeholder="공지사항 본문을 작성 바랍니다."></textarea>
+
+                    <div class="add-notice-pic" >
+                        <label onchange="readURL(this);"></label>
+                        <input type="file" class="icon icon-color-black icon-gallery">
+                        <img id="preview" />
+                    </div>
+                </div>
+
+                <div class="notice-active-date">
+                    <div>
+                        <label for="">게시시작일</label>
+                        <input type="date">
+                    </div>
+                    <div>
+                        <label for="">게시종료일</label>
+                        <input type="date">
+                    </div>
+                </div>
+            </form>
+
+            <div class="create-mg-btn">
+                <button type="submit" name="cmd" value="수정" class="btn-main btn-main-create btn-main-create-edit">수정</button>
+                <button type="submit" name="cmd" value="등록" class="btn-main btn-main-create">등록</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

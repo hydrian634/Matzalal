@@ -1,0 +1,101 @@
+
+.celeb {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.celeb > h1:first-child {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.celeb .align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.celeb .celeb_list_btn {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 500px;
+
+  gap: 30px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+
+  font-size: 20px;
+  font-weight: bold;
+
+  text-align: center;
+  justify-content: center;
+}
+
+.celeb_list_btn .clicked{
+  color: gray;
+}
+
+.celeb_list_btn a:hover {
+  color: gray;
+}
+
+.celeb .celeb_rest_list {
+  display: grid;
+  grid-template-columns: 160px 160px 160px 160px;
+  width: 700px;
+  gap: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.celeb_rest {
+  display: grid;
+  grid-template-rows: 150px 20px;
+}
+
+.celeb_rest img {
+  width: 160px;
+  height: 150px;
+  grid-row: 1;
+}
+
+.celeb_rest .rest_name {
+  grid-row: 2;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* --------------- 반응형 --------------- */
+@media (max-width: 700px) {
+  .celeb .celeb_list_btn {
+    display: flex;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+    gap: 30px;
+    padding-top: 30px;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    text-align: center;
+    justify-content: center;
+  }
+  .celeb .celeb_rest_list {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    gap: 30px;
+    text-align: center;
+    justify-content: center;
+    /* margin-left: 20px; */
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{inc/layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qnaReg</title>
+    <link href="/css/components/qna/question/reg.css" rel="stylesheet" type="text/css">
+</head>
+
+<!-- form, div ----------- block
+label, input, textarea --- inline -->
+
+<body>
+    <main layout:fragment="main" class="qna-reg-main">
+        <section class="qna-reg-section">
+            <h1 class="d:none">문의하기 글 등록 폼</h1>
+
+            <form class="qna-reg-form" action="reg" method="post">
+                <div class="title-block">
+                    <input class="qna-title" type="text" name="title" rows="1"
+                            placeholder="제목: 누룽지 굿즈 만들어주세요." required>
+                </div>
+                <div class="contents-block">
+                    <div class="content-block">
+                        <textarea class="qna-content" name="content" rows="13"
+                                placeholder="본문: 안녕하세요. 어플 잘 쓰고 있어요. 누룽지가 너무 귀여워서 그런데.. 누룽지 굿즈 좀 만들어 주세요. 제가 살게요... ㅎㅅㅎ" required></textarea>
+
+                        <div class="img-block">
+                            <input class="img-content" type="file" name="imageFile">
+                        </div>
+
+                        <div class="open-close-block">
+                            <input type="submit" class="icon icon-open" name="open" value="true">
+                            <input type="submit" class="icon icon-close" name="open" value="false">
+						</div>
+                    </div>
+                </div>
+
+                <!-- type submit 으로 해야 하나..? -->
+                <div class="cancle-save-block">
+                    <input class=btn-cancel type=button value="취소">
+                    <input class=btn-save type="submit" name="cmd" value="등록">
+                </div>
+
+                <!-- <div class="qna-reg-btn-block d:flex mt:4-2">
+                <a class="btn btn-register mv:auto md:btn-bigger">등록</a>
+            </div> -->
+
+            </form>
+
+        </section>
+
+    </main>
+</body>
+
+</html>

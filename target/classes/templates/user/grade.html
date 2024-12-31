@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>등급표</title>
+
+    <link href="/css/components/user/grade.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <main layout:fragment="main">
+        <section class="grade">
+            <h1 class="d:none">등급표</h1>
+            <div class="mygrade">
+                <p>나의 등급 : <span>쌀밥</span></p>
+                <img class="mybadge" src="/css/image/icon/badge1.svg">
+            </div>
+            <ul class="grade-list">
+                <li>
+                    <img src="/css/image/icon/badge3.svg">
+                    <span>후기 50건 이상</span>
+                </li>
+                <li>
+                    <img src="/css/image/icon/badge2.svg">
+                    <span>후기 10건 이상</span>
+                </li>
+                <li>
+                    <img src="/css/image/icon/badge1.svg">
+                    <span>기본등급</span>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신고 관리</title>
+   		 <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+	    <link href="/css/components/admin/report/list.css" rel="stylesheet" type="text/css">
+    	<script type="text/javascript" src="/js/admin/report/list.js" defer></script>
+</head>
+<body>
+    <main layout:fragment="main">
+        <section class="main-section md:main-section">
+            <h1 class="main-section-title">신고 관리</h1>
+            <header class="main-section-header">
+                <div class="main-section-count">
+                    <p>총 <span th:text="${count}">00</span>개</p>
+                </div>
+    
+                <!-- 등록, 수정, 삭제 버튼 -->
+                <div class="manage-button">
+                    <!--<a href="/admin/report/process" class="store-create-button">
+                        <input type="button" value="처리" class="btn-main btn-main-create btn-main-small">
+                    </a>-->
+                    <!--<a class="store-delete-button">
+                        <input type="button" value="삭제" class="btn-main btn-main-create btn-main-create-delete btn-main-small">
+                    </a>-->
+                </div>
+                  
+                <div class="dropdown-select md:dropdown-select">
+                   <!-- <form action="" class="report-select md:report-select">
+                        <legend for="report" class="d:none">신고구분 선택창</legend>
+                            <select id="" name="">
+                                <option value="1">회원신고</option>
+                                <option value="2">게시글 신고</option>
+                                <option value="3">댓글 신고</option>
+                            </select>
+                    </form>
+            
+                    <form action="" class="response-status-select md:response-status-select">
+                        <legend for="response" class="d:none">답변 상태 선택창</legend>
+                            <select id="" name="">
+                                <option value="처리완료">처리완료</option>
+                                <option value="미처리">미처리</option>
+                            </select>
+                    </form>-->
+                </div>
+            </header>
+        
+            <!-- 본문!! -->
+            <!-- 신고 목록 -->
+            <section class="report-list">
+	            <section th:each="r : ${reportList}" class="report-block md:report-block">
+	                <h1 class="report-title d:none">신고 목록</h1>
+	                <!--<div class="checkbox-block">
+	                    <input type="checkbox" class="checkBox" name="checkBox">
+	                </div>-->
+	
+	                <!-- 회원 신고, 게시글 신고, 댓글 신고 인지에 따라 바뀌는 걸로. -->
+	                <div class="report-type-block" th:switch="${r.reportGbn}">
+	                    <span th:case="USER" th:class="report-type-user">회원 신고</span>
+	                    <span th:case="POST" th:class="report-type-post">게시글 신고</span>
+	                    <span th:case="COMMENT" th:class="report-type-comment">댓글 신고</span>
+	                </div>
+	
+	                <div class="report-date-block">
+	                    <span th:text="${#dates.format(r.createdDate, 'yyyy.MM.dd HH:mm')}" class="">2023년 9월 20일</span>
+	                </div>
+	
+	                <div class="report-category-block">
+	                    <span th:text="${r.reportReason}" class="">욕설, 비방, 차별, 혐오</span>
+	                </div>
+	
+	                <div class="report-reporter-block">
+	                    <span class="">신고자 :</span>
+	                </div>
+	
+	                <div class="report-reporter-alias-block">
+	                    <span th:text="${r.reportUserName}" class="">닉네임</span>
+	                </div>
+	
+	                <div class="report-descript-block">
+	                    <span th:text="${r.content}" class="">신고사유 설명</span>
+	                </div>
+	                
+	                <div class="report-reportee-block">
+	                    <span class="">신고대상 :</span>
+	                </div>
+	                
+	                <div class="report-tbl-block">
+	                    <span th:text="${r.tbl}" class="">신고대상 회원 닉네임 or 글제목 or 댓글내용</span>
+	                </div>
+	
+	                <!-- 미처리 시 색이 accent 2(report-compleated-no), 처리완료 시 accent 1(report-compleated)로 변경-->
+	                <div class="report-status-block" th:switch="${r.reportGbn}">
+		                <a th:case="USER" th:href="'/admin/report/userProcess?reportId=' + ${r.reportSeq}">
+		                    <span th:class="${r.processYn == 0} ? 'report-completed-no' : 'report-completed'"
+		                    	  th:text="${r.processYn == 0} ? '미처리' : '처리완료'" >
+		                    </span>
+		                </a>
+		                <a th:case="POST" th:href="'/admin/report/postProcess?reportId=' + ${r.reportSeq}">
+		                    <span th:class="${r.processYn == 0} ? 'report-completed-no' : 'report-completed'"
+		                    	  th:text="${r.processYn == 0} ? '미처리' : '처리완료'" >
+		                    </span>
+		                </a>
+		                <a th:case="COMMENT" th:href="'/admin/report/commentProcess?reportId=' + ${r.reportSeq}">
+		                    <span th:class="${r.processYn == 0} ? 'report-completed-no' : 'report-completed'"
+		                    	  th:text="${r.processYn == 0} ? '미처리' : '처리완료'" >
+		                    </span>
+		                </a>
+	                </div>
+	            </section> 
+	            
+	               <!-- 페이지 이동 -->
+           		 <div class="pagination">
+	                <a class="" th:if="${currentPage > 1}" th:href="@{/admin/notice/list(page=${currentPage-1})}">&laquo;</a>
+	                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+	                	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+	                	th:text="${pageNo}" th:href="@{/admin/notice/list(page=${pageNo})}" 
+	                	th:class="${currentPage == pageNo} ? 'page-active' : ''">
+	                </a>
+	                <a th:if="${currentPage < pageCount+1}" th:href="@{/admin/notice/list(page=${currentPage+1})}">&raquo;</a>
+	            </div>
+			</section>	
+        </section>
+    </main>
+</body>
+</html>

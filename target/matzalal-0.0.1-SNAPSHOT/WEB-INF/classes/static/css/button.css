@@ -1,0 +1,318 @@
+.btn {
+  background-color: var(--color-accent-3);
+  border: none;
+  padding: 0 10px;
+  font-size: 15px;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-2);
+  /* align-items: center; */
+}
+
+.btn-main {
+  min-width: 110px;
+  min-height: 42;
+  /* width: 100%; */
+  /* 지은 padding: 7px 5px*/
+
+  padding: 12px 35px;
+  /*background-color: transparent;*/
+  border: none;
+  color: var(--color-base-0);
+  border-radius: var(--radius-2);
+
+  /* 태호 */
+  width: 300px;
+  height: 50px;
+}
+
+.btn-user {
+  background-color: var(--color-base-1);
+  width: 90px;
+  height: 30px;
+  border-radius: var(--radius-2);
+}
+
+.btn-question {
+  background-color: var(--color-base-1);
+  width: 145px;
+  height: 50px;
+  border-radius: var(--radius-2);
+}
+
+.btn-user-tab {
+  background-color: var(--color-base-0);
+  width: 200px;
+  height: 50px;
+  font-size: 18px;
+  border-bottom: 1px solid var(--color-base-2);
+}
+
+.btn-user-tab-line {
+  border-bottom: 2px solid var(--color-base-5);
+}
+
+.btn-check {
+  background-color: var(--color-base-0);
+  border: 2px solid var(--color-base-5);
+  font-size: 11px;
+  border-radius: var(--radius-1);
+  line-height: 30px;
+}
+
+.text-box {
+  width: 270px;
+  height: 30px;
+  border: none;
+  border-bottom: 2px solid var(--color-base-2);
+  padding-top: 10px;
+}
+
+.btn-logo {
+  background-color: var(--color-logo-1);
+}
+
+.btn-cancel {
+  background-color: var(--color-accent-2);
+}
+
+.btn-report {
+  background-color: var(--color-logo-1);
+}
+
+.btn-yes {
+  background-color: var(--color-accent-1);
+  font: 20px Pretendard;
+}
+
+.btn-no {
+  background-color: var(--color-accent-2);
+  font: 20px Pretendard;
+}
+
+.btn-register {
+  background-color: var(--color-accent-3);
+  width: 300px;
+  height: 50px;
+}
+
+.btn-save {
+  background-color: var(--color-accent-3);
+  width: 300px;
+  height: 50px;
+}
+.btn-notice-list,
+.btn-faq-list,
+.btn-qna-list {
+  background-color: var(--color-accent-3);
+  width: 300px;
+  height: 50px;
+  color: var(--color-base-0);
+  border-radius: var(--radius-1);
+}
+
+/*------------- 공통 버튼 _ 예, 아니오, 등록, 취소 -------------*/
+.btn-main-yes {
+  background-color: var(--color-accent-1);
+}
+.btn-main-no {
+  background-color: var(--color-accent-2);
+}
+
+.big-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-main-create {
+  /* min-width: 190px;
+    height: 40; */
+  padding: 12px 75px;
+  background-color: var(--color-accent-1);
+
+  border-radius: var(--radius-1);
+}
+
+.btn-main-create-admin {
+  width: 110px;
+  height: 40;
+/*  padding: 12px 75px;*/
+  background-color: var(--color-accent-1);
+
+  border-radius: var(--radius-1);
+}
+
+.btn-main-create-cancel,
+.btn-main-create-edit {
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+}
+
+.btn-main-create-delete {
+  background-color: var(--color-logo-1);
+}
+
+.btn-main-small{
+    width: 60px;
+    padding: 10px 10px;
+}
+
+/*------------- 커뮤- 댓글 등록, 대댓글 -------------*/
+.btn-main-create {
+  /* min-width: 190px;
+    height: 40; */
+  padding: 12px 75px;
+  background-color: var(--color-accent-1);
+  border-radius: var(--radius-1);
+
+}
+
+.btn-main-cancle {
+  display: inline-block; /* inline 요소를 block 요소로 변경 */
+  width: 150px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+  text-align: center; /* 텍스트 중앙 정렬 */
+  line-height: 30px; /* 텍스트 수직 정렬 */
+  text-decoration: none; /* 링크에 기본적으로 적용되는 밑줄 제거 */
+
+}
+.btn-main-update {
+  width: 150px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+}
+
+.btn-main-comment-recomment {
+  padding: 2px 5px;
+  width: 50px;
+  height: 22px;
+}
+
+/*------------- 커뮤- 게시글 신고, 수정, 삭제 -------------*/
+.btn-report-edit-delete {
+  width: 60px;
+  height: 30px;
+  background-color: var(--color-base-1);
+  color: var(--color-accent-3);
+
+  border: 1px solid;
+  border-color: var(--color-accent-3);
+  border-radius: 3px;
+}
+
+.btn-location {
+  width: 140px;
+  height: 30px;
+  background-color: var(--color-base-1);
+  color: var(--color-accent-3);
+
+  border: 1px solid;
+  border-color: var(--color-accent-3);
+  border-radius: var(--radius-2);
+}
+
+/*------------- 커뮤- 댓글 등록, 대댓글 -------------*/
+.btn-main-comment {
+  width: 50px;
+  height: 30px;
+  background-color: var(--color-accent-3);
+  border-radius: var(--radius-1);
+}
+
+.btn-main-comment-recomment {
+  padding: 2px 5px;
+  width: 50px;
+  height: 22px;
+}
+
+/*------------- 커뮤- 게시글 신고, 수정, 삭제 -------------*/
+.btn-report-edit-delete {
+  width: 60px;
+  height: 30px;
+  background-color: var(--color-base-1);
+  color: var(--color-accent-3);
+
+  border: 1px solid;
+  border-color: var(--color-accent-3);
+  border-radius: 3px;
+}
+.btn-commu {
+  height: 100%;
+}
+.btn-commu button:hover {
+  color: var(--color-base-4);
+  background-color: var(--color-base-1);
+}
+.btn-commu a:hover {
+  color: var(--color-base-4);
+  background-color: var(--color-base-1);
+}
+.btn-commu .location {
+  padding: 5px 10px;
+  border: 1px solid;
+  border-radius: var(--radius-2);
+
+  color: var(--color-base-3);
+  background-color: var(--color-base-0);
+}
+.btn-commu .selected {
+  color: var(--color-base-4);
+  background-color: var(--color-base-0);
+  transition: 0.5s;
+}
+/*----------------- 커뮤 추가 11.08. ------------------*/
+
+.commu-btn-update {
+  width: 180px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+border-color: var(--color-accent-2);
+
+}
+
+.commu-btn-cancle {
+  display: inline-block; /* inline 요소를 block 요소로 변경 */
+  width: 180px;
+  height: 30px;
+  background-color: var(--color-accent-2);
+  border-radius: var(--radius-1);
+  text-align: center; /* 텍스트 중앙 정렬 */
+  line-height: 30px; /* 텍스트 수직 정렬 */
+}
+
+@media (min-width: 700px) {
+  .md\:btn-md {
+    width: 500px;
+    height: 40px;
+  }
+
+  .md\:btn-bigger {
+    width: 450px;
+    height: 50px;
+  }
+
+  .md\:btn-main {
+    border-radius: 0;
+  }
+/*----------------- 커뮤 추가 11.08. ------------------*/
+  
+  	.md\:commu-btn-update {
+		  width: 340px;
+		  height: 30px;
+		}
+
+	.md\:commu-btn-cancle {
+		  width: 340px;
+		  height: 30px;
+
+    }
+  
+}
+

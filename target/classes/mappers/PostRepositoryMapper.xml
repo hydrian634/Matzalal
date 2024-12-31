@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.matzalal.web.repository.PostRepository">
+
+  	<select id="findPostWithIsLike" resultType="PostView"> 
+        select p.*,
+            if(lp.post_id is null, 0, 1) as isLiked
+        from post_u_li_co_view p
+        left join (select * from likes_post where user_id=#{currentUserId}) lp on p.post_id = lp.post_id
+        	order by created_date desc
+    </select>
+  
+   <select id="findPostAll" resultType="PostView">
+    select * from post_view
+       order by created_date desc
+    
+  </select>
+
+    <select id="Allcount" resultType="int">
+        select
+         count(post_id)
+        from post_u_li_co_view p
+    </select>
+
+    <select id="count" resultType="int">
+        select
+        p.comment_count
+        from post_u_li_co_view p
+        where post_id =#{postId}
+    </select>
+  
+  <select id="findByLocation" resultType="PostView">
+  select 
+  *
+  from post
+  where area_id=#{areaId}
+  </select>
+  
+  <select id="findHitRanking" resultType="CommuRanking">
+	SELECT 
+	    p.title, 
+		p.post_id,
+	    p.post_like_count,
+	    p.comment_count,
+	    p.img1,
+	    ROW_NUMBER() OVER 
+			(ORDER BY 
+			p.hit DESC, 
+			p.post_like_count DESC, 
+			p.comment_count DESC
+	        )AS rownum,
+			p.hit
+    FROM 
+    post_u_li_co_view p
+	LIMIT 5; -- 가져올 행 수
+  </select>
+  
+  <select id="findLikesRanking" resultType="CommuRanking">
+	SELECT 
+	    p.title, 
+	    p.post_id,
+	    p.post_like_count,
+	    p.comment_count,
+	    p.img1,
+	    ROW_NUMBER() OVER 
+			(ORDER BY 
+			p.post_like_count DESC, 
+			p.comment_count DESC
+	        )AS rownum,
+			p.hit
+    FROM 
+    post_u_li_co_view p
+	LIMIT 5; -- 가져올 행 수
+  </select>
+  
+  
+  <!--  포스팅 개별 조회-->
+  <select id="findById" resultType="PostView">
+  select 
+  *
+  from post_view
+  where post_id=#{postId}
+  </select>
+  
+  <!-- [포스팅 수정용] 포스팅 개별 조회 -->
+  <select id="findByIdForEdit" resultType="Post">
+  select 
+  *
+  from post
+  where post_id=#{postId}
+  </select>
+  
+  <!-- [포스팅 수정용] 업데이트  -->
+  <update id="modify">
+    UPDATE `post`
+    <set>
+        <if test="areaId != null">`area_id` = #{areaId},</if>
+        <if test="title != null">`title` = #{title},</if>
+        <if test="content != null">`content` = #{content},</if>
+        <if test="img1 != null">`img1` = #{img1},</if>
+        <if test="img2 != null">`img2` = #{img2},</if>
+        <if test="img3 != null">`img3` = #{img3},</if>
+    </set>
+    WHERE `post_id` = #{postId}
+	</update>
+
+  <insert id="save" parameterType="Post">
+  insert into post(user_id, area_id, title, content, img1, img2, img3)
+  values (#{userId}, #{areaId}, #{title}, #{content}, #{img1}, #{img2}, #{img3})
+  </insert>
+  
+	<select id="last" resultType="Post">
+	SELECT * from post order by post_id DESC limit 1
+	</select>
+  
+  <delete id="delete">
+      delete
+      from post
+      where post_id = #{postId}
+  </delete>
+  
+  <!--  commu main 출력 -->
+	<select id="findViewAll" resultType="PostView">
+	select
+	*
+	from post_view
+	<where>
+		<if test="query != null">`title` like '%${query}%' </if>
+		<if test="query != null">or `content` like '%${query}%' </if>
+		<if test="locationPostId != null">and `area_id` = #{locationPostId}</if>
+	</where>
+	order by created_date desc
+	</select>
+	
+	<!--관리자에서 사용-->
+    <select id="findAllByPage" resultType="PostView">
+	  	select
+			*
+		from post_view
+		<where>
+		    <if test="query != null">title like '%${query}%'</if>
+			<if test="query != null">or content like '%${query}%'</if>
+		</where>    
+		order by created_date desc
+		limit #{offset}, #{pageSize}
+    </select>
+    
+<delete id="deletePosts">
+    delete from post
+    where post_id in
+    <foreach collection="postList" item="postId" open="(" separator="," close=")">
+        #{postId}
+    </foreach>
+</delete>
+  
+</mapper>

@@ -1,0 +1,83 @@
+.findtab {
+    width : 100%;
+    display: flex;
+    justify-content: center;
+    margin-top : 50px;
+}
+
+.comment-box{
+    width : 270px;
+}
+
+.comment\:findid {
+    color:var(--color-base-4);
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.findid
+    .input-box{
+        display: flex;
+        flex-direction: column;
+        gap : 30px;
+        width: 330px;
+        margin-top : 30px;
+    }
+
+.label-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-box
+    .phone-box{
+    display: flex;
+    gap: var(--gap-3);
+    align-items: center;
+}
+
+.findid
+    button{
+        cursor : pointer;
+    }
+
+.label-box
+    .phone-box
+        .text-box::placeholder {
+            font-size : var(--font-size-1);
+            color : var(--color-base-4);
+        }
+
+.label-box
+    .phone-box
+    .text-box::placeholder {
+        font-size : var(--font-size-1);
+        color : var(--color-base-4);
+    }
+
+.box\:certi-btn {
+    width : 250px;
+    margin-top : 20px;
+}
+
+@media(min-width:700px) {
+    .findid
+        .findtab {
+            width : 700px;
+            display: flex;
+            }
+    .findid
+        .findtab
+            .md\:findbtn{
+            width : 350px;
+            }
+}
+
+/* ------------------findid---------------------------- */
+
+.findid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 30px;
+}

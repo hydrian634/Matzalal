@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.matzalal.web.repository.SearchRepository">
+
+    <select id="findListByWord" parameterType="Rest">
+        select DISTINCT
+        r.rest_id,
+        r.rest_name,
+        r.plain_business_bgn_hours,
+        r.plain_business_end_hours,
+        r.end_business_bgn_hours,
+        r.end_business_end_hours,
+        r.addr,
+        r.location_rest_id,
+        r.phone,
+        m.menu_id,
+        m.name,
+        m.price,
+        r.rating,
+        r.banner_img, r.img1, r.img2, r.img3,
+        r.celeb_rest_id,
+        r.admin_id,
+        r.review_id
+        from restaurant r
+        left join menu m on r.rest_id = m.rest_id
+        left join celeb_restaurant cr on r.celeb_rest_id = cr.celeb_rest_id
+        <where>
+            <if test="query != null">r.rest_name like '%${query}%'</if>
+            <!-- <if test="menu != null">or m.name like '%${query}%'</if> -->
+        </where>
+        GROUP BY
+           r.rest_id,
+           r.rest_name,
+           r.plain_business_bgn_hours,
+           r.plain_business_end_hours,
+           r.end_business_bgn_hours,
+           r.end_business_end_hours,
+           r.addr,
+           r.location_rest_id,
+           r.phone,
+           r.rating,
+           r.banner_img,
+           r.img1,
+           r.img2,
+           r.img3,
+           r.celeb_rest_id,
+           r.admin_id,
+           r.review_id
+    </select>
+
+</mapper>

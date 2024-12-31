@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{inc/layout.html}">
+   
+<head>
+  <link href="/css/components/commu/commu_main.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/commu/location.css" rel="stylesheet" type="text/css">
+  <link href="/css/components/commu/ranking.css" rel="stylesheet" type="text/css">
+ <link href="/css/components/commu/post/main.css" rel="stylesheet" type="text/css">
+<!-- <script src="/js/commu/main.js"> </script> -->
+<script src="/js/commu/main-vue.js" defer> </script>
+
+</head>
+
+<body>
+
+
+	<main layout:fragment="main" class="mainlayout md:mainlayout" id="main">
+
+     <!-- -----------------랭킹--------------- -->
+    <section class="rankings-area" >
+    <h1 class=" d:none"> 랭킹영역</h1>
+        <section class="ranking">
+            <h1>👑  이번주 조회수 인기글  👑</h1>
+
+            <section class="list">
+                <h1 class="d:none"> 조회수기준 인기글 리스트 </h1>
+                
+                <ul >
+
+                    <li> 
+                        <a class="post" href="" >
+                            <div class="number color-purple"> 1. </div>
+                            <p>
+                                상큼하고 부드러움이 완벽한 타르트
+                            </p>
+                            <div class="img"> <img src="/image/ranking1.JPG"> </div>
+                        </a>
+                    </li>
+                    
+                    <li> 
+                        <a class="post">
+                            <div class="number color-blue"> 2. </div>
+                            <p>
+                                맛잘알들은 반쎄오를 알겠지ㅎㅎㅎ
+                            </p>
+                            <div class="img"> <img src="/image/ranking2.JPG"> </div>
+                        </a>
+                    </li>                
+                    
+                    <li> 
+                        <a class="post">
+                            <div class="number color-green"> 3. </div>
+                            <p>
+                                나만 알고 싶었는데... 알려드림...
+                            </p>
+                            <div class="img"> <img src="/image/ranking3.JPG"> </div>
+                        </a>
+                    </li>
+
+                    <li class="mxd:d:none "> 
+                        <a class="post">
+                            <div class="number color-purple"> 4. </div>
+                            <p>
+                                감자토핑이 이렇게 맛있을 일?
+                            </p>
+                            <div class="img"> <img src="/image/ranking4.JPG"> </div>
+                        </a>
+                    </li>
+
+                    <li class=" mxd:d:none"> 
+                        <a class="post">
+                            <div class="number color-blue"> 5. </div>
+                            <p>
+                                뇨끼는 여기서  ^______^
+                            </p>
+                            <div class="img"> <img src="/image/ranking5.JPG"> </div>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </section>
+
+        </section>
+
+        <section class="ranking mxd:d:none">
+          <h1> ❤️ 이번주 좋아요 인기글 ❤️ </h1>
+
+          <section class="list">
+              <h1 class="d:none"> 좋아요기준 인기글 리스트 </h1>
+
+              <ul >
+
+                  <li> 
+                      <a class="post">
+                          <div class="number color-purple"> 1. </div>
+                          <p>
+                              상큼하고 부드러움이 완벽한 타르트
+                          </p>
+                          <div class="img"> <img src="/image/ranking1.JPG"> </div>
+                      </a>
+                  </li>
+                
+                  <li> 
+                      <a class="post">
+                          <div class="number color-blue"> 2. </div>
+                          <p>
+                              맛잘알들은 반쎄오를 알겠지ㅎㅎㅎ
+                          </p>
+                          <div class="img"> <img src="/image/ranking2.JPG"> </div>
+                      </a>
+                  </li>                
+                  
+                  <li> 
+                      <a class="post">
+                          <div class="number color-green"> 3. </div>
+                          <p>
+                              나만 알고 싶었는데... 알려드림...
+                          </p>
+                          <div class="img"> <img src="/image/ranking3.JPG"> </div>
+                      </a>
+                  </li>
+
+                  <li class="  mxd:d:none"> 
+                      <a class="post">
+                          <div class="number color-purple"> 4. </div>
+                          <p>
+                              감튀토핑이 이렇게 맛있을일?
+                          </p>
+                          <div class="img"> <img src="/image/ranking4.JPG"> </div>
+                      </a>
+                  </li>
+
+                  <li class=" mxd:d:none"> 
+                      <a class="post">
+                          <div class="number color-blue"> 5. </div>
+                          <p>
+                              뇨끼는 여기서  ^______^
+                          </p>
+                          <div class="img"> <img src="/image/ranking5.JPG"> </div>
+                      </a>
+                  </li>
+
+              </ul>
+
+          </section>
+
+        </section>
+
+    </section><!-- 랭킹 끝 -->
+
+    <!-- ----------------- 커뮤니티 공간 --------------- -->
+    <div class="community md:community">
+	    <h1> 🍚 맛집에 진심인 사람들의 이야기 공간 🍚 </h1>
+	
+	        <!-- ------------------- 지역분류 ----------------- -->
+	        <section class="location">
+	          <h1 class="d:none"> 지역분류 카테고리 목록  </h1>
+	
+	                <nav class="commu-location btn-commu">
+						<ul>
+							<li> <a class="location selected"> 서울(전체) </a> </li>
+							
+							<li v-for = "loc in locCateList"> 
+									<a 
+										class="location"
+										:data-id="loc.locationPostId" 
+										href="?loc=1"
+										:href="'?loc='+loc.locationPostId"
+										v-text="loc.area"
+										> </a> 
+							</li>
+						</ul>
+	                </nav>
+	
+	        </section><!-- 지역분류 끝 -->
+	
+	        <!-- ------------------- 피드영역 ----------------- -->
+	        <section class = "commu-area md:commu-area">
+<!--	            <h1 class = "d:none"> 🌝 커뮤 공간 🌝 </h1>-->
+				
+		        <!-- ------------------- 피드 1열 ----------------- -->
+	
+	            <section class="post-layout md:post-layout">
+	                <h2 class = "d:none"> 피드 1 </h2>
+	                
+	                <div class = "post-card container md:container"  
+	                	th:each="p:${postList}">
+	
+	                    <section class ="top" > 
+	                        <h1 class="d:none"> 작성자 정보 & 작성시간 & 확장메뉴</h1>
+	
+	                        <section class="member_info">
+	                            <h1 class="d:none"> 작성자 등급 & 닉네임</h1>
+	
+	                            <div class="badge">
+	                                <img src="/image/icon/grade2.svg" style="height:20px;" alt="등급2" /> 
+	                            </div>
+	                                
+	                            <div class="nickname" >
+	                                <span th:text="${p.alias}"> 
+	                                    팅클이졸귀임 
+	                                </span>
+	                            </div>
+	                        </section> 	<!-- member_info-->
+	
+	                        <section class="date_info md:date_info">
+	                            <h1 class="d:none"> 작성 시간 & 확장메뉴</h1>
+	
+	                            <div>
+                                <span th:text="${#dates.format (p.createdDate,'yyyy.MM.dd.')}">    
+	                                    12분전   
+	                                </span> 
+	                            </div>
+	
+	                            <div>
+	                                <a class="icon icon-more-horiz icon-size-commu:2 icon-color:va" href=""> 세로 확장</a>
+	                            </div>
+	                        </section><!-- date_info -->
+	                    </section><!-- top -->
+	
+	                    <section class ="middle"> 
+	                        <h1 class="d:none"> 게시글-제목, 내용, 사진  </h1>
+	
+	                            <section class="title">
+	                                <h1 class="d:none" > 제목</h1>
+	                                <p th:text="${p.title}"> 111 첫번째 피드 .</p>
+	                            </section><!-- title -->
+	
+	                            <section class="content">
+	                                <h1 class="d:none"> 내용</h1>
+	                                <p th:text="${p.content}"> 내용입니다. 내용을 많이많이많이 적으면 어떻게 되려나아아아아아아아아아아아아아</p>
+	                            </section> <!-- content -->
+	
+	                            <section class="picture md:picture">
+	                                <h1 class="d:none"> 사진</h1>
+	                                <picture>
+	                                    <img 
+	                                    src="/image/ranking1.JPG"
+	                                    th:src="@{/css/image/commu/post/{img} (img=${p.img1})}" 
+	                                    		alt="Responsive Image1">
+	                                    		
+	                                    <img src="/image/ranking2.JPG"
+	                                    th:src="@{/css/image/commu/post/{img} (img=${p.img2})}" 
+	                                    		alt="Responsive Image2">
+	                                    		
+	                                    <img src="/image/ranking3.JPG"
+	                                    th:src="@{/css/image/commu/post/{img} (img=${p.img3})}" 
+	                                    		alt="Responsive Image3">
+	                                </picture>  
+	                            </section><!-- picture -->
+	                    </section><!-- middle -->
+	
+	                    <section class ="bottom icon-commu-likes" > 
+	                        <h1 class="d:none"> 조회수 좋아요 댓글 </h1>
+	
+	                            <section class="view">
+	                                <h1 class="d:none"> 조회수 </h1>
+	
+	                                    <div>
+	                                        <span class="deco icon-commu-view icon-size:1 icon-color:main" href=""> 조회수</span>
+	                                    </div>
+	                                    
+	                                    <div>
+	                                        <span th:text="${p.hit}"> 367</span>
+	                                    </div>
+	                            </section><!-- view -->
+	
+	                            <section class="like">
+	                                <h1 class="d:none"> 좋아요 </h1>
+	
+	                                    <div>
+	                                        <button class="icon icon-size:1 icon-hover icon-pointer icon-color:main" 
+                                    				th:classappend ="${p.isLike}? 'icon-commu-likes-fill': 'icon-commu-likes' "
+	                                                type="button"> 좋아요</button>
+	                                    </div>
+	
+	                                    <div>
+	                                        <span th:text="${p.postLikeCount}"> 98</span>
+	                                    </div>
+	                            </section><!-- like -->
+	            
+	                            <section class="comment">
+	                                <h1 class="d:none"> 댓글 </h1>
+	
+	                                    <div>
+	                                        <span class="deco icon-comment icon-size:1 icon-color:main" href=""> 댓글</span>
+	                                    </div>
+	
+	                                    <div>
+	                                        <span th:text="${p.commentCount}"> 57</span>
+	                                    </div>
+	                            </section><!-- comment -->
+	                            
+	                    </section><!-- bottom -->
+	                    
+                    </div><!-- post-card -->
+	                    </a>
+	            </section> <!-- post-layout  끝 -->
+	            
+	        </section> <!-- 피드 공간 끝 -->
+
+    </section> <!-- 커뮤니티 공간 끝 -->
+
+
+
+    <!-- -----------------  고정버튼:검색,글쓰기 --------------- -->
+    <section class="fixed-button md:fixed-button">
+        <h1 class="d:none"> 고정버튼: 검색, 글쓰기</h1>
+
+        <div class="search">
+            <a href="" class="icon icon-search icon-size:5 icon-color:base-5"> 검색</a>
+        </div>
+        <div>
+            <a href="/commu/post/create " class="icon icon-add icon-size:5 icon-color:logo-3 ">글쓰기 버튼</a>
+        </div>
+
+    </section>
+
+	</main>
+	
+</body>
+</html>

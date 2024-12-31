@@ -1,0 +1,39 @@
+  
+.footer{
+  color : var(--color-base-5);
+  background-color: var(--color-base-1);
+  /* padding: var(--gap-5); */
+  
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin-top : 50px;
+  width: 100%;
+
+}
+
+.footer dl{
+  display: grid;
+  /* grid-template-columns: 150px 1fr; */
+  gap: 8px 5px;
+  
+}
+
+.footer dt{
+  justify-self:right;
+}
+
+.footer dt::after{
+  content: "";
+}
+
+.footer dt,
+.footer dd{
+  display: inline-block;
+
+}
+
+.footer .span-c2{
+  grid-column: span 2;
+}

@@ -1,0 +1,202 @@
+.report {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* margin: 0 30px; */
+    /* margin-top: 120px; */
+
+}
+
+/* .report-form {
+    position: absolute;
+} */
+
+.report 
+	.report-form fieldset {
+    border: none;
+}
+.report 
+	.report-form legend {
+    margin-left: -10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+.report 
+	.report-box {
+    height: 310px;
+}
+
+
+
+
+.report 
+	.report-box 
+		label {
+			display: inline-flex;
+		    border-top: 1px solid var(--color-base-3);
+		    padding: 10px;
+		    
+		    width: 100%;
+			/*font-size:0;*/
+			
+			position: relative;
+			
+			justify-content: start;
+			align-items: center;
+	
+}
+
+.report 
+	.report-box 
+		label::before{
+			position: absolute;
+	/*		right: 0;
+			top: 5px;*/
+			content: "";
+			display: inline-flex;
+			width: 30px;
+			height: 30px;
+			
+			background-size: contain;
+	}
+
+.report 
+	.report-box 
+    	label:has(:focus)::before{	
+			background-color: indianred;	
+			-webkit-mask-image: url(/css/image/icon/cancel_circle.svg);
+			mask-image: url(/css/image/icon/cancel_circle.svg);
+	}
+.report 
+	.report-box 
+	    label:has(:valid)::before{
+			background-color: seagreen;
+			-webkit-mask-image: url(/image/icon/check_circle.svg);
+			mask-image: url(/image/icon/check_circle.svg);
+}
+
+.report 
+	.report-box 
+		label:last-child {
+		    border-bottom: 1px solid var(--color-base-3);
+}
+
+
+.report 
+.report-box input {
+    margin-right: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*--------------- 작성란 ---------------*/
+
+.report 
+	.write-reason {
+	    margin-bottom: 55px;
+	    text-align: center;
+}
+
+.report 
+	.content{
+	    width: 87%;
+	    height: 150px;
+		resize: none;
+	
+	    outline: none;
+	    border: none;
+	    border-radius: 20px;
+	    padding: 15px;
+	
+	    background-color: var(--color-base-3);
+	    
+	    font-size: 12px;
+}
+.report 
+	textarea::placeholder {
+	    color: white;
+	    font: 12px pretendard;
+}
+
+
+
+
+
+/* ----- submit 버튼 코드 줄이기...? ----- */
+
+.report 
+.cancle-report-block
+    {
+        text-align: center;
+    }
+.report 
+.cancle-report-block 
+    .btn-cancel,
+    .btn-report {
+        --radius: var(--radius-2);
+        width: 170px;
+        height: 40px;
+        border-radius: var(--radius-2);
+        border: none;
+        color: var(--color-base-0);
+        filter: drop-shadow(0px 2px 2px #d0d0d1);
+        /* margin-right: 10px; */
+}
+.report
+.cancle-report-block 
+    .btn-report {
+        background-color: var(--color-logo-1);
+}
+.report
+	.cancle-report-block 
+    	.btn-cancel {
+    		margin-right: 5px;
+    }
+    
+/*.submit 
+	.btn-save {
+    background-color: var(--color-logo-1);
+    margin-left: 5px;
+}*/
+
+/*
+.submit
+    input {
+        /* width: 100%; */
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* align-items: center; */
+        
+    
+
+/* .styled:hover {
+        background-color: rgba(255, 0, 0, 1);
+      }
+      
+      .styled:active {
+        box-shadow:
+          inset -2px -2px 3px rgba(255, 255, 255, 0.6),
+          inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+} */
+
+
+
+.report p {
+    display: flex;
+    text-align: center;
+
+    font-size: 12px;
+    color: var(--color-base-4);
+
+    margin: 30px;
+}

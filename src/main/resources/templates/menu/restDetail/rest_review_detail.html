@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="/css/components/restDetail/rest_detail.css" rel="stylesheet"
+          type="text/css">
+    <link
+            href="/css/components/restDetail/rest_review_detail.css" rel="stylesheet"
+            type="text/css">
+</head>
+<body>
+<main layout:fragment="main">
+<!-- 상단 이미지 및 상호명 -->
+<section class="top">
+    <h1 style="display : none;">상단</h1>
+    <div>
+        <img class="rest_img" src="/css/img/logo61.png" />
+    </div>
+    <div class="head-container">
+        <a class="rest_name" >상호명</a>
+        <a class="icon icon-heart heart">찜 아이콘</a>
+    </div>
+
+    <!-- -----------------------------경계선----------------------------- -->
+
+    <h1 class="d:none">경계선</h1>
+    <div class="review-btn">
+        <p class="total" >후기(<span th:text="${total.total}"></span>건)</p>
+<!--        <a class="write-review">리뷰 쓰기</a>-->
+    </div>
+<!-- ------------------------------------------ 리뷰 쓰기 ---------------------------------->
+    <section class="postReview">
+        <h1 class="d:none"></h1>
+        <div>
+            <form id="reviewForm" class="review-form">
+                <div class="content_">
+                    <input class="img-onload" type="file" id="photo" name="photo" accept="image/*" >
+                    <!--                        <div id="imagePreview" style="width: 100px; height: 100px; overflow: hidden;">-->
+                    <!--                            <img id="previewImage" src="" alt="이미지 미리보기">-->
+                    <!--                        </div>-->
+                    <input class="rating-input" type="text" name="rating" placeholder="1~5까지 점수 입력">
+                    <textarea class="txt-area" name="content" maxlength="130"  placeholder="130글자 내외로 작성해 주세요."></textarea>
+                    <div class="command">
+                        <button class="btn  font-size:-1">확인</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!--------------------- 후기 탭 ---------------------->
+    <section class="review-area">
+        <h1 class="d:none">후기</h1>
+
+        <div class="review-card" th:each="rv:${reviewView}">
+            <img class="review-img" src="/css/img/1-2.png" th:src="@{/css/image/{img} (img=${rv.img})}">
+            <div class="review-box">
+                <p class="content" th:text="${rv.content}">
+                    130자까지 입력 가능합니다.
+                </p>
+            </div>
+            <div class="review-info">
+                <img class="icon icon-2rank icon-size:1 rank"  style="width:32px; height : 32px;" th:src="rv.gradeImg"></img>
+                <a class="user-id" th:text="${rv.alias}">ID</a>
+                <a class="rating" th:text="${rv.rating}">평점</a>
+            </div>
+        </div>
+<!--        <div class="review-card">-->
+<!--            <img class="review-img" src="/css/img/1-2.png">-->
+<!--            <div class="review-box">-->
+<!--                <p class="content">-->
+<!--                    리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰-->
+<!--                    내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰-->
+<!--                    내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰-->
+<!--                    내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용리뷰 내용-->
+<!--                </p>-->
+<!--            </div>-->
+<!--            <div class="review-info">-->
+<!--                <a class="icon icon-2rank icon-size:1 rank">등급 아이콘<a-->
+<!--                        class="user-id">ID</a></a>-->
+
+<!--                <a class="rating">평점</a>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </section>
+</section>
+</main>
+</body>
+</html>

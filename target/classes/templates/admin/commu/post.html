@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 관리</title>
+        <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    	<link href="/css/components/admin/community/post.css" rel="stylesheet" type="text/css">
+    	<script type="text/javascript" src="/js/admin/commu/post.js" defer></script>
+</head>
+<body>
+    <main layout:fragment="main">
+        <section class="main-section md:main-section">
+            <h1 class="main-section-title">게시글 관리</h1>
+            <header class="main-section-header">
+                <div class="main-section-count">
+                    <p>총 <span th:text="${postCount}">00</span>개</p>
+                </div>
+    
+                <!-- 삭제 버튼 -->
+                <div class="manage-button">
+                    <a class="store-delete-button" name="deleteBox">
+                        <input type="button" value="삭제"
+                      	  class="cursor-pointer:pointer btn-main btn-main-create-delete btn-main-small">
+                    </a>
+                </div>
+
+                <!-- 지역 선택창 -->
+                <div class="dropdown-select md:dropdown-select">
+    	            <!--<select id="locCateList" th:name="locationId" >
+						<option value="">서울 전체</option>
+            	        <option th:each="l:${locCateList}" th:value="${l.locationPostId}" 
+                	    	class="location-select md:location-select" th:text="${l.area}">
+             			</option>
+                    </select>
+                    
+                     내용 검색 버튼 
+                    <section class="query-filter">
+				        <h1 class="d:none">게시글 검색 폼</h1>
+				        <form>
+				            <fieldset class="search-form">
+				                <legend class="d:none">게시글 검색</legend>
+				                <input class="input-query" type="text" placeholder="제목 or 내용 검색">
+				                <button class="icon icon-search icon-size:2 btn-find">검색</button>
+				            </fieldset>
+				        </form>
+				    </section>-->
+                </div>    
+            </header>
+        
+            <!-- 게시글 목록 -->
+            <section class="post-list">
+        		<h1 class="d:none">게시글 목록</h1>
+	            <section th:each="p : ${postList}" class="post-block md:post-block">
+	                <h1 th:text="${p.title}" class="cursor-pointer:pointer post-content">게시글 제목</h1>
+	                <div class="checkbox-block">
+	                    <input type="checkbox" class="checkBox" name="checkBox" th:value="${p.postId}">
+	                </div>
+	    
+	                <div class="post-alias-block">
+	                    <a th:text="${p.alias}" class="">닉네임</a>
+	                </div>
+	    
+	                <div class="post-date-block">
+	                    <a th:text="${p.createdDate}" class="">2023년 9월 20일</a>
+	                </div>
+	
+	                <div class="post-viewcount-block">
+	                    <a class="">조회 <span th:text="${p.hit}">15</span>건</a>
+	                </div>
+	    
+	                <div class="post-location-block">
+	                    <a class="" th:each="loc : ${locCateList}" th:if="${loc.locationPostId == p.areaId}" th:text="${loc.area}">서울 전체</a>
+	                </div>
+	
+	                <div class="post-comment-block">
+	                    <a class="deco md:deco icon-color-black icon-comment"><span th:text="${p.commentCount}">15</span>건</a>
+	                </div>
+	            </section> 
+
+
+	            <!-- 페이지 이동 -->
+	            <div class="pagination">
+	                <a class="" th:if="${currentPage > 1}" th:href="@{/admin/commu/post(page=${currentPage-1})}">&laquo;</a>
+	                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+	                	th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+	                	th:text="${pageNo}" th:href="@{/admin/commu/post(page=${pageNo})}" 
+	                	th:class="${currentPage == pageNo} ? 'page-active' : ''">
+	                </a>
+	                <a th:if="${currentPage < pageCount+1}" th:href="@{/admin/commu/post(page=${currentPage+1})}">&raquo;</a>
+	            </div>
+	        </section>
+        </section> 
+    </main>
+</body>
+</html>

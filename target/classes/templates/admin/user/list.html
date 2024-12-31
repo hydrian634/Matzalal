@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{admin/inc/layout.html}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>회원 관리</title>
+        <link href="/css/components/pagination.css" rel="stylesheet"
+            type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet"
+            type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet"
+            type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet"
+            type="text/css">
+        <link href="/css/components/admin/user/list.css" rel="stylesheet"
+            type="text/css">
+        <script type="text/javascript" src="/js/admin/user/list.js" defer></script>
+    </head>
+    <body>
+        <main layout:fragment="main">
+            <section class="main-section md:main-section" name="listSection">
+                <h1 class="main-section-title">회원 관리</h1>
+                <header class="main-section-header">
+                    <div class="main-section-count">
+                        <p>총 <span th:text="${count}">00</span>명</p>
+                    </div>
+
+                    <!-- 수정, 삭제 버튼 -->
+                    <div class="manage-button">
+                        <a class="store-edit-button" href="edit?userId=3">
+                            <!--th:href="@{edit(id=${id})}"--> 
+                            <input type="button" value="수정"
+                                class="btn-main btn-main-create-edit btn-main-small">
+                        </a>
+                        <a class="store-delete-button" name="deleteBox">
+                            <input type="button" value="삭제"
+                                class="btn-main btn-main-create-delete btn-main-small">
+                        </a>
+                    </div>
+
+                    <div class="dropdown-select md:dropdown-select">
+                        <!-- 등급 선택창 -->
+                        <!--<form action class="grade-select md:grade-select">
+                            <legend for="grade" class="d:none">등급 선택창</legend>
+                            <select id name>
+                                <option value="1">쌀알</option>
+                                <option value="2">쌀밥</option>
+                                <option value="3">볶음밥</option>
+                            </select>
+                    </form>-->
+                    
+                    <!-- 이메일검색 버튼 -->
+				    <section class="query-filter">
+				        <h1 class="d:none">회원 검색 폼</h1>
+				        <form>
+				            <fieldset class="search-form">
+				                <legend class="d:none">회원 검색</legend>
+				                <input class="input-query" type="text" placeholder="닉네임 or 이메일 검색">
+				                <button class="icon icon-search icon-size:2 btn-find">검색</button>
+				            </fieldset>
+				        </form>
+				    </section>
+                </div>  
+            </header>
+        
+            <!-- 본문!! -->
+            <!-- 회원 목록 -->
+        	<section class="user-list">
+            	<h1 class="d:none">회원 목록</h1>
+	            <section th:each="u : ${list}" class="user-block md:user-block">
+	                <h1 th:text="${u.alias}" class="user-alias-block">회원 닉네임</h1>
+					<div class="checkbox-block">
+	                	<input type="checkbox" class="checkBox" name="checkBox" th:value="${u.id}">
+	                	<!--<span th:text="${u.id}"></span>-->
+	                </div>
+	            	<div class="user-image-block">
+	                    <img th:src="@{'/css/image/user/' + ${u.profileImg}}" class="img">
+		                <!--<div th:text="${u.profileImg}"></div>-->
+		             
+	           		</div>
+	                
+	                <div th:text="${u.email}" class="user-email-block">
+	                    <a class="">회원 이메일</a>
+	                </div>
+	
+					<div class="user-grade-block">
+						<img th:src="@{'/css/image/icon/badge' + ${u.gradeId} + '.svg'}">
+		                <!--<div th:text="${u.gradeId}">
+		                    <a class="">회원 등급</a>
+		                </div>-->
+	                </div>
+	
+	                <div th:text="${u.date}" class="user-reg_date-block">
+	                    <a class="">회원 가입일</a>
+	                </div>
+	                <!--mvc로 수정하는 버튼, api로 수정 링크 사용으로 주석처리-->
+<!--	                <div>
+						<a href="edit?id=19" th:href="@{edit(id=${u.id})}" name="editBox">수정?</a>
+					</div>-->
+					<!-- mvc로 삭제하는 버튼-->
+					<!--<div>
+						<form action="delete" th:method="DELETE">
+							<button id="deleteBox" type="submit" name="deleteBox" th:value="${u.id}">삭제</button>
+						</form>
+					</div>-->
+	            </section>
+
+
+            <!-- 페이지 이동 -->
+            <div class="pagination">
+                <a class="" th:if="${currentPage > 1}" th:href="@{/admin/user/list(page=${currentPage-1})}">&laquo;</a>
+                <a th:each="pageNo : ${#numbers.sequence(currentPage -5, currentPage +5)}"
+                   th:if="${pageNo > 0 and pageNo <= pageCount+1}" 
+                   th:text="${pageNo}" th:href="@{/admin/user/list(page=${pageNo})}" th:class="${currentPage == pageNo} ? 'page-active' : ''"></a>
+                <a th:if="${currentPage < pageCount+1}" th:href="@{/admin/user/list(page=${currentPage+1})}">&raquo;</a>
+            </div>
+            </section> 
+
+            </section>
+        </main>
+    </body>
+</html>

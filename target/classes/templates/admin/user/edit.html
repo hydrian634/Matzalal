@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta id="userid" name="userid" th:content="${#authentication.principal.id}">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 상세 조회</title>
+    <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/user/edit.css" rel="stylesheet" type="text/css">
+    <script src="/js/admin/user/edit.js" defer></script>
+    
+</head>
+<body>
+    <main layout:fragment="main" class="main">
+        <section class="user-detail md:user-detail">
+            <h1 class="user-detail-title">회원 정보 수정</h1>
+    
+                <form enctype="multipart/form-data" class="edit">
+                    <fieldset>
+                        <input type="hidden" name="id" id="id" th:value="${userDtl.id}"
+                            class="id">
+                        <div class="filebox">
+                            <label>
+                            	<input class="d:none" type="file" name="file" value="사진추가">
+                            	<img th:src="@{'/image/user/' + ${userDtl.profileImg}}" alt="이미지 선택" class="user-img" >
+                            </label>                        	
+                        </div>
+
+                    <div class="input-box no-border">
+                        <div class="text-box grade-box">
+                            <label>등 급</label>
+                            <div class="user-grade dropdown-select md:dropdown-select">
+                                <label for="grade" class="d:none">등급 선택창</label>
+                                <select th:name="gradeId" id="grade">
+				                  <option th:each="g:${gradeList}" th:value="${g.gradeId}"  th:text="${g.grade}" th:selected="${g.gradeId eq userDtl.gradeId}"></option>
+                                </select>
+                            </div>
+                        </div>
+                            
+                            
+                        <div class="text-box alias-box">
+                            <label>닉네임</label>
+                            <div>
+                                <input type="text"  id="alias" name="alias" th:value="${userDtl.alias}">
+                            </div>
+                        </div>
+
+                            <div class="text-box email-box">
+                                <label>이메일</label>
+                                <div>
+                                    <input type="email"id="email"
+                                        name="email" th:value="${userDtl.email}">
+                                </div>
+                            </div>
+
+                            <div class="text-box pwd-box">
+                                <label>비밀번호</label>
+                                <div>
+                                    <input type="password" id="pwd"
+                                        name="pwd" th:value="${userDtl.pwd}">
+                                </div>
+                            </div>
+
+                            <div class="text-box name-box">
+                                <label>실 명</label>
+                                <div class>
+                                    <input type="text" id="name"
+                                        name="name" th:value="${userDtl.name}">
+                                </div>
+                            </div>
+
+                            <div class="text-box phone-box">
+                                <label>연락처</label>
+                                <div class>
+                                    <input type="text"
+                                        pattern="^01[01689]-\d{3,4}-\d{4}$"
+                                         id="phone" name="phone"
+                                        th:value="${userDtl.phone}">
+                                </div>
+                            </div>
+
+                            <div class="text-box sign-up-date-box">
+                                <label>가입일</label>
+                                <div class>
+                                    <input type="datetime" name="date"
+                                        th:value="${userDtl.date}">
+                                </div>
+                            </div>
+
+                            <div class="text-box user-status-box">
+                                <label>활동정지기간</label>
+                                <div class="dropdown-select md:dropdown-select">
+                                    <input th:value="${#dates.format(userDtl.sanctionTime, 'yyyy.MM.dd HH:mm')}" type="text" size="12">
+                                </div>
+                            </div>
+
+                            <!--<div class="text-box report-reason-box">
+                            <label>신고유형</label>
+                            <div class="dropdown-select md:dropdown-select">
+                                <input type="text" size="12" >
+                                <label class="d:none">신고사유 선택창</label>
+                                    <select id="reportReason" name="reportReason" >
+                                        <option value="">신고 사유 선택</option>
+                                        <option th:each="reason:${reportReason}" th:value="${reason.reportReasonId}" th:text="${reason.category}"></option>
+                                    </select>
+                            </div>
+                        </div> -->
+                        
+                        <div class="text-box no-border">
+                            <label>지역</label>
+                            <div class="dropdown-select md:dropdown-select">
+                                <label for="" class="d:none">지역선택창</label>
+                                    <select id="locCateList" th:name="locationId" >
+                                        <option th:each="l:${locCateList}" th:value="${l.locationPostId}" 
+                                        		th:text="${l.area}" th:selected="${l.locationPostId eq userDtl.locationId}">
+                                        		은평/서대문/마포
+                                		</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                    <div class="manage-button">
+                        <!--<div class="store-create-button">
+                        <input type="submit" value="등록" class="btn-main btn-main-create btn-main-small">
+                    </div>-->
+                        <a class="store-edit-button">
+                            <input type="submit" value="수정"
+                                class="btn-main btn-main-create-edit btn-main-small">
+                        </a>
+                        <a class="store-delete-button" href="/admin/user/list">
+                            <input type="button" value="취소"
+                                class="btn-main bg-color:logo-1 btn-main-small">
+                        </a>
+                    </div>
+                </form>
+
+            </section>
+        </main>
+    </body>
+</html>

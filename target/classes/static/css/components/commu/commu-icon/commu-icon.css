@@ -1,0 +1,295 @@
+.icon {/*바깥의 박스*/
+    /* border: 1px solid blue; */
+
+    display: inline-block;
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+    background-size: var(--icon-size-1);
+
+    box-sizing: border-box; 
+    overflow: hidden;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+} 
+
+.deco{
+    display: inline-block;
+    overflow: hidden;
+}
+
+.icon::before{/*안쪽의 박스*/
+    /* 
+        border: 1px solid red; */
+        content:'';
+        display: inline-block;
+        width: inherit;
+        height: inherit;
+        /* background-image: url(/image/icon/settings.svg); */
+        /* background-size: inherit; */
+    
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: inherit;
+        mask-size: inherit;
+        background-color:  var(--color-base-6);
+    }
+
+.deco::before{/*안쪽의 박스*/
+    /* 
+        border: 1px solid red; */
+        content:'';
+        display: inline-block;
+        width: var(--icon-size-2);
+        height: var(--icon-size-2);
+        /* background-image: url(/image/icon/settings.svg); */
+        /* background-size: inherit; */
+    
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-size: inherit;
+        mask-size: inherit;
+        background-color:  var(--color-base-6);
+        /* margin-right: 5px; */
+
+    }
+
+.icon-hover:hover::before{
+    background-color: var(--color-accent-1);
+}
+
+.icon-pointer::before{
+    cursor: pointer;
+}
+/*--------------------- 아이콘 사이즈 ---------------------*/
+
+.icon-size\:0{
+    width: var(--icon-size-0);
+    height: var(--icon-size-0);
+    /* background-size: var(--icon-size-1); */
+    -webkit-mask-size: var(--icon-size-0);
+    mask-size: var(--icon-size-0);
+}
+
+.icon-size\:1{
+    width: var(--icon-size-1);
+    height: var(--icon-size-1);
+    /* background-size: var(--icon-size-1); */
+    -webkit-mask-size: var(--icon-size-1);
+    mask-size: var(--icon-size-1);
+}
+
+.icon-size\:2{
+    width: var(--icon-size-2);
+    height: var(--icon-size-2);
+    /* background-size: var(--icon-size-2); */
+    -webkit-mask-size: var(--icon-size-2);
+    mask-size: var(--icon-size-2);
+}
+.icon-size\:3{
+    width: var(--icon-size-3);
+    height: var(--icon-size-3);
+    /* background-size: var(--icon-size-3); */
+    -webkit-mask-size: var(--icon-size-3);
+    mask-size: var(--icon-size-3);
+}
+.icon-size\:4{
+    width: var(--icon-size-4);
+    height: var(--icon-size-4);
+    /* background-size: var(--icon-size-4); */
+    -webkit-mask-size: var(--icon-size-4);
+    mask-size: var(--icon-size-4);
+}
+
+.icon-size\:5{
+    width: var(--icon-size-5);
+    height: var(--icon-size-5);
+    /* background-size: var(--icon-size-5); */
+    -webkit-mask-size: var(--icon-size-5);
+    mask-size: var(--icon-size-5);
+}
+
+/*--------------------- 아이콘 색 ---------------------*/
+
+.icon-color\:base-0::before{
+    background-color:  var(--color-base-0);
+}
+
+.icon-color\:main::before{
+    background-color:  var(--color-base-6);
+}
+
+.icon-color\:accent::before{
+    background-color:  var(--color-accent-1);
+}
+
+
+.icon-color\:base-3::before{
+    background-color:  var(--color-base-3);
+}
+
+.icon-color\:base-5::before{
+    background-color:  var(--color-base-5);
+}
+
+.icon-color\:logo-3::before{
+    background-color: var(--color-logo-3);
+}
+/*--------------------- 모바일 하단 메뉴  ---------------------*/
+
+.icon-home::before{/*안쪽의 박스*/
+    /* background-color: var(--color-accent-1); */
+   -webkit-mask-image: url(/css/image/icon/home.svg);
+   mask-image:  url(/css/image/icon/home.svg);
+}
+
+.icon-search::before{/*안쪽의 박스*/
+    -webkit-mask-image: url(/css/image/icon/search.svg);
+    mask-image:  url(/css/image/icon/search.svg);
+}
+
+.icon-community::before{/*안쪽의 박스*/
+    -webkit-mask-image: url(/css/image/icon/community.svg);
+    mask-image:  url(/css/image/icon/community.svg);
+}
+
+.icon-community-selected::before{/*안쪽의 박스*/
+    -webkit-mask-image: url(/css/image/icon/community-selected.svg);
+    mask-image:  url(/css/image/icon/community-selected.svg);
+}
+.icon-person::before{/*안쪽의 박스*/
+    -webkit-mask-image: url(/css/image/icon/person.svg);
+    mask-image:  url(/css/image/icon/person.svg);
+}
+
+.icon-back::before {
+    -webkit-mask-image: url(/css/image/icon/back.svg);
+    mask-image: url(/css/image/icon/back.svg);
+}
+/* ------------------ 커뮤니티 조회수, 좋아요, 댓글 ----------------- */
+
+.icon-view::before{/*안쪽의 박스*/
+    -webkit-mask-image: url(/css/image/icon/view.svg);
+    mask-image:  url(/css/image/icon/view.svg);
+}
+
+.icon-likes::before{/*안쪽의 박스*/
+    -webkit-mask-image: url(/css/image/icon/likes.svg);
+    mask-image:  url(/css/image/icon/likes.svg);
+}
+
+.icon-comment::before{
+    -webkit-mask-image: url(/css/image/icon/comment.svg);
+    mask-image:  url(/css/image/icon/comment.svg);
+}
+
+.icon-recomment::before{
+    -webkit-mask-image: url(/css/image/icon/recomment.svg);
+    mask-image:  url(/css/image/icon/recomment.svg);
+}
+/* ------------------ 커뮤니티  ------------------ */
+
+.icon-expanding-arrow::before{
+    -webkit-mask-image: url(/css/image/icon/expanding-arrow.svg);
+    mask-image:  url(/css/image/icon/expanding-arrow.svg);
+}
+
+.icon-add-photo::before{
+    -webkit-mask-image: url(/css/image/icon/add-photo.svg);
+    mask-image:  url(/css/image/icon/add-photo.svg);
+}
+
+.icon-add-photo-image::before{
+    -webkit-mask-image: url(/css/image/icon/add-photo-image.svg);
+    mask-image:  url(/css/image/icon/add-photo-image.svg);
+}
+
+.icon-more-horiz::before{
+    -webkit-mask-image: url(/css/image/icon/more-horiz.svg);
+    mask-image:  url(/css/image/icon/more-horiz.svg);
+}
+
+/* ------------------ 회원등급  ------------------ */
+
+.icon-user-grade::before{
+    -webkit-mask-image: url(/css/image/icon/grade2.svg);
+    mask-image:  url(/css/image/icon/grade2.svg);
+}
+
+/* ------------------ 공신큐  ------------------ */
+.icon-add::before{
+    -webkit-mask-image: url(/css/image/icon/add.svg);
+    mask-image:  url(/css/image/icon/add.svg);
+}
+
+.icon-review::before{
+    -webkit-mask-image : url(/css/image/icon/review.svg);
+    mask-image : url(/css/image/icon/review.svg);
+}
+.icon-check_box::before{
+    -webkit-mask-image : url(/css/image/icon/check_box.svg);
+    mask-image : url(/css/image/icon/check_box.svg);
+}
+.icon-lock::before{
+    -webkit-mask-image: url(/css/image/icon/lock.svg);
+    mask-image:  url(/css/image/icon/lock.svg);
+}
+
+.icon-locked::before{
+    -webkit-mask-image: url(/css/image/icon/locked.svg);
+    mask-image:  url(/css/image/icon/locked.svg);
+}
+
+.icon-checked::before{
+    -webkit-mask-image: url(/css/image/icon/checked.svg);
+    mask-image:  url(/css/image/icon/checked.svg);
+}
+
+.icon-unchecked::before{
+    -webkit-mask-image: url(/css/image/icon/unchecked.svg);
+    mask-image:  url(/css/image/icon/unchecked.svg);
+}
+
+.icon-upside::before{
+    -webkit-mask-image: url(/css/image/icon/upside.svg);
+    mask-image:  url(/css/image/icon/upside.svg);
+}
+
+.icon-downside::before{
+    -webkit-mask-image: url(/css/image/icon/downside.svg);
+    mask-image:  url(/csss/image/icon/downside.svg);
+}
+
+
+
+/* ------------------ 반응형 기준   ------------------ */
+
+@media (min-width: 700px) {
+
+    .md\:deco{
+
+    }
+
+    .md\:deco::before{
+        display: none;
+    }
+
+    .md\:icon-size\:1{
+        width: var(--icon-size-1);
+        height: var(--icon-size-1);
+        background-size: var(--icon-size-1);
+    }
+
+    .md\:icon-size\:2{
+        width: var(--icon-size-2);
+        height: var(--icon-size-2);
+        background-size: var(--icon-size-2);
+    }
+
+    .md\:icon-size\:3{
+        width: var(--icon-size-3);
+        height: var(--icon-size-3);
+        background-size: var(--icon-size-3);
+    }
+
+}

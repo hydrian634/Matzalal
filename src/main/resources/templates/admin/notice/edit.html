@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/inc/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 수정</title>
+        <link href="/css/components/pagination.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/button.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/search.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/dropdown-select.css" rel="stylesheet" type="text/css">
+        <link href="/css/components/admin/main-header.css" rel="stylesheet" type="text/css">
+    	<link href="/css/components/admin/community/post.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/admin/notice/reg.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="/js/admin/notice/edit.js" defer></script>
+</head>
+<body>
+    <main layout:fragment="main" class="main-section md:main-section">
+        <section class="reg-notice">
+            <h1 class="reg-notice-title">공지 수정</h1>
+            <form id="editNotice" action="update" method="post" th:method="put" class="reg-notice-form">
+				<!--<input type="hidden" name="_method" value="put" />-->
+				<input type="hidden" name="noticeId" th:value="${noticeDtl.noticeId}" class="id">
+                <div class="notice-title">
+                    <label class="d:none">제목</label>
+                    <input th:value="${noticeDtl.title}" name="title" type="text" placeholder="제목을 입력해주세요" required>
+                </div>
+                
+                <div class="reg-notice-date">
+                    <span th:text="${#dates.format(noticeDtl.createdDate, 'yyyy.MM.dd HH:mm')}">2023. 10. 08.</span>
+                </div>
+
+                <div class="notice-content-block">
+                    <textarea class="notice-content" name="content" required
+                    placeholder="공지사항 본문을 작성해주세요." th:text="${noticeDtl.content}"></textarea>
+
+                    <div class="add-notice-pic" >
+                        <label onchange="readURL(this);"></label>
+                        <input type="file" class="icon icon-size:2 icon-color:black icon-gallery">
+                        <img id="preview" />
+                    </div>
+                </div>
+
+                <div class="notice-active-date">
+                    <div>
+                        <label for="">게시시작일</label>
+                        <span th:text="${#dates.format(noticeDtl.openedDate, 'yyyy-MM-dd HH:mm')}" name="openedDate"></span>
+                    </div>
+                    <div>
+                        <label for="">게시종료일</label>
+                        <span th:text="${#dates.format(noticeDtl.closedDate, 'yyyy-MM-dd HH:mm')}" name="closedDate"></span>
+                    </div>
+                </div>
+
+            <div class="manage-button">
+				<a class="store-edit-button">
+                    <input type="submit" value="수정"
+                        class="btn-main btn-main-create-edit btn-main-small">
+                </a>
+                <a class="store-delete-button" href="/admin/notice/list">
+                    <input type="button" value="취소"
+                		class="btn-main bg-color:logo-1 btn-main-small">
+                </a>
+            </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

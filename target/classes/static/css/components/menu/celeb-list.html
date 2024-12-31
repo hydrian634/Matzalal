@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{inc/layout.html}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <link href="/css/components/menu/celeb.css" rel="stylesheet" type="text/css">
+    <script src="/js/user/celeb.js" defer></script>
+    </head>
+    <body>
+    <main layout:fragment="main">
+        <section class="celeb">
+            <h1>Celeb's Pick!</h1>
+            <div class="align">
+                <a href class>전체</a>
+                <div>
+                <ul class="celeb_list_btn">
+                    <li th:each="c:${celebList}">
+                        <a th:data-id="${c.celebId}" th:text="${c.celebName}" href="?c=1" th:href="@{?c={c}(c=${c.celebId})}"></a>
+                    </li>
+                </ul>
+                </div>
+                <section class="rest_list"> <!-- overflow-y : scroll -->
+                    <h1 class="d:none">유명인 식당 목록</h1>
+                    <div class="celeb_rest_list" >
+                        <article class="celeb_rest" th:each="cr:${CelebRestViewList}">
+                            <h1 class="d:none" >또순이네</h1>
+                            <a class="rest_name" th:text="${cr.restName}">또순이네</a>
+                            <img src="/img/1-1.png" th:src="@{/static/css/image/img (img=${cr.bannerImg})}">
+                        </article>
+               <!--         <article class="celeb_rest">
+                            <h1 class="d:none">또순이네</h1>
+                            <a class="rest_name">또순이네</a>
+                            <img src="/img/1-1.png">
+                        </article>
+                        <article class="celeb_rest">
+                            <h1 class="d:none">또순이네</h1>
+                            <a class="rest_name">또순이네</a>
+                            <img src="/img/1-1.png">
+                        </article>
+                        <article class="celeb_rest">
+                            <h1 class="d:none">또순이네</h1>
+                            <a class="rest_name">또순이네</a>
+                            <img src="/img/1-1.png">
+                        </article>
+                        <article class="celeb_rest">
+                            <h1 class="d:none">또순이네</h1>
+                            <a class="rest_name">또순이네</a>
+                            <img src="/img/1-1.png">
+                        </article>-->
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+    </body>
+</html>
