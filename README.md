@@ -36,3 +36,14 @@
 ## ScreenShots
 
 ![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/1.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/2.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/3.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/4.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/5.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/6.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/7.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/8.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/9.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/10.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/11.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/12.png)
