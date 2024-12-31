@@ -35,4 +35,4 @@
 
 ## ScreenShots
 
-![1] (https://github.com/hydrian634/Matzalal/blob/main/imgs/1.png)
+![1](https://github.com/hydrian634/Matzalal/blob/main/imgs/1.png)
